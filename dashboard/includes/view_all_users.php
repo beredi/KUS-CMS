@@ -82,7 +82,25 @@
 
 if (isset($_GET['delete'])){
     $user_id = $_GET['delete'];
+    try{ //ziska nazov podla ID
+        include 'includes/db.php';
 
+
+        $query = "SELECT * from users WHERE user_id=:user_id";
+
+        $send_info = $connection->prepare($query);
+        $send_info->bindParam(':user_id', $user_id);
+        $send_info->execute();
+
+
+        $result = $send_info->fetch(PDO::FETCH_ASSOC);
+
+        $user_name = $result['user_name'].' '.$result['user_lastname'];
+
+    }
+    catch (Exception $e){
+        echo $e;
+    }
 
     if (isset($_SESSION['user_role'])){
         if (strpos($_SESSION['user_role'], 'admin')){
@@ -96,6 +114,10 @@ if (isset($_GET['delete'])){
                 $send_info = $connection->prepare($query);
                 $send_info->bindParam(':user_id', $user_id);
                 $send_info->execute();
+                // LOG
+                include "includes/add_log.php";
+                $logAction = "Vymazal používateľa " . $user_name;
+                createLog($connection, $logAction, "používatelia");
                 header('Location: users.php');
             }
             catch (Exception $e){

@@ -99,6 +99,12 @@ if (isset($_SESSION['user_role'])){
 
                                 $send_info->execute();
                                 echo "<h3 class='text-success'>Užívateľ $user_name bol úspešne pridaný</h3>";
+
+
+                                // LOG
+                                include "includes/add_log.php";
+                                $logAction = "Pridal používateľa " . $user_name;
+                                createLog($connection, $logAction, "používatelia");
                             }
                             catch (Exception $e){
                                 echo $e;

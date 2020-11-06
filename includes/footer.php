@@ -9,13 +9,13 @@ function footer($whatKindOfPage){
         <div class="container-fluid footerBott">
     <div class="row">
         <div class="col-lg-12 col-md-12 hidden-sm hidden-xs">
-            <p class="text-center top">&copy;KUS JÁNA KOLLÁRA SELENČA 2017 - '.date('Y').' | DESIGN BY xarocx</p>
+            <p class="text-center top">&copy;KUS JÁNA KOLLÁRA SELENČA 2017 - '.date('Y').' | DESIGN BY Jaroslav Beredi</p>
         </div>
         <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
-            <p class="text-center top smallText">&copy;KUS JÁNA KOLLÁRA SELENČA 2017 - '.date('Y').' | DESIGN BY xarocx</p>
+            <p class="text-center top smallText">&copy;KUS JÁNA KOLLÁRA SELENČA 2017 - '.date('Y').' | DESIGN BY Jaroslav Beredi</p>
         </div>
         <div class="hidden-lg hidden-md col-sm-12 col-xs-12" id="fixed">
-            <p class="text-center top smallText">&copy;KUS JÁNA KOLLÁRA SELENČA 2017 - '.date('Y'). ' | DESIGN BY xarocx</p>
+            <p class="text-center top smallText">&copy;KUS JÁNA KOLLÁRA SELENČA 2017 - '.date('Y'). ' | DESIGN BY Jaroslav Beredi</p>
         </div>
     </div>
 </div>
@@ -62,13 +62,13 @@ function footer($whatKindOfPage){
 <div class="container-fluid footerBott">
     <div class="row">
         <div class="col-lg-12 col-md-12 hidden-sm hidden-xs">
-            <p class="text-center top">&copy;KUS JÁNA KOLLÁRA SELENČA 2017 - ' .date('Y').' | DESIGN BY xarocx</p>
+            <p class="text-center top">&copy;KUS JÁNA KOLLÁRA SELENČA 2017 - ' .date('Y').' | DESIGN BY Jaroslav Beredi</p>
         </div>
         <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
-            <p class="text-center top smallText">&copy;KUS JÁNA KOLLÁRA SELENČA 2017 - '.date('Y').' | DESIGN BY xarocx</p>
+            <p class="text-center top smallText">&copy;KUS JÁNA KOLLÁRA SELENČA 2017 - '.date('Y').' | DESIGN BY Jaroslav Beredi</p>
         </div>
         <div class="hidden-lg hidden-md col-sm-12 col-xs-12" id="fixed">
-            <p class="text-center top smallText">&copy;KUS JÁNA KOLLÁRA SELENČA 2017 - '.date('Y').' | DESIGN BY xarocx</p>
+            <p class="text-center top smallText">&copy;KUS JÁNA KOLLÁRA SELENČA 2017 - '.date('Y').' | DESIGN BY Jaroslav Beredi</p>
         </div>
     </div>
 </div>';

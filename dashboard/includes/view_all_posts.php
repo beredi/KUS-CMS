@@ -103,7 +103,25 @@
 
 if (isset($_GET['delete'])){
     $post_id = $_GET['delete'];
+    try{ //ziska nazov podla ID
+        include 'includes/db.php';
 
+
+        $query = "SELECT * from posts WHERE post_id=:post_id";
+
+        $send_info = $connection->prepare($query);
+        $send_info->bindParam(':post_id', $post_id);
+        $send_info->execute();
+
+
+        $result = $send_info->fetch(PDO::FETCH_ASSOC);
+
+        $post_title = $result['post_title'];
+
+    }
+    catch (Exception $e){
+        echo $e;
+    }
 
     if (isset($_SESSION['user_role'])){
 
@@ -119,6 +137,12 @@ if (isset($_GET['delete'])){
                 $send_info = $connection->prepare($query);
                 $send_info->bindParam(':post_id', $post_id);
                 $send_info->execute();
+
+                // LOG
+                include "includes/add_log.php";
+                $logAction = "Vymazal článok " . $post_title;
+                createLog($connection, $logAction, "články");
+
                 header('Location: posts.php');
             }
             catch (Exception $e){

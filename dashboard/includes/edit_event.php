@@ -101,6 +101,11 @@ if (isset($_SESSION['user_role'])){
 
 
                 echo "<h3 class='text-success'>Podujatie $event_name bolo aktualizované!</h3>";
+
+                // LOG
+                include "includes/add_log.php";
+                $logAction = "Aktualizoval podujatie " . $event_name;
+                createLog($connection, $logAction, "podujatie");
             }
             catch (Exception $e){
                 echo $e;

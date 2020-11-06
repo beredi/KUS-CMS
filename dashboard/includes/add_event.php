@@ -50,6 +50,10 @@ if (isset($_POST['add_event'])){
                 $send_info->bindParam(':event_photo', $event_photo);
                 $send_info->execute();
                 echo "<h3 class='text-success'>Podujatie $event_name bolo pridané!</h3>";
+                // LOG
+                include "includes/add_log.php";
+                $logAction = "Pridal podujatie " . $event_name;
+                createLog($connection, $logAction, "podujatie");
             }
             catch (Exception $e){
                 echo $e;

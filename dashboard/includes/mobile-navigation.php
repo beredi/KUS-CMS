@@ -67,11 +67,18 @@
                 <?php
                 if (!strpos($_SESSION['user_role'], 'uzivatel')){
                     echo "
-                <li class=\"nav-item border-bottom border-light\" style=\"width: 100%;\"><a class=\"nav-link text-light\" href=\"news.php\"> <i class=\"fas fa-paper-plane\"></i>
+                <li class=\"nav-item\" style=\"width: 100%;\"><a class=\"nav-link text-light\" href=\"news.php\"> <i class=\"fas fa-paper-plane\"></i>
                         Novinky</a></li>";
                 }
                 ?>
-                <li class="nav-item" style="width: 100%;">
+                <?php
+                if (strpos($_SESSION['user_role'], 'admin')){
+                    echo "
+                <li class=\"nav-item \" style=\"width: 100%;\"><a class=\"nav-link text-light\" href=\"logs.php\"> <i class=\"fas fa-paper-plane\"></i>
+                        Logy</a></li>";
+                }
+                ?>
+                <li class="nav-item border-top border-light" style="width: 100%;">
                     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-white-50">
                         <span>prihlásený užívateľ</span><span class="float-right"> <?php
                             if (isset($_SESSION['user_role'])){

@@ -52,6 +52,10 @@ if (isset($_SESSION['user_role'])){
 
             $send_info->execute();
 
+            // LOG
+            include "includes/add_log.php";
+            $logAction = "Pridal článok " . $post_title;
+            createLog($connection, $logAction, "články");
 
 
             echo "<h3 class='text-success'>Článok $post_title bol odoslaný a čaká na schválenie! </h3>";
@@ -133,7 +137,19 @@ if (isset($_SESSION['user_role'])){
                 $send_info->bindParam(':post_last_edited', $post_last_edited);
 
                 $send_info->execute();
+                $query = "SELECT * FROM posts ORDER BY post_id DESC LIMIT 1";
+
+                $send_info = $connection->prepare($query);
+                $send_info->execute();
+
+                $result = $send_info->fetch(PDO::FETCH_ASSOC);
+
+                $post_id = $result['post_id'];
                 echo "<h3 class='text-success'>Článok $post_title bol publikovaný! <small><a href=\"../clanok.php?p_id=$post_id\" class='text-muted' target='_blank'>Zobraziť</a></small></h3>";
+                // LOG
+                include "includes/add_log.php";
+                $logAction = "Publikoval článok " . $post_title;
+                createLog($connection, $logAction, "články");
 
 
 

@@ -121,6 +121,11 @@ if (isset($_GET['edit'])) {
 
                         $send_info->execute();
                         echo "<h3 class='text-success'>Užívateľ $user_name bol aktualizovaný!</h3>";
+
+                        // LOG
+                        include "includes/add_log.php";
+                        $logAction = "Aktualizoval používateľa " . $user_name;
+                        createLog($connection, $logAction, "používatelia");
                     }
                     catch (Exception $e){
                         echo $e;
@@ -229,6 +234,11 @@ if (isset($_GET['edit'])) {
 
                         $send_info->execute();
                         echo "<h3 class='text-success'>Užívateľ $user_name bol aktualizovaný!</h3>";
+
+                        // LOG
+                        include "includes/add_log.php";
+                        $logAction = "Aktualizoval používateľa " . $user_name;
+                        createLog($connection, $logAction, "používatelia");
                     }
                     catch (Exception $e){
                         echo $e;

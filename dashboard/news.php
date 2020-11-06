@@ -5,7 +5,7 @@
 <?php
 include "includes/header.php"; //INCLUDE HEADER
 ?>
-<!--    <!--MOBILE NAVBAR-->
+     <!--MOBILE NAVBAR-->
     <?php
     include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
     ?>
@@ -70,6 +70,11 @@ if (isset($_SESSION['user_role'])){
 
                             echo "<h3 class='text-success'>V novinkách sa objavia posledné tri články.</h3>";
 
+                            // LOG
+                            include "includes/add_log.php";
+                            $logAction = "Zmenil zobrazovanie noviniek na uvode";
+                            createLog($connection, $logAction, "novinky");
+
                         } catch (Exception $e) {
                             echo $e;
                         }
@@ -118,6 +123,13 @@ if (isset($_SESSION['user_role'])){
                                 $send_info3->execute();
 
                                 echo "<h3 class='text-success'>V novinkách sa objavia tri vami vybraté články.</h3>";
+
+
+                                // LOG
+                                include "includes/add_log.php";
+                                $logAction = "Zmenil zobrazovanie noviniek na uvode";
+                                createLog($connection, $logAction, "novinky");
+
                             }
                             catch (Exception $e){
                                 echo $e;

@@ -133,6 +133,11 @@ if (strpos($_SESSION['user_role'], 'lektor')|| strpos($_SESSION['user_role'], 'm
 
             $send_info->execute();
             echo "<h3 class='text-success'>Článok $post_title bol upravený a čaká na schválenie! <small><a href=\"../clanok.php?p_id=$post_id\" class='text-muted' target='_blank'>Zobraziť</a></small></h3>";
+            // LOG
+            include "includes/add_log.php";
+            $logAction = "Upravil článok " . $post_title;
+            createLog($connection, $logAction, "články");
+
         }
         catch (Exception $e){
             echo $e;
@@ -234,6 +239,11 @@ if (strpos($_SESSION['user_role'], 'lektor')|| strpos($_SESSION['user_role'], 'm
 
             $send_info->execute();
             echo "<h3 class='text-success'>Článok $post_title bol publikovaný! <small><a href=\"../clanok.php?p_id=$post_id\" class='text-muted' target='_blank'>Zobraziť</a></small></h3>";
+            // LOG
+            include "includes/add_log.php";
+            $logAction = "Publikoval článok " . $post_title;
+            createLog($connection, $logAction, "články");
+
         }
         catch (Exception $e){
             echo $e;

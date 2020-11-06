@@ -92,7 +92,25 @@
 
 if (isset($_GET['delete'])) {
     $event_id = $_GET['delete'];
+    try{ //ziska nazov podla ID
+        include 'includes/db.php';
 
+
+        $query = "SELECT * from events WHERE event_id=:event_id";
+
+        $send_info = $connection->prepare($query);
+        $send_info->bindParam(':event_id', $event_id);
+        $send_info->execute();
+
+
+        $result = $send_info->fetch(PDO::FETCH_ASSOC);
+
+        $event_name = $result['event_name'];
+
+    }
+    catch (Exception $e){
+        echo $e;
+    }
     if (isset($_SESSION['user_role'])){
         if(strpos($_SESSION['user_role'], 'admin')){
             try {
@@ -104,6 +122,11 @@ if (isset($_GET['delete'])) {
                 $send_info = $connection->prepare($query);
                 $send_info->bindParam(':event_id', $event_id);
                 $send_info->execute();
+
+                // LOG
+                include "includes/add_log.php";
+                $logAction = "Vymazal podujatie " . $event_name;
+                createLog($connection, $logAction, "podujatia");
                 header('Location: events.php');
             } catch (Exception $e) {
                 echo $e;
