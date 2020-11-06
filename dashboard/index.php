@@ -1,10 +1,8 @@
 <?php ob_start(); ?>
 <?php
 include "includes/header.php"; //INCLUDE HEADER
-
-pageHeader("KUS Jána Kollára Selenča");
 ?>
-<!--    MOBILE NAVBAR-->
+<!--    <!--MOBILE NAVBAR-->
     <?php
     include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
     ?>

@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1d32e45-67c6-4b3c-bd10-0fa8c8bb1feb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/clanok.php" beforeDir="false" afterPath="$PROJECT_DIR$/clanok.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,20 +29,6 @@
   </component>
   <component name="ComposerSettings">
     <execution />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -65,7 +51,6 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -169,18 +154,8 @@
       <workItem from="1604427713136" duration="3524000" />
       <workItem from="1604431425840" duration="47000" />
       <workItem from="1604665203327" duration="1722000" />
-      <workItem from="1604667420392" duration="276000" />
     </task>
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
@@ -201,9 +176,21 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1280" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.860/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1604430719868" />
+    <state x="152" y="68" key="MergeDialog" timestamp="1604667879295">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="152" y="68" key="MergeDialog/0.0.1600.860@0.0.1600.860" timestamp="1604667879295" />
     <state x="-1126" y="443" key="NewPhpFileDialog" timestamp="1604428966832">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1126" y="443" key="NewPhpFileDialog/0.0.1600.860/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1604428966832" />
+    <state x="617" y="344" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604667859625">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="617" y="344" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1600.860@0.0.1600.860" timestamp="1604667859625" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1604667577319">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1604667577319" />
   </component>
 </project>
