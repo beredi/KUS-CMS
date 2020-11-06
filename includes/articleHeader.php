@@ -18,6 +18,10 @@ function articleHeader($title, $imagePath, $content, $keywords){
     <link rel="image_src"
           type="image/jpeg"
           href="images/articles/<?=$imagePath?>" />
+
+
+    <script src="https://kit.fontawesome.com/7782f26b25.js" crossorigin="anonymous"></script>
+
     <!--FONT ISTOK WEB-->
     <link href="https://fonts.googleapis.com/css?family=Istok+Web" rel="stylesheet">
 

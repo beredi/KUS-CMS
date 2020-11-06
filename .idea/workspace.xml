@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1d32e45-67c6-4b3c-bd10-0fa8c8bb1feb" name="Default" comment="" />
+    <list default="true" id="f1d32e45-67c6-4b3c-bd10-0fa8c8bb1feb" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clanok.php" beforeDir="false" afterPath="$PROJECT_DIR$/clanok.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/articleHeader.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/articleHeader.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,52 +38,8 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>contact</find>
-      <find>contac</find>
-      <find>#cont</find>
-      <find>100px</find>
-      <find>active</find>
-      <find>200px</find>
-      <find>acti</find>
-      <find>contactC</find>
-      <find>text</find>
-      <find>contactI</find>
-      <find>offset-1</find>
-      <find>.html</find>
-      <find>nav</find>
-      <find>malvína.zol</find>
-      <find>Malvina</find>
-      <find>footer</find>
-      <find>foo</find>
-      <find>kusjankollar.org</find>
-      <find>kusjana</find>
-      <find>foote</find>
-      <find>vend</find>
-      <find>nextE</find>
-      <find>next</find>
-      <find>post</find>
-      <find>../images</find>
-      <find>str</find>
-      <find>das</find>
-      <find>novi</find>
-      <find>heslo</find>
-      <find>neú</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>200px</replace>
-      <replace>225px</replace>
-      <replace>offset-2</replace>
-      <replace>.php</replace>
-      <replace>Malvína</replace>
-      <replace>malvina.zol</replace>
-      <replace>kusjanakollara.org</replace>
-      <replace>images</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/kus-cms" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1jn6raO8pfPq8qfVNaIK4qunHkQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -191,6 +152,7 @@
       <workItem from="1594484203507" duration="530000" />
       <workItem from="1604427713136" duration="3524000" />
       <workItem from="1604431425840" duration="47000" />
+      <workItem from="1604665203327" duration="1722000" />
     </task>
     <servers />
   </component>
