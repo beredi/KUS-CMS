@@ -13,6 +13,7 @@ include 'includes/header.php';
                     <small>O Kutúrno umeleckom spolku Jána Kollára.</small></h1>
             </div>
         </div>
+    <img src="images/kus2020.jpg" title="Členovia 2020" alt="clenovia spolku 2020" style="width: 100%;">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <p class="about text-justify">Písal sa rok 1947 keď Selenčania, ktorí sa venovali kultúrnej činnosti, založili spolok. Rozhodli sa ho pomenovať po známej česko-slovenskej osobnosti Jánovi Kollárovi, ktorého meno nosí aj základná škola v Selenči. Takto novozaložený Kultúrno osvetový spolok bol aktívny na rôznych poliach kultúry.</p>
