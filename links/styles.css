@@ -1,0 +1,214 @@
+/*CSS Document by Jaroslav Beredi*/
+body {
+    /*font-family: 'Istok Web', sans-serif;*/
+    font-family: 'Raleway', sans-serif;
+    color: #2c327f;
+
+}
+span.bold {
+    font-weight: bold;
+}
+.top {
+    margin-top: 15px;
+}
+.top2 {
+    margin-top: 30px;
+}
+.topMd{
+    margin-top: 5px;
+}
+.headerText {
+    font-size: 13pt;
+}
+.headerTextSm{
+    font-size: 20pt;
+}
+.headerTextMd{
+    font-size: 10pt;
+}
+.carousel-caption {
+    background-color: rgba(0,0,0, 0.5);
+}
+.carousel {
+    margin-top: 10px;
+}
+.footer {
+    background-color: #2c327f;
+    color: #FFF;
+}
+.footerMargin {
+    margin: 20px 0px 0px 10px;
+}
+.topFooter {
+    margin-top: 20px;
+}
+.footerBott{
+    background-color: #2c327f;
+    color: #FFF;
+}
+#fixed {
+    position: fixed;
+    width: 100%;
+    background-color: #2c327f;
+    bottom: 0;
+}
+.linkO {
+    opacity: 0.7;
+}
+.linkO:hover {
+    opacity: 1;
+}
+.media-body {
+    border: 1px solid rgba(44,50,127,0.5);
+    border-top: 0px;
+    padding: 5px;
+    color: #2c327f;
+
+}
+.smallText {
+    font-size: 9px;
+}
+.nextEvent .media-body{
+    border-top: 1px solid rgba(44,50,127,0.5);
+    border-right: 1px solid rgba(44,50,127,0.5);
+    border-bottom: 1px solid rgba(44,50,127,0.5);
+    border-left: 0px;
+}
+.text-primary {
+    color: rgba(44,50,127,0.8);
+}
+
+.content {position: static;
+    top: 130px;
+}
+
+.menu-padding {
+    padding-top:40px;
+}
+.sticky {
+    position:fixed;
+    margin-top: 0px;
+    top:0;
+    z-index: 100;
+    background-color: transparent;
+    opacity: 0.8;
+}
+.sticky:hover {
+    opacity: 1;
+}
+h1 {
+    color: #2c327f;
+}
+h1 small {
+    font-size: 15px;
+}
+h2 {
+    color: #2c327f;
+}
+h2 > small {
+    font-size: 15px;
+}
+
+.clanok {
+    margin: 10px 0 10px 0;
+}
+.clanokBody {
+  /*  border: 1px solid #b0b4fc;*/
+    color: #2c327f;
+    -webkit-box-shadow: #D6D7FF 2px 2px 1px;
+    -moz-box-shadow: #D6D7FF 2px 2px 1px;
+    box-shadow: #D6D7FF 2px 2px 1px;
+}
+img.clanok {
+    margin: 20px auto;
+}
+.media {
+    margin: 5px;
+}
+
+.clanokMedia {
+   height:400px !important;
+}
+.contact {
+    background-color: rgb(41, 51, 105);
+    border: 1px solid #030433;
+    /*
+    -webkit-box-shadow: #020858 1px 1px 1px;
+    -moz-box-shadow: #020858 1px 1px 1px;
+    box-shadow: #020858 1px 1px 1px; 44 50 127
+    */
+    color: #FFF;
+    padding: 15px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+.contact:hover {
+    background-color: rgb(48, 58, 140);
+
+}
+/*
+.contactImg {
+    position: absolute;
+    left: -30px;
+    top: 10px;
+}
+*/
+.contactContainer {
+    background-color: rgba(40, 50, 127, 1);
+}
+label {
+    margin-top: 5px;
+    font-weight: normal;
+}
+.contact small {
+    color: #c4c7fa;
+}
+.form-group button {
+    margin-top: 10px;
+}
+textarea {
+    resize: none;
+}
+.photoGallery img, .gallery img {
+    opacity: 0.8;
+}
+.photoGallery img:hover, .gallery img:hover {
+    opacity: 1;
+}
+.thumbnail p {
+    color: #6c757d;
+}
+.about:first-letter{
+    font-size: 200%;
+    font-weight:bold;
+}
+img.about {
+    opacity: 1;
+}
+
+a.btn {
+    background: -webkit-linear-gradient(#3841d1, #2c327f); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#3841d1, #2c327f); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#3841d1, #2c327f); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#3841d1, #2c327f); /* Standard syntax */
+}
+.form-control{
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+.italic{
+    font-style: italic;
+}
+
+.contentBody img {
+    width: 100% !important;
+    height: auto !important;
+}
+.contentBody {
+
+    margin-top: 10px;
+}
+hr {
+    margin: 0;
+}
