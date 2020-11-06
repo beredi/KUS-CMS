@@ -6,11 +6,6 @@ if (isset($_SESSION['user_name']) && !empty($_SESSION['user_name'])){
     header('Location: dashboard/index.php');
 }
 
-?>
-
- <?php
-
-
 
             if (isset($_POST['login'])){
                 $user_email = $_POST['user_email'];
