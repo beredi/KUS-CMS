@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f1d32e45-67c6-4b3c-bd10-0fa8c8bb1feb" name="Default" comment="pridane logy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/o-nas.php" beforeDir="false" afterPath="$PROJECT_DIR$/o-nas.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,6 +162,7 @@
       <workItem from="1604431425840" duration="47000" />
       <workItem from="1604665203327" duration="1722000" />
       <workItem from="1604667420392" duration="276000" />
+      <workItem from="1605208801932" duration="485000" />
     </task>
     <task id="LOCAL-00001" summary="pridane logy">
       <created>1604693497462</created>
@@ -185,6 +187,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="pridane logy" />
