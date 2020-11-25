@@ -26,10 +26,10 @@
                     <li><a href = "divadlo" > Divadelná sekcia </a > </li >
                 </ul >
             </li >
-            <li class="dropdown" ><a href = "#" class="dropdown-toggle" data-toggle = "dropdown" > GALÉRIA <span class="caret" ></span ></a >
+            <li class="dropdown" ><a href = "#" class="dropdown-toggle" data-toggle = "dropdown" > PROMO <span class="caret" ></span ></a >
                 <ul class="dropdown-menu" >
-                    <li><a href = "photo-gallery" > Fotogaléria</a > </li >
                     <li><a href = "videogallery" > Videogaléria</a > </li >
+                    <li><a href = "download" > Na stiahnutie</a > </li >
                 </ul>
             </li>
             <li class="dropdown" ><a href = "#" class="dropdown-toggle" data-toggle = "dropdown" > PODUJATIA <span class="caret" ></span ></a >

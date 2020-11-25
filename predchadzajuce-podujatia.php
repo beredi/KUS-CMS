@@ -40,7 +40,7 @@ include 'includes/header.php';
 
                     echo "
                 
-            <div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\">
+            <div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12 \">
                 <div class=\"media clanokMedia \">
                     <div class=\"media-top\">
                         <a href=\"clanok.php?p_id=$post_id\"><img src=\"images/articles/$post_image\" class=\"media-object\" style=\"width:100%;\" alt=\"$post_title\"></a>

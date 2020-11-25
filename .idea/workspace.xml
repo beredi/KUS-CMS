@@ -20,9 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1d32e45-67c6-4b3c-bd10-0fa8c8bb1feb" name="Default" comment="pridane logy">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_6_2020_2_04_PM_[Default]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_6_2020_2_04_PM__Default_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/o-nas.php" beforeDir="false" afterPath="$PROJECT_DIR$/o-nas.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/links/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/links/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo-gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/download.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predchadzajuce-podujatia.php" beforeDir="false" afterPath="$PROJECT_DIR$/predchadzajuce-podujatia.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +166,7 @@
       <workItem from="1604431425840" duration="47000" />
       <workItem from="1604665203327" duration="1722000" />
       <workItem from="1604667420392" duration="276000" />
-      <workItem from="1605208801932" duration="485000" />
+      <workItem from="1606305841384" duration="1252000" />
     </task>
     <task id="LOCAL-00001" summary="pridane logy">
       <created>1604693497462</created>
@@ -198,6 +202,10 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1280" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.860/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1604430719868" />
+    <state x="147" y="65" key="MergeDialog" timestamp="1606305856655">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="147" y="65" key="MergeDialog/0.0.1536.824/1920.0.1536.824@0.0.1536.824" timestamp="1606305856655" />
     <state x="635" y="351" key="NewPhpFileDialog" timestamp="1604689910941">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -208,5 +216,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1536.824@0.0.1536.824" timestamp="1604693505795" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606305847356">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/1920.0.1536.824@0.0.1536.824" timestamp="1606305847356" />
   </component>
 </project>

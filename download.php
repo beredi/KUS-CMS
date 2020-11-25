@@ -9,19 +9,13 @@ include 'includes/header.php';
     ?>
 </div>
 <div class="container">
-    <h1>Fotogaléria<br>
-    <small>Albumy z našich vystúpení.</small></h1>
+    <h1>Na stiahnutie<br>
+    <small>Pozrite si naše publikácie a promo materiál.</small></h1>
     <div class="row photoGallery">
         <div class="col-lg-3">
             <div class="thumbnail text-center">
-                <a href="malatina-2017.php"><img src="images/malatina-2017/1.jpg" title="Malatiná 2017" alt="photo" style="width: 100px;"> </a>
-                <a href="malatina-2017.php"><p>Malatiná (Slovenská Republika)</p></a>
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="thumbnail text-center">
-                <a href="safarik-2017.php"><img src="images/safarik-2017/1.jpg" title="Šafárik 2017" alt="photo" style="width: 225px;"> </a>
-                <a href="safarik-2017.php"><p>Program so SKC P. J. Šafárika</p></a>
+                <a href="#"><img src="images/malatina-2017/1.jpg" title="Stiahnuť" alt="Cinnost sprevadzana hudbou" class="galleryItem"> </a>
+                <a href="malatina-2017.php" title="Stiahnuť"><p>Činnosť sprevádzaná hudbou (.PDF)</p></a>
             </div>
         </div>
     </div>
