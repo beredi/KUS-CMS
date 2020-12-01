@@ -1,5 +1,5 @@
-
 <?php
+session_start();
 include 'includes/articleHeader.php';
 
 if (isset($_GET['p_id'])) {
@@ -20,14 +20,21 @@ try {
         $post_title = $row['post_title'];
         $post_image = $row['post_image'];
         $post_tags = $row['post_tags'];
+        $post_status = $row['post_status'];
         $temp_post_content = strip_tags($row['post_content']);
     }
+    if (!isset($_SESSION['user_role']) && $post_status == 'draft'){
+
+        header('Location: index.php');
+    }
+
 
 } catch (Exception $e) {
     echo $e;
 }
 
 articleHeader($post_title,$post_image, $temp_post_content, $post_tags);
+
 
 ?>
 <body>
@@ -80,15 +87,23 @@ articleHeader($post_title,$post_image, $temp_post_content, $post_tags);
                 <?php
                 if ($post_status == 'draft'){
                     echo "<h3 class='text-danger'>Tento článok nie je publikovaný</h3>";
+
                 }
                 ?>
             <h2><?php echo $post_title; ?><br>
             <small>
                 <!-- Share on FB button -->
                 <span class="glyphicon glyphicon glyphicon-calendar"></span> <?php echo $post_date; ?> | <span class="glyphicon glyphicon glyphicon-user"></span> <?php echo $post_author; ?> </small>
+                <?php
+                if ($post_status !== 'draft'){
+                ?>
                 <a style="margin-left: 10px;" class="btn btn-primary btn-sm" href="https://www.facebook.com/sharer/sharer.php?u=kusjanakollara.org/clanok.php?p_id=<?=$post_id?>" target="_blank">
                     <i class="fab fa-facebook"></i> Zdieľať
                 </a>
+                <?php
+
+                }
+                ?>
             </h2>
 <hr>
     <!---TEXT--->

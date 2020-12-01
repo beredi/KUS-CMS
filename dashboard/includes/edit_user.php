@@ -1,5 +1,6 @@
 <?php
 
+
 if (isset($_GET['edit'])) {
     $user_id = $_GET['edit'];
 
@@ -56,6 +57,11 @@ if (isset($_GET['edit'])) {
                     $user_role .= " $value,";
                 }
                 $user_role = substr($user_role, 0, -1);
+
+                if (strpos($_SESSION['user_role'],'uzivatel')){
+                    $user_role = 'uzivatel';
+
+                }
 
                 if (strpos($user_role, 'admin')&&strpos($_SESSION['user_role'],'moderator')){
 
@@ -159,13 +165,19 @@ if (isset($_GET['edit'])) {
                 $user_lastname = $_POST['user_lastname'];
                 $user_titul = $_POST['user_titul'];
 
-                $user_role_array = $_POST['user_role'];
-
-                $user_role = '';
-                foreach ($user_role_array as $array=>$value) {
-                    $user_role .= " $value,";
+                if (strpos($_SESSION['user_role'], 'uzivatel')){
+                    $user_role = 'uzivatel';
                 }
-                $user_role = substr($user_role, 0, -1);
+                else{
+
+                    $user_role_array = $_POST['user_role'];
+
+                    $user_role = '';
+                    foreach ($user_role_array as $array=>$value) {
+                        $user_role .= " $value,";
+                    }
+                    $user_role = substr($user_role, 0, -1);
+                }
 
                 if (strpos($user_role, 'admin')&&strpos($_SESSION['user_role'],'moderator')){
 
@@ -318,6 +330,9 @@ if (isset($_GET['edit'])) {
         </div>
 
         Rola: <span class="text-danger">(required)</span>
+        <?php
+        if (strpos($_SESSION['user_role'], 'admin')){
+        ?>
         <div class="form-check">
 
             <input type="checkbox" class="form-check-input" name="user_role[]" value="admin" id="admin"  tabIndex="1" onClick="ckChange(this)"
@@ -333,6 +348,11 @@ if (isset($_GET['edit'])) {
             <label class="form-check-label" for="admin">Admin</label>
 
         </div>
+        <?php
+
+        }
+        if (strpos($_SESSION['user_role'], 'admin') || strpos($_SESSION['user_role'], 'moderator')){
+        ?>
         <div class="form-check">
             <input type="checkbox" class="form-check-input" name="user_role[]" value="moderator" id="moderator" tabIndex="1" onClick="ckChange(this)"
                 <?php
@@ -347,6 +367,11 @@ if (isset($_GET['edit'])) {
             <label class="form-check-label" for="moderator">Moderátor</label>
 
         </div>
+        <?php
+
+        }
+        if (!strpos($_SESSION['user_role'], 'uzivatel')){
+        ?>
         <div class="form-check">
             <input type="checkbox" class="form-check-input" name="user_role[]" value="lektor" id="lektor" tabIndex="1" onClick="ckChange(this)"
                 <?php
@@ -361,6 +386,9 @@ if (isset($_GET['edit'])) {
             <label class="form-check-label" for="lektor">Lektor</label>
 
         </div>
+            <?php
+            }
+ ?>
         <div class="form-check">
             <input type="checkbox" class="form-check-input" name="user_role[]" value="uzivatel" id="uzivatel" tabIndex="1" onClick="ckChange(this)"
                 <?php

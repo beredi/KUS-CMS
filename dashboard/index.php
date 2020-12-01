@@ -2,7 +2,7 @@
 <?php
 include "includes/header.php"; //INCLUDE HEADER
 ?>
-<!--    <!--MOBILE NAVBAR-->
+<!--    MOBILE NAVBAR-->
     <?php
     include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
     ?>
