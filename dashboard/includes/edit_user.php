@@ -49,13 +49,17 @@ if (isset($_GET['edit'])) {
                 $user_lastname = $_POST['user_lastname'];
                 $user_titul = $_POST['user_titul'];
 
-                $user_role_array = $_POST['user_role'];
-
-                $user_role = '';
-                foreach ($user_role_array as $array=>$value) {
-                    $user_role .= " $value,";
+                if (!strpos($_SESSION['user_role'],'uzivatel')){
+                    $user_role_array = $_POST['user_role'];
+                    $user_role = '';
+                    foreach ($user_role_array as $array=>$value) {
+                        $user_role .= " $value,";
+                    }
+                    $user_role = substr($user_role, 0, -1);
                 }
-                $user_role = substr($user_role, 0, -1);
+                else {
+                    $user_role = ' uzivatel';
+                }
 
                 if (strpos($user_role, 'admin')&&strpos($_SESSION['user_role'],'moderator')){
 
@@ -63,7 +67,9 @@ if (isset($_GET['edit'])) {
                 }
                 else{
 
-                    $user_function = $_POST['user_function'];
+                    if (!strpos($_SESSION['user_role'],'uzivatel')) {
+                        $user_function = $_POST['user_function'];
+                    }
                     $user_image = $_FILES['user_image']['name'];
                     $user_image_temp = $_FILES['user_image']['tmp_name'];
 
@@ -102,7 +108,9 @@ if (isset($_GET['edit'])) {
                         $query .= "user_lastname = :user_lastname, ";
                         $query .= "user_titul = :user_titul, ";
                         $query .= "user_role = :user_role, ";
-                        $query .= "user_function = :user_function, ";
+                        if (!strpos($_SESSION['user_role'],'uzivatel')) {
+                            $query .= "user_function = :user_function, ";
+                        }
                         $query .= "user_password = AES_ENCRYPT(:password, :key), ";
                         $query .= "user_image = :user_image ";
                         $query .= "WHERE user_id=$user_id ";
@@ -114,7 +122,10 @@ if (isset($_GET['edit'])) {
                         $send_info->bindParam(':password', $user_password);
                         $send_info->bindParam(':key', $key);
                         $send_info->bindParam(':user_role', $user_role);
-                        $send_info->bindParam(':user_function', $user_function);
+
+                        if (!strpos($_SESSION['user_role'],'uzivatel')) {
+                            $send_info->bindParam(':user_function', $user_function);
+                        }
                         $send_info->bindParam(':user_image', $user_image);
                         $send_info->bindParam(':user_titul', $user_titul);
                         $send_info->bindParam(':user_lastname', $user_lastname);
@@ -126,6 +137,9 @@ if (isset($_GET['edit'])) {
                         include "includes/add_log.php";
                         $logAction = "Aktualizoval používateľa " . $user_name;
                         createLog($connection, $logAction, "používatelia");
+
+
+                        header('Location: profile.php?edit='.$user_id);
                     }
                     catch (Exception $e){
                         echo $e;
@@ -159,13 +173,19 @@ if (isset($_GET['edit'])) {
                 $user_lastname = $_POST['user_lastname'];
                 $user_titul = $_POST['user_titul'];
 
-                $user_role_array = $_POST['user_role'];
 
-                $user_role = '';
-                foreach ($user_role_array as $array=>$value) {
-                    $user_role .= " $value,";
+                if (!strpos($_SESSION['user_role'],'uzivatel')){
+                    $user_role_array = $_POST['user_role'];
+
+                    $user_role = '';
+                    foreach ($user_role_array as $array=>$value) {
+                        $user_role .= " $value,";
+                    }
+                    $user_role = substr($user_role, 0, -1);
                 }
-                $user_role = substr($user_role, 0, -1);
+                else {
+                    $user_role = ' uzivatel';
+                }
 
                 if (strpos($user_role, 'admin')&&strpos($_SESSION['user_role'],'moderator')){
 
@@ -174,7 +194,9 @@ if (isset($_GET['edit'])) {
                 else{
 
 
-                    $user_function = $_POST['user_function'];
+                    if (!strpos($_SESSION['user_role'],'uzivatel')) {
+                        $user_function = $_POST['user_function'];
+                    }
                     $user_image = $_FILES['user_image']['name'];
                     $user_image_temp = $_FILES['user_image']['tmp_name'];
 
@@ -216,7 +238,10 @@ if (isset($_GET['edit'])) {
                         $query .= "user_lastname = :user_lastname, ";
                         $query .= "user_titul = :user_titul, ";
                         $query .= "user_role = :user_role, ";
-                        $query .= "user_function = :user_function, ";
+
+                        if (!strpos($_SESSION['user_role'],'uzivatel')) {
+                            $query .= "user_function = :user_function, ";
+                        }
                         $query .= "user_password = :user_password, ";
                         $query .= "user_image = :user_image ";
                         $query .= "WHERE user_id=$user_id ";
@@ -227,7 +252,10 @@ if (isset($_GET['edit'])) {
                         $send_info->bindParam(':user_name', $user_name);
                         $send_info->bindParam(':user_password', $user_password);
                         $send_info->bindParam(':user_role', $user_role);
-                        $send_info->bindParam(':user_function', $user_function);
+
+                        if (!strpos($_SESSION['user_role'],'uzivatel')) {
+                            $send_info->bindParam(':user_function', $user_function);
+                        }
                         $send_info->bindParam(':user_image', $user_image);
                         $send_info->bindParam(':user_titul', $user_titul);
                         $send_info->bindParam(':user_lastname', $user_lastname);
@@ -251,10 +279,12 @@ if (isset($_GET['edit'])) {
                         $_SESSION['user_name'] = $user_name;
                         $_SESSION['user_lastname'] = $user_lastname;
                         $_SESSION['user_role'] = $user_role;
-                        $_SESSION['user_function'] = $user_function;
+                        if (!strpos($_SESSION['user_role'],'uzivatel')) {
+                            $_SESSION['user_function'] = $user_function;
+                        }
                         $_SESSION['user_image'] = $user_image;
 
-                        header('refresh: 5');
+                        header('Location: profile.php?edit='.$user_id);
                     }
 
                 }
@@ -313,7 +343,11 @@ if (isset($_GET['edit'])) {
         </div>
         <div class="form-group mt-3">
             <label for="user_function">Funkcia:</label>
-            <input type="text" class="form-control" id="user_function" placeholder="Zadajte funkciu užívateľa" name="user_function" aria-describedby="user_function" value="<?php echo $user_function;?>"  autocomplete="off">
+            <input type="text" class="form-control" id="user_function" placeholder="Zadajte funkciu užívateľa" name="user_function" aria-describedby="user_function" value="<?php echo $user_function;?>"  autocomplete="off"                 <?php
+            if(strpos($_SESSION['user_role'], 'uzivatel')){
+                echo 'disabled';
+            }
+            ?>>
             <small id="user_function" class="form-text text-muted">Napríklad: <span class="text-info">Predsedníčka spolku, Tajomník, Umelecký vedúci a pod.</span></small>
         </div>
 
@@ -365,7 +399,10 @@ if (isset($_GET['edit'])) {
             <input type="checkbox" class="form-check-input" name="user_role[]" value="uzivatel" id="uzivatel" tabIndex="1" onClick="ckChange(this)"
                 <?php
                 if(strpos($user_role, 'uzivatel')){
-                    echo ' checked';
+                    echo ' checked ';
+                    if (strpos($_SESSION['user_role'], 'uzivatel')){
+                        echo 'disabled';
+                    }
                 }
                 else {
                     echo ' disabled ';
