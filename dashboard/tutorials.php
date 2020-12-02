@@ -61,7 +61,7 @@ if (!isset($_SESSION['user_role'])){
                                 $code = $row['code'];
                                 $title = $row['title'];
                                 $description = $row['description'];?>
-                                <div class="row" style="margin: 10px; border-bottom: 1px solid #eeeeee">
+                                <div class="row" style="margin: 10px; border-bottom: 1px solid #9d9d9d">
                                     <div class="col-sm-12">
                                         <h4 class="text-info font-weight-bold" style="font-size: 18px;"><?=$title?></h4>
                                     </div>
