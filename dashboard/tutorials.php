@@ -39,47 +39,27 @@ if (!isset($_SESSION['user_role'])){
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2 text-muted">Tutorialy</h1>
-                <?php
-                if (strpos($_SESSION['user_role'],'admin')){?>
-                    <a href="#" class="btn btn-success">Pridať tutorial</a>
-                <?php
-                }
-                ?>
             </div>
-
-                        <?php
-
-                        try{
-                            include 'includes/db.php';
-
-                            $query = "SELECT * FROM tutorials";
-                            $send_info = $connection->prepare($query);
-
-                            $send_info->execute();
-
-                            while ($row = $send_info->fetch(PDO::FETCH_ASSOC)){
-                                $code = $row['code'];
-                                $title = $row['title'];
-                                $description = $row['description'];?>
-                                <div class="row" style="margin: 10px; border-bottom: 1px solid #9d9d9d">
-                                    <div class="col-sm-12">
-                                        <h4 class="text-info font-weight-bold" style="font-size: 18px;"><?=$title?></h4>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <p class="text-muted" style="font-size: 12px;"><?=$description?></p>
-                                    </div>
-                                    <div class="col-sm-12"><?=$code?></div>
-                                </div>
             <?php
-                            }
-                        }
-                        catch (Exception $e){
-                            echo $e;
-                        }
-                        ?>
 
 
+            if(isset($_GET['source'])){
+                $source = $_GET['source'];
+            }
+            else {
+                $source = '';
+            }
 
+
+            switch ($source){
+                case 'add_tutorial':
+                    include 'includes/add_tutorial.php';
+                    break;
+                default:
+                    include 'includes/view_all_tutorials.php';
+
+            }
+            ?>
 
 
         </main>
