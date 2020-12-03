@@ -22,21 +22,31 @@
         include 'includes/db.php';
 
 
-        $query = "SELECT * from posts ORDER BY post_id DESC LIMIT 5";
-
+        $query = "SELECT * from posts INNER JOIN users ON posts.post_author = users.user_id  ORDER BY post_id DESC";
+        $query1 = "SELECT * from users";
         $send_info = $connection->prepare($query);
+        $send_info2 = $connection->prepare($query1);
 
         $send_info->execute();
-
+        $send_info2->execute();
+        $users = $send_info2->fetchAll();
         while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
             $post_id = $row['post_id'];
             $post_title = $row['post_title'];
-            $post_author = $row['post_author'];
+            $post_author_id = $row['post_author'];
+            $post_author_name = $row['user_name'];
+            $post_author_lastname = $row['user_lastname'];
+            $post_author = $post_author_name . ' ' . $post_author_lastname;
             $post_date = $row['post_date'];
             $post_image = $row['post_image'];
             $post_tags = $row['post_tags'];
             $post_status = $row['post_status'];
-            $post_last_edited = $row['post_last_edited'];
+            $post_last_edited_id = $row['post_last_edited'];
+            foreach ($users as $user) {
+                if ($user['user_id'] == $post_last_edited_id){
+                    $post_last_edited = $user['user_name'] . ' ' . $user['user_lastname'];
+                }
+            }
 
             echo "
             

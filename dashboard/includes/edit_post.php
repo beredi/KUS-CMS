@@ -101,7 +101,7 @@ if (strpos($_SESSION['user_role'], 'lektor')|| strpos($_SESSION['user_role'], 'm
         $post_author = $_POST['post_author'];
         $post_status = 'draft';
         if (isset($_SESSION['user_name']) && isset($_SESSION['user_lastname'])){
-            $post_last_edited = $_SESSION['user_name'] . " " .$_SESSION['user_lastname'];
+            $post_last_edited = $_SESSION['user_id'];
         }
 
         try{
@@ -206,7 +206,7 @@ if (strpos($_SESSION['user_role'], 'lektor')|| strpos($_SESSION['user_role'], 'm
         $post_author = $_POST['post_author'];
         $post_status = 'published';
         if (isset($_SESSION['user_name']) && isset($_SESSION['user_lastname'])){
-            $post_last_edited = $_SESSION['user_name'] . " " .$_SESSION['user_lastname'];
+            $post_last_edited = $_SESSION['user_id'];
         }
 
 

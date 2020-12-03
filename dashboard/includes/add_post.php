@@ -15,7 +15,7 @@ if (isset($_SESSION['user_role'])){
         $post_content = $_POST['post_content'];
         $post_date = date('d-m-Y');
         if (isset($_SESSION['user_name']) && isset($_SESSION['user_lastname'])){
-            $post_author = $_SESSION['user_name'] . " " .$_SESSION['user_lastname'];
+            $post_author = $_SESSION['user_id'];
         }
         $post_status = 'draft';
         $post_last_edited = $post_author;
@@ -101,7 +101,7 @@ if (isset($_SESSION['user_role'])){
             $post_content = $_POST['post_content'];
             $post_date = date('d-m-Y');
             if (isset($_SESSION['user_name']) && isset($_SESSION['user_lastname'])){
-                $post_author = $_SESSION['user_name'] . " " .$_SESSION['user_lastname'];
+                $post_author = $_SESSION['user_id'];
             }
             $post_status = 'published';
             $post_last_edited = $post_author;
