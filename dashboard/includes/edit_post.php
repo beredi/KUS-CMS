@@ -45,10 +45,13 @@ if (strpos($_SESSION['user_role'], 'lektor')|| strpos($_SESSION['user_role'], 'm
         $post_tags = $_POST['post_tags'];
 
 
+
         $post_image = $_FILES['post_image']['name'];
         $post_image_temp = $_FILES['post_image']['tmp_name'];
+        $temp = explode(".", $_FILES['post_image']['name']);
+        $newfilename = round(microtime(true)) . '.' . end($temp);
 
-        move_uploaded_file($post_image_temp, "../images/articles/$post_image");
+        move_uploaded_file($post_image_temp, "../images/articles/" . $newfilename);
 
 
         if(empty($post_image)){
@@ -63,7 +66,7 @@ if (strpos($_SESSION['user_role'], 'lektor')|| strpos($_SESSION['user_role'], 'm
                 $send_info->execute();
 
                 while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
-                    $post_image = $row['post_image'];
+                    $newfilename = $row['post_image'];
                 }
 
             }catch (Exception $e){
@@ -124,7 +127,7 @@ if (strpos($_SESSION['user_role'], 'lektor')|| strpos($_SESSION['user_role'], 'm
 
             $send_info->bindParam(':post_title', $post_title);
             $send_info->bindParam(':post_author', $post_author);
-            $send_info->bindParam(':post_image', $post_image);
+            $send_info->bindParam(':post_image', $newfilename);
             $send_info->bindParam(':post_content', $post_content);
             $send_info->bindParam(':post_tags', $post_tags);
             $send_info->bindParam(':post_status', $post_status);
@@ -152,8 +155,10 @@ if (strpos($_SESSION['user_role'], 'lektor')|| strpos($_SESSION['user_role'], 'm
 
         $post_image = $_FILES['post_image']['name'];
         $post_image_temp = $_FILES['post_image']['tmp_name'];
+        $temp = explode(".", $_FILES['post_image']['name']);
+        $newfilename = round(microtime(true)) . '.' . end($temp);
 
-        move_uploaded_file($post_image_temp, "../images/articles/$post_image");
+        move_uploaded_file($post_image_temp, "../images/articles/" . $newfilename);
 
 
         if(empty($post_image)){
@@ -168,7 +173,7 @@ if (strpos($_SESSION['user_role'], 'lektor')|| strpos($_SESSION['user_role'], 'm
                 $send_info->execute();
 
                 while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
-                    $post_image = $row['post_image'];
+                    $newfilename = $row['post_image'];
                 }
 
             }catch (Exception $e){
@@ -230,7 +235,7 @@ if (strpos($_SESSION['user_role'], 'lektor')|| strpos($_SESSION['user_role'], 'm
 
             $send_info->bindParam(':post_title', $post_title);
             $send_info->bindParam(':post_author', $post_author);
-            $send_info->bindParam(':post_image', $post_image);
+            $send_info->bindParam(':post_image', $newfilename);
             $send_info->bindParam(':post_content', $post_content);
             $send_info->bindParam(':post_tags', $post_tags);
             $send_info->bindParam(':post_status', $post_status);

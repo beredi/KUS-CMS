@@ -24,8 +24,11 @@ if (isset($_SESSION['user_role'])){
 
         $post_image = $_FILES['post_image']['name'];
         $post_image_temp = $_FILES['post_image']['tmp_name'];
+        $temp = explode(".", $_FILES['post_image']['name']);
+        $newfilename = round(microtime(true)) . '.' . end($temp);
         if(isset($post_image)){
             if(!empty($post_image)){
+                $post_image = $newfilename;
                 move_uploaded_file($post_image_temp, "../images/articles/$post_image");
 
             }
@@ -110,8 +113,11 @@ if (isset($_SESSION['user_role'])){
 
             $post_image = $_FILES['post_image']['name'];
             $post_image_temp = $_FILES['post_image']['tmp_name'];
+            $temp = explode(".", $_FILES['post_image']['name']);
+            $newfilename = round(microtime(true)) . '.' . end($temp);
             if(isset($post_image)){
                 if(!empty($post_image)){
+                    $post_image = $newfilename;
                     move_uploaded_file($post_image_temp, "../images/articles/$post_image");
 
                 }
