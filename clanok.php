@@ -53,7 +53,7 @@ articleHeader($post_title,$post_image, $temp_post_content, $post_tags);
     try{
 
         include 'dashboard/includes/db.php';
-        $query = "SELECT * FROM posts WHERE post_id = $post_id ";
+        $query = "SELECT * FROM posts INNER JOIN users ON posts.post_author = users.user_id WHERE post_id = $post_id";
 
         $send_info = $connection->prepare($query);
 
@@ -62,7 +62,11 @@ articleHeader($post_title,$post_image, $temp_post_content, $post_tags);
         while ($row = $send_info->fetch(PDO::FETCH_ASSOC)){
 
             $post_title = $row['post_title'];
-            $post_author = $row['post_author'];
+            $post_author_id = $row['post_author'];
+            $post_author_name = $row['user_name'];
+            $post_author_lastname = $row['user_lastname'];
+            $post_author = $post_author_name . ' ' . $post_author_lastname;
+
 
             $post_date1 = strtotime($row['post_date']);
             $post_date = date( 'd. M. Y', $post_date1 );
