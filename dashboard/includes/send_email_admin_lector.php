@@ -12,7 +12,7 @@ function sendEmailToAdminOrLector($connection, $edit=false){
         $to = $row['user_email'];
         $subject = 'Článok na schválenie KUS Jána Kollara.org -  ['. $_SESSION['user_name'] . ' ' . $_SESSION['user_lastname'] . '] ' . date("Y-m-d");
         if ($edit){
-            $message = $_SESSION['user_name'] . ' ' . $_SESSION['user_lastname'] .' upravil nový článok a čaká na schválenie.';
+            $message = $_SESSION['user_name'] . ' ' . $_SESSION['user_lastname'] .' upravil článok a čaká na schválenie.';
         }
         else{
             $message = $_SESSION['user_name'] . ' ' . $_SESSION['user_lastname'] .' pridal nový článok a čaká na schválenie.';
