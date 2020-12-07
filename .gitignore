@@ -2,3 +2,4 @@
 kus-cms/
 .idea/workspace.xml
 *.xml
+.idea/*
