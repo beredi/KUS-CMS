@@ -53,10 +53,10 @@ if (!isset($_SESSION['user_role'])){
 
             switch ($source){
                 case 'add_tutorial':
-                    include 'includes/add_tutorial.php';
+                    include 'tutorials/add_tutorial.php';
                     break;
                 default:
-                    include 'includes/view_all_tutorials.php';
+                    include 'tutorials/view_all_tutorials.php';
 
             }
             ?>

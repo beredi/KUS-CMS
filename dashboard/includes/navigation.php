@@ -23,7 +23,25 @@
                             Orders
                         </a>
                     </li>-->
-
+            <!--Stranky-->
+        <?php
+            if (isset($_SESSION['user_role'])){
+                if (strpos($_SESSION['user_role'], 'admin')){ ?>
+            <li class="nav-item">
+                <a data-toggle="collapse" href="#strankyMenu" class="nav-link">
+                    <i class="far fa-file-alt"></i>
+                    Stránky <i class="fas fa-caret-down"></i>
+                </a>
+                <div id="strankyMenu" class="collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown-item" ><a href="about.php" class="nav-link"><i class="far fa-question-circle"></i> O nás</a></li>
+                    </ul>
+                </div>
+            </li>
+            <?php
+                 }
+            }
+            ?>
             <!--Články-->
 
             <li class="nav-item">

@@ -140,7 +140,7 @@ if (strpos($_SESSION['user_role'], 'lektor')|| strpos($_SESSION['user_role'], 'm
             include "includes/add_log.php";
             $logAction = "Upravil článok " . $post_title;
             createLog($connection, $logAction, "články");
-            include 'send_email_admin_lector.php';
+            include 'includes/send_email_admin_lector.php';
             sendEmailToAdminOrLector($connection, true);
         }
         catch (Exception $e){

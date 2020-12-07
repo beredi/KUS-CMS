@@ -188,7 +188,7 @@ include "includes/header.php"; //INCLUDE HEADER
                 </div>
 
                 <div class="col-md-12">
-                <?php include 'includes/last_articles.php'; ?>  <!--LAST 5 ARTICLES-->
+                <?php include 'posts/last_articles.php'; ?>  <!--LAST 5 ARTICLES-->
                 </div>
             </div>
 
@@ -201,7 +201,7 @@ include "includes/header.php"; //INCLUDE HEADER
                     </div>
                     <p class="text-muted"></p>
 
-                    <?php include 'includes/last_users.php'; ?> <!--LAST 5 USERS-->
+                    <?php include 'users/last_users.php'; ?> <!--LAST 5 USERS-->
 
 
 

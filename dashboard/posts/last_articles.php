@@ -22,7 +22,7 @@
         include 'includes/db.php';
 
 
-        $query = "SELECT * from posts INNER JOIN users ON posts.post_author = users.user_id  ORDER BY post_id DESC";
+        $query = "SELECT * from posts INNER JOIN users ON posts.post_author = users.user_id  ORDER BY post_id DESC LIMIT 5";
         $query1 = "SELECT * from users";
         $send_info = $connection->prepare($query);
         $send_info2 = $connection->prepare($query1);

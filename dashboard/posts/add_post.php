@@ -63,7 +63,7 @@ if (isset($_SESSION['user_role'])){
 
             echo "<h3 class='text-success'>Článok $post_title bol odoslaný a čaká na schválenie! </h3>";
 
-            include 'send_email_admin_lector.php';
+            include 'includes/send_email_admin_lector.php';
             sendEmailToAdminOrLector($connection);
 
         }
@@ -211,11 +211,3 @@ if (isset($_SESSION['user_role'])){
 <script>
     CKEDITOR.replace( 'post_content' );
 </script>
-
-
-<!--
-<div class="form-group">
-    <label for="post_title">Názov:</label>
-    <input type="email" class="form-control" id="post_title" aria-describedby="emailHelp" placeholder="Zadajte názov článku" name="post_title">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-</div>-->

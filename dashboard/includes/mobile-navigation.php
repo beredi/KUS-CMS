@@ -8,6 +8,27 @@
             <ul class="nav flex-column navbar-collapse text-left" style="width: 100%;">
                 <li class="nav-item border-light border-bottom" style="width: 100%;"><a class="nav-link text-light" href="../index.php"><i class="fas fa-external-link-alt"></i> Zobraziť stránku</a></li>
                 <li class="nav-item" style="width: 100%;"><a class="nav-link text-light" href="index.php"><i class="fas fa-home"></i> Dashboard</a></li>
+                <!-- Stranky-->
+                <?php
+                if (isset($_SESSION['user_role'])){
+                if (strpos($_SESSION['user_role'], 'admin')){ ?>
+                <li class="nav-item" style="width: 100%;">
+                    <a data-toggle="collapse" href="#strankyMenu" class="nav-link text-light">
+                        <i class="far fa-file-alt"></i>
+                        Stránky <i class="fas fa-caret-down"></i>
+                    </a>
+
+
+                    <div id="strankyMenu" class="collapse">
+                        <ul class="nav">
+                            <li class="nav-item"  style="width: 100%;"><a href="about.php"  class="nav-link text-light border-bottom"><i class="far fa-question-circle"></i> O nás</a></li>
+                        </ul>
+                    </div>
+                </li>
+                    <?php
+                }
+                }
+                ?>
                 <!-- Clanky-->
                 <li class="nav-item" style="width: 100%;">
                     <a data-toggle="collapse" href="#clankyMenu" class="nav-link text-light">

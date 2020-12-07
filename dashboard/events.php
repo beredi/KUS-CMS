@@ -49,13 +49,13 @@ include "includes/header.php"; //INCLUDE HEADER
 
             switch ($source){
                 case 'add_event':
-                    include 'includes/add_event.php';
+                    include 'events/add_event.php';
                     break;
                 case 'edit_event':
-                    include 'includes/edit_event.php';
+                    include 'events/edit_event.php';
                     break;
                 default:
-                    include 'includes/view_all_events.php';
+                    include 'events/view_all_events.php';
 
             }
             ?>

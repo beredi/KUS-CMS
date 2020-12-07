@@ -2,7 +2,7 @@
 <?php
 include "includes/header.php"; //INCLUDE HEADER
 ?>
-<!--    <!--MOBILE NAVBAR-->
+<!--    MOBILE NAVBAR-->
     <?php
     include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
     ?>
@@ -50,13 +50,13 @@ include "includes/header.php"; //INCLUDE HEADER
 
             switch ($source){
                 case 'add_post':
-                    include 'includes/add_post.php';
+                    include 'posts/add_post.php';
                     break;
                 case 'edit_post':
-                    include 'includes/edit_post.php';
+                    include 'posts/edit_post.php';
                     break;
                 default:
-                    include 'includes/view_all_posts.php';
+                    include 'posts/view_all_posts.php';
 
             }
             ?>
