@@ -72,7 +72,7 @@ if (isset($_SESSION['user_role'])){
             while ($row = $take_info->fetch(PDO::FETCH_ASSOC)){
                 $to = $row['user_email'];
                 $subject = 'Nový článok na kusjanakollara.org -  ['. $_SESSION['user_name'] . ' ' . $_SESSION['user_lastname'] . '] ' . date("Y-m-d");
-                $message = $_SESSION['user_name'] . ' ' . $_SESSION['user_lastname'] .'pridal nový článok a čaká na schválenie.';
+                $message = $_SESSION['user_name'] . ' ' . $_SESSION['user_lastname'] .' pridal nový článok a čaká na schválenie.';
                 try {
                     mail($to, $subject, $message);
                 }
