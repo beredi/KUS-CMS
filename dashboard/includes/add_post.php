@@ -160,22 +160,25 @@ if (isset($_SESSION['user_role'])){
 
 
 //                    SEND MAIL TO LEKTOR AND ADMIN
-/*                $query_email = "SELECT * FROM users WHERE user_role LIKE '%admin%' AND user_role LIKE '%lektor%'";
+               $query_email = "SELECT * FROM users WHERE user_role LIKE '%admin%' OR user_role LIKE '%lektor%'";
 
                 $take_info = $connection->prepare($query_email);
                 $take_info->execute();
 
                 while ($row = $take_info->fetch(PDO::FETCH_ASSOC)){
-                    $user_name = $row['user_name'];
-                    $user_lastname = $row['user_lastname'];
                     $to = $row['user_email'];
-                    $subject = 'Nový článok na kusjanakollara.org';
-                    $message = "$user_name $user_lastname pridal nový článok a veľmi Vás prosí o korekciu a publikovanie.";
-                    mail($to, $subject, $message);
+                    $subject = 'Nový článok na kusjanakollara.org -  ['. $_SESSION['user_name'] . ' ' . $_SESSION['user_lastname'] . '] ' . date("Y-m-d");
+                    $message = $_SESSION['user_name'] . ' ' . $_SESSION['user_lastname'] .'pridal nový článok a čaká na schválenie.';
+                    try {
+                        mail($to, $subject, $message);
+                    }
+                    catch (ErrorException $e){
+                        error_log('Email sending error ' . $e);
+                    }
 
 
                 }
-  */
+
 
 
 
