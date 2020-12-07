@@ -107,7 +107,7 @@ if (isset($_SESSION['user_role'])){
                                 createLog($connection, $logAction, "používatelia");
 
                                 include "send_email_to_new_user.php";
-                                sendEmailToNewUser($connection, $user_email, $user_name, $user_lastname, $user_password);
+                                sendEmailToNewUser($connection, $user_email, $user_titul, $user_name, $user_lastname, $user_password);
                             }
                             catch (Exception $e){
                                 echo $e;
