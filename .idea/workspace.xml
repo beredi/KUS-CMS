@@ -19,11 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1d32e45-67c6-4b3c-bd10-0fa8c8bb1feb" name="Default" comment="images name">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_25_2020_7_54_PM_[Default]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_25_2020_7_54_PM__Default_.xml" beforeDir="false" />
+    <list default="true" id="f1d32e45-67c6-4b3c-bd10-0fa8c8bb1feb" name="Default" comment="BIG UPDATE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/includes/add_post.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/includes/add_post.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,18 +66,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\web\includes" />
-      <recent name="C:\xampp\htdocs\web\links" />
-      <recent name="C:\xampp\htdocs\web" />
-      <recent name="G:\TELEKOM\3rocnik\TMW\Semestralka\web\images" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\web\dashboard" />
       <recent name="C:\xampp\htdocs\web\dashboard\includes" />
       <recent name="C:\xampp\htdocs\web" />
       <recent name="G:\TELEKOM\3rocnik\TMW\Semestralka\web" />
       <recent name="G:\TELEKOM\3rocnik\TMW\Semestralka\web\articles\maticny-program" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\web\dashboard" />
+      <recent name="C:\xampp\htdocs\web\dashboard\tutorials" />
+      <recent name="C:\xampp\htdocs\web\dashboard\includes" />
+      <recent name="C:\xampp\htdocs\web\dashboard\logs" />
+      <recent name="C:\xampp\htdocs\web\dashboard\events" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -174,6 +172,9 @@
       <workItem from="1606984372473" duration="3964000" />
       <workItem from="1606993330414" duration="6000" />
       <workItem from="1607336390130" duration="321000" />
+      <workItem from="1607363383269" duration="7327000" />
+      <workItem from="1610479029612" duration="610000" />
+      <workItem from="1610484894103" duration="594000" />
     </task>
     <task id="LOCAL-00001" summary="pridane logy">
       <created>1604693497462</created>
@@ -224,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606987985620</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="BIG UPDATE">
+      <created>1607369775055</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1607369775055</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +256,37 @@
     <MESSAGE value="tutorials.php" />
     <MESSAGE value="autor a lastedited" />
     <MESSAGE value="images name" />
-    <option name="LAST_COMMIT_MESSAGE" value="images name" />
+    <MESSAGE value="BIG UPDATE" />
+    <option name="LAST_COMMIT_MESSAGE" value="BIG UPDATE" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1506" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607371414349">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1506" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.860/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1607371414349" />
+    <state x="-1280" y="316" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1610479040782">
+      <screen x="-1920" y="0" width="1920" height="1160" />
+    </state>
+    <state x="-1280" y="316" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.860/-1920.0.1920.1160@-1920.0.1920.1160" timestamp="1610479040782" />
+    <state x="-1333" y="86" key="CommitChangelistDialog2" timestamp="1607369769923">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1333" y="86" key="CommitChangelistDialog2/0.0.1600.860/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1607369769923" />
+    <state x="-1126" y="443" key="NewPhpFileDialog" timestamp="1607364855042">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1126" y="443" key="NewPhpFileDialog/0.0.1600.860/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1607364855042" />
+    <state x="-1108" y="222" key="RollbackChangesDialog" timestamp="1607368971270">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1108" y="222" key="RollbackChangesDialog/0.0.1600.860/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1607368971270" />
+    <state x="-1368" y="253" key="Vcs.Push.Dialog.v2" timestamp="1607370032933">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1368" y="253" key="Vcs.Push.Dialog.v2/0.0.1600.860/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1607370032933" />
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1607368648274">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1600.860/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1607368648274" />
   </component>
 </project>

@@ -14,7 +14,7 @@ function articleHeader($title, $imagePath, $content, $keywords){
     <meta name="keywords" content="<?=$keywords?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:image" content="<?=$imagePath?>" />
+    <meta property="og:image" content="images/articles/<?=$imagePath?>" />
     <link rel="image_src"
           type="image/jpeg"
           href="images/articles/<?=$imagePath?>" />
