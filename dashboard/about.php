@@ -32,7 +32,7 @@ if (isset($_SESSION['user_role'])){
 
                 // LOG
                 include "includes/add_log.php";
-                $logAction = "Aktualizoval stránku O nás ";
+                $logAction = "Aktualizoval stránku so pseudonymom " . $page_pseu;
                 createLog($connection, $logAction, "stránky");
             }
             catch (Exception $e){
@@ -68,7 +68,7 @@ if (isset($_SESSION['user_role'])){
 
 			    // LOG
 			    include "includes/add_log.php";
-			    $logAction = "Aktualizoval stránku O nás ";
+			    $logAction = "Pridal stránku " . $title;
 			    createLog($connection, $logAction, "stránky");
 		    }
 		    catch (Exception $e){
@@ -104,7 +104,6 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
 
 
         include 'includes/db.php';
-
         if ($page_pseu != 'addpage'){
             $query = "SELECT * from pages WHERE page_pseu = \"".$page_pseu."\"";
 
@@ -112,6 +111,7 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
 
             $send_info->execute();
             while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
+                $id = $row['id'];
                 $title = $row['page_title'];
                 $description = $row['page_description'];
                 $content = $row['page_content'];
@@ -125,7 +125,10 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
                     ?>
                     <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg-12">
-                            <h2><?=$title?></h2>
+                            <h2 class="float-left"><?=$title?></h2>
+                            <div class="float-right">
+                                <a href="about.php?delete=<?=$id?>" class="btn btn-lg btn-danger"><i class="far fa-trash-alt"></i> Vymazať túto sekciu</a>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -198,6 +201,58 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
 
 include 'includes/footer.php';
 
+if (isset($_GET['delete'])){
+	$id = $_GET['delete'];
+	try{ //ziska nazov podla ID
+		include 'includes/db.php';
+
+
+		$query = "SELECT * from pages WHERE id=:id";
+
+		$send_info = $connection->prepare($query);
+		$send_info->bindParam(':id', $id);
+		$send_info->execute();
+
+
+		$result = $send_info->fetch(PDO::FETCH_ASSOC);
+
+		$title = $result['page_title'];
+		$page_pseu = $result['page_pseu'];
+
+	}
+	catch (Exception $e){
+		echo $e;
+	}
+
+	if (isset($_SESSION['user_role'])){
+
+
+		if (strpos($_SESSION['user_role'], 'admin')){
+
+			try{
+				include 'includes/db.php';
+
+				$query = "DELETE FROM pages WHERE id=:id";
+
+
+				$send_info = $connection->prepare($query);
+				$send_info->bindParam(':id', $id);
+				$send_info->execute();
+
+				// LOG
+				include "includes/add_log.php";
+				$logAction = "Vymazal stránku " . $title;
+				createLog($connection, $logAction, "stránky");
+
+				header('Location: index.php');
+			}
+			catch (Exception $e){
+				echo $e;
+			}
+		}
+	}
+
+}
 
 ?>
 
