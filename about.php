@@ -9,36 +9,49 @@ if (isset($_GET['pagepseu'])){
 <body>
 <div class="container content">
     <?php
-    include 'includes/navbar.php';
 
-    include 'dashboard/includes/db.php';
 
-    $query = "SELECT * from pages WHERE page_pseu = '".$pagepseu."'";
+        include 'includes/navbar.php';
 
-    $send_info = $connection->prepare($query);
+    if (!empty($pagepseu)){
+        include 'dashboard/includes/db.php';
 
-    $send_info->execute();
-    while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
-    $title = $row['page_title'];
-    $description = $row['page_description'];
-    $content = $row['page_content'];
-    ?>
-        <div class="row">
-            <div class="col-lg-12">
-                <h1><?=$title?></h1><br>
-                    <p class="text-muted"><?=$description?></p>
+        $query = "SELECT * from pages WHERE page_pseu = '".$pagepseu."'";
+
+        $send_info = $connection->prepare($query);
+
+        $send_info->execute();
+        $fetch = $send_info->rowCount();
+        if ($fetch == 0){
+            echo "Stránka neexistuje!";
+        }
+        else{
+                while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
+                $title = $row['page_title'];
+                $description = $row['page_description'];
+                $content = $row['page_content'];
+                ?>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1><?=$title?></h1><br>
+                            <p class="text-muted"><?=$description?></p>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 about">
+                     <div class="text-justify contentBody">
+                     <?=$content?>
+                     </div>
+                </div>
+
             </div>
         </div>
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 about">
-             <div class="text-justify contentBody">
-             <?=$content?>
-             </div>
-        </div>
-
-    </div>
-</div>
-<?php } ?>
+        <?php }
+                }
+}
+    else{
+        echo "Stránka neexistuje!";
+    }?>
 
 
 <?php include 'includes/footer.php'; ?>

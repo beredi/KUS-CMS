@@ -41,6 +41,42 @@ if (isset($_SESSION['user_role'])){
             }
         }
 
+
+	    if (isset($_POST['add_page'])){
+		    $title = $_POST['title'];
+		    $description = $_POST['description'];
+		    $content = $_POST['content'];
+		    $newpseu = '';
+		    $newpseu = strtolower(trim($title, ' ')) . rand(0,999);
+		    $newpseu = preg_replace('/[^\x20-\x7E]/','', $newpseu);;
+		    try{
+			    include "includes/db.php";
+
+			    $query = "INSERT INTO pages (page_title, page_pseu, page_description, page_content) VALUES (";
+			    $query .= ":page_title, :page_pseu, :page_description, :page_content)";
+
+			    $send_info = $connection->prepare($query);
+
+			    $send_info->bindParam(':page_description', $description);
+			    $send_info->bindParam(':page_content', $content);
+			    $send_info->bindParam(':page_title', $title);
+			    $send_info->bindParam(':page_pseu', $newpseu);
+			    $send_info->execute();
+
+
+			    $message = "<h3 class='text-success'>Stránka bola aktualizovaná!</h3>";
+
+			    // LOG
+			    include "includes/add_log.php";
+			    $logAction = "Aktualizoval stránku O nás ";
+			    createLog($connection, $logAction, "stránky");
+		    }
+		    catch (Exception $e){
+			    echo $e;
+			    error_log($e);
+		    }
+	    }
+
     }
     else {
         header('Location: index.php');
@@ -69,47 +105,90 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
 
         include 'includes/db.php';
 
-        $query = "SELECT * from pages WHERE page_pseu = \"".$page_pseu."\"";
+        if ($page_pseu != 'addpage'){
+            $query = "SELECT * from pages WHERE page_pseu = \"".$page_pseu."\"";
 
-        $send_info = $connection->prepare($query);
+            $send_info = $connection->prepare($query);
 
-        $send_info->execute();
-        while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
-            $title = $row['page_title'];
-            $description = $row['page_description'];
-            $content = $row['page_content'];
-        ?>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="pt-3 pb-2 mb-3 border-bottom">
-                <?php
-                if(isset($message)){
-                    echo $message;
-                }
-                ?>
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-12">
-                        <h2><?=$title?></h2>
+            $send_info->execute();
+            while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
+                $title = $row['page_title'];
+                $description = $row['page_description'];
+                $content = $row['page_content'];
+            ?>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="pt-3 pb-2 mb-3 border-bottom">
+                    <?php
+                    if(isset($message)){
+                        echo $message;
+                    }
+                    ?>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <h2><?=$title?></h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form action="" method="post" enctype="multipart/form-data" class="my-2">
+                                <div class="form-group">
+                                    <label for="description">Popis:</label>
+                                    <input type="text" class="form-control" id="description" aria-describedby="description" placeholder="Popis stránky" name="description" autocomplete="off" value="<?=$description?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="content">Obsah:</label>
+                                    <textarea class="form-control" rows="10" id="content" name="content" placeholder="Obsah" required><?=$content?></textarea>
+                                </div>
+                                <input type="submit" class="btn btn-primary" name="submit_page" value="Aktualizovať">
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <form action="" method="post" enctype="multipart/form-data" class="my-2">
-                            <div class="form-group">
-                                <label for="description">Popis:</label>
-                                <input type="text" class="form-control" id="description" aria-describedby="description" placeholder="Popis stránky" name="description" autocomplete="off" value="<?=$description?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="content">Obsah:</label>
-                                <textarea class="form-control" rows="10" id="content" name="content" placeholder="Obsah" required><?=$content?></textarea>
-                            </div>
-                            <input type="submit" class="btn btn-primary" name="submit_page" value="Aktualizovať">
-                        </form>
+            </main>
+        <?php
+
+        }
+    }
+        else{
+            ?>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="pt-3 pb-2 mb-3 border-bottom">
+			        <?php
+			        if(isset($message)){
+				        echo $message;
+			        }
+			        ?>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <h2>Pridať sekciu</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form action="" method="post" enctype="multipart/form-data" class="my-2">
+                                <div class="form-group">
+                                    <label for="title">Názov sekcie:</label>
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="Názov sekcie" name="title" autocomplete="off" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Popis:</label>
+                                    <input type="text" class="form-control" id="description" aria-describedby="description" placeholder="Popis stránky" name="description" autocomplete="off" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="content">Obsah:</label>
+                                    <textarea class="form-control" rows="10" id="content" name="content" placeholder="Obsah" required></textarea>
+                                </div>
+                                <input type="submit" class="btn btn-primary" name="add_page" value="Pridať">
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </main>
+            </main>
+
+
     <?php
-    }?>
+        }?>
 </div>
 
 <script>

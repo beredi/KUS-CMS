@@ -21,6 +21,7 @@
 
                     <div id="strankyMenu" class="collapse">
                         <ul class="nav mobnav">
+                            <li class="nav-item"  style="width: 100%;"><a href="about.php?pagepseu=addpage"  class="nav-link text-light"><i class="fas fa-plus-circle"></i> Pridať stránku</a></li>
 	                        <?php
 	                        include 'includes/db.php';
 

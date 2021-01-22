@@ -34,6 +34,7 @@
                 </a>
                 <div id="strankyMenu" class="collapse">
                     <ul class="nav navbar-nav">
+                        <li class="dropdown-item" ><a href="about.php?pagepseu=addpage" class="nav-link"><i class="fas fa-plus-circle"></i> Pridať stránku</a></li>
 	                    <?php
 	                    include 'includes/db.php';
 
