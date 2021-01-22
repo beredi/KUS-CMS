@@ -25,7 +25,7 @@ include 'includes/header.php';
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="thumbnail text-center">
-                    <iframe width="100%" height="400px" src="https://www.youtube.com/embed/a1KWRCWNzLI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe width="100%" height="400px" src="https://www.youtube.com/embed/OLBqJ9tsRMo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <p>Choreografia: <span class="italic">Kyjáčkový tanec</span> | Choreografka: Katarína Berédiová</p>
                 </div>
             </div>

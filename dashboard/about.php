@@ -4,6 +4,10 @@ include "includes/header.php"; //INCLUDE HEADER
 if (isset($_SESSION['user_role'])){
     if (strpos($_SESSION['user_role'], 'admin')){
 
+        if(isset($_GET['pagepseu'])){
+            $page_pseu = $_GET['pagepseu'];
+        }
+
 
         if (isset($_POST['submit_page'])){
             $description = $_POST['description'];
@@ -11,10 +15,6 @@ if (isset($_SESSION['user_role'])){
 
             try{
                 include "includes/db.php";
-
-
-
-                $page_pseu = "about";
 
                 $query = "UPDATE pages SET ";
                 $query .= "page_description = :description, ";
@@ -69,7 +69,7 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
 
         include 'includes/db.php';
 
-        $query = "SELECT * from pages WHERE page_pseu = \"about\"";
+        $query = "SELECT * from pages WHERE page_pseu = \"".$page_pseu."\"";
 
         $send_info = $connection->prepare($query);
 
