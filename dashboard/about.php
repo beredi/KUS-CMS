@@ -12,19 +12,22 @@ if (isset($_SESSION['user_role'])){
         if (isset($_POST['submit_page'])){
             $description = $_POST['description'];
             $content = $_POST['content'];
+	        $title = $_POST['title'];
 
             try{
                 include "includes/db.php";
 
                 $query = "UPDATE pages SET ";
                 $query .= "page_description = :description, ";
-                $query .= "page_content = :content ";
+                $query .= "page_content = :content, ";
+	            $query .= "page_title = :title ";
                 $query .= "WHERE page_pseu = \"$page_pseu\" ";
 
                 $send_info = $connection->prepare($query);
 
                 $send_info->bindParam(':description', $description);
                 $send_info->bindParam(':content', $content);
+	            $send_info->bindParam(':title', $title);
                 $send_info->execute();
 
 
@@ -134,6 +137,10 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
                     <div class="row">
                         <div class="col-sm-12">
                             <form action="" method="post" enctype="multipart/form-data" class="my-2">
+                                <div class="form-group">
+                                    <label for="title">Názov sekcie:</label>
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="Názov sekcie" name="title" autocomplete="off" value="<?=$title?>">
+                                </div>
                                 <div class="form-group">
                                     <label for="description">Popis:</label>
                                     <input type="text" class="form-control" id="description" aria-describedby="description" placeholder="Popis stránky" name="description" autocomplete="off" value="<?=$description?>">
