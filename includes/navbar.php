@@ -18,12 +18,12 @@
     <div class="col-lg-7 col-md-8 col-sm-12 col-xs-12 top">
         <ul class="nav navbar-nav" style="widows: 100%;">
             <li ><a href = "index" ><span class="glyphicon glyphicon glyphicon-home" ></span> ÚVOD</a></li >
-            <li><a href="o-nas"> O NÁS </a></li>
+            <li><a href="about?pagepseu=about"> O NÁS </a></li>
             <li class="dropdown">
                 <a href = "#" class="dropdown" data-toggle = "dropdown"> SEKCIE <span class="caret" ></span ></a >
                 <ul class="dropdown-menu" >
-                    <li><a href = "folklor" > Folklórna sekcia </a ></li >
-                    <li><a href = "divadlo" > Divadelná sekcia </a > </li >
+                    <li><a href = "about?pagepseu=folklor" > Folklórna sekcia </a ></li >
+                    <li><a href = "about?pagepseu=divadlo" > Divadelná sekcia </a > </li >
                 </ul >
             </li >
             <li class="dropdown" ><a href = "#" class="dropdown-toggle" data-toggle = "dropdown" > PROMO <span class="caret" ></span ></a >

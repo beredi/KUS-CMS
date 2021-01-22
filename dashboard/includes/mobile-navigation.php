@@ -20,8 +20,21 @@
 
 
                     <div id="strankyMenu" class="collapse">
-                        <ul class="nav">
-                            <li class="nav-item"  style="width: 100%;"><a href="about.php"  class="nav-link text-light border-bottom"><i class="far fa-question-circle"></i> O nás</a></li>
+                        <ul class="nav mobnav">
+	                        <?php
+	                        include 'includes/db.php';
+
+	                        $query = "SELECT * from pages";
+
+	                        $send_info = $connection->prepare($query);
+
+	                        $send_info->execute();
+	                        while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
+		                        ?>
+                                <li class="nav-item"  style="width: 100%;"><a href="about.php?pagepseu=<?=$row['page_pseu']?>"  class="nav-link text-light"><i class="fas fa-arrow-circle-right"></i> <?=$row['page_title']?></a></li>
+		                        <?php
+	                        }
+	                        ?>
                         </ul>
                     </div>
                 </li>

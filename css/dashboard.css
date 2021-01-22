@@ -117,3 +117,7 @@ li.nav-item:hover a > i {
 .tdWidth {
     width: 8% !important;
 }
+
+ul.mobnav li:last-child {
+    border-bottom: 1px solid #FFF;
+}

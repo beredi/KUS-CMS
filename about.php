@@ -1,5 +1,9 @@
 <?php
 include 'includes/header.php';
+$pagepseu = '';
+if (isset($_GET['pagepseu'])){
+	$pagepseu = $_GET['pagepseu'];
+}
 ?>
 
 <body>
@@ -9,7 +13,7 @@ include 'includes/header.php';
 
     include 'dashboard/includes/db.php';
 
-    $query = "SELECT * from pages WHERE page_pseu = \"about\"";
+    $query = "SELECT * from pages WHERE page_pseu = '".$pagepseu."'";
 
     $send_info = $connection->prepare($query);
 

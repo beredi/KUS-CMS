@@ -34,7 +34,20 @@
                 </a>
                 <div id="strankyMenu" class="collapse">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown-item" ><a href="about.php" class="nav-link"><i class="far fa-question-circle"></i> O nás</a></li>
+	                    <?php
+	                    include 'includes/db.php';
+
+	                    $query = "SELECT * from pages";
+
+	                    $send_info = $connection->prepare($query);
+
+	                    $send_info->execute();
+	                    while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
+		                    ?>
+                            <li class="dropdown-item" ><a href="about.php?pagepseu=<?=$row['page_pseu']?>" class="nav-link"><i class="fas fa-arrow-circle-right"></i> <?=$row['page_title']?></a></li>
+		                    <?php
+	                    }
+	                    ?>
                     </ul>
                 </div>
             </li>
