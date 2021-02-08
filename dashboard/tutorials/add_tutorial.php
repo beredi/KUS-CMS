@@ -53,7 +53,7 @@ if (isset($_SESSION['user_role'])) {
     </div>
     <div class="form-group">
         <label for="post_content">Kód:</label>
-        <textarea class="form-control" rows="10" id="code" name="code" placeholder="Sem skopírujte EMBED kód..." required></textarea>
+        <textarea class="form-control" rows="10" id="code" name="code" placeholder="Sem skopírujte EMBED kód bez značiek IFRAME a bez height a width..." required></textarea>
     </div>
 
 

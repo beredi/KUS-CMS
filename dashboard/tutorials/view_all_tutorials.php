@@ -24,7 +24,10 @@ try{
             <div class="col-sm-12">
                 <p class="text-muted" style="font-size: 12px;"><?=$description?></p>
             </div>
-            <div class="col-sm-12"><?=$code?></div>
+            <div class="col-sm-12">
+                <!--  iframe width="" height="" $CODE  -->
+                <iframe width="100%" height="315" <?=$code?>></iframe>
+            </div>
         </div>
         <?php
     }
