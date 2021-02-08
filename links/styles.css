@@ -218,3 +218,7 @@ hr {
     width: 100px;
     margin: 5px auto;
 }
+ul.pager li a.active-page{
+    background: linear-gradient(#3841d1, #2c327f);
+    color: #FFFFFF;
+}
