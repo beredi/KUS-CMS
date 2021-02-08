@@ -123,6 +123,20 @@
                 </div>
             </li>
 
+            <!--Inventar-->
+
+	        <?php
+	        if (isUser('admin') || isUser('moderator')){
+		        echo "
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"inventory.php\">
+                    <i class=\"fas fa-dolly-flatbed\"></i>
+                    Inventár
+                </a>
+            </li>";
+	        }
+	        ?>
+
             <!--Carousel-->
             <?php
             if (!strpos($_SESSION['user_role'],'uzivatel')){

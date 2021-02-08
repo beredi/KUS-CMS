@@ -99,13 +99,24 @@
                         </ul>
                     </div>
                 </li>
+                <!--Inventory-->
+	            <?php
+	            if (isUser('admin') || isUser('moderator')){
+		            echo "
+                <li class=\"nav-item\" style=\"width: 100%;\"><a class=\"nav-link text-light\" href=\"inventory.php\"> <i class=\"fas fa-dolly-flatbed\"></i>
+                        Inventár</a></li>";
+	            }
+	            ?>
+
+                <!--Carousel-->
                 <?php
-                if (!strpos($_SESSION['user_role'], 'uzivatel')){
+                if (!isUser('uzivatel')){
                     echo "
                 <li class=\"nav-item\" style=\"width: 100%;\"><a class=\"nav-link text-light\" href=\"news.php\"> <i class=\"fas fa-paper-plane\"></i>
                         Novinky</a></li>";
                 }
                 ?>
+                <!--LOGY-->
                 <?php
                 if (strpos($_SESSION['user_role'], 'admin')){
                     echo "

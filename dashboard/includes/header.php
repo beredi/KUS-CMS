@@ -62,3 +62,7 @@ if($_SESSION['user_email'] == null){
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow d-md-flex d-sm-none">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.php"><img src="../images/znak-copy.png" width="25px"> KUS Jána Kollára</a>
 
+<?php
+
+    include 'includes/access.php';
+?>
