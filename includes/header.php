@@ -58,4 +58,6 @@ session_start();
     <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
+    <!--  TODO Lazy loading content  --->
+
 </head>
