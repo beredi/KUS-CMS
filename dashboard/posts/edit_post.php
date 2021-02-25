@@ -36,8 +36,9 @@ if (isset($_GET['edit'])) {
 }
 
 
-$user = $_SESSION['user_name']." ".$_SESSION['user_lastname'];
-if (strpos($_SESSION['user_role'], 'lektor')|| strpos($_SESSION['user_role'], 'moderator')|| strpos($_SESSION['user_role'], 'admin') || $user == $post_author ){
+$userId = $_SESSION['user_id'];
+
+if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $post_author ){
 
 
     if (isset($_POST['edit_post'])){
