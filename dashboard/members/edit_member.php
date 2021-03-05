@@ -48,7 +48,7 @@ if (isset($_GET['edit'])){
 			$year = $_POST['year'];
 
 			$passscan = $_FILES['passscan']['name'];
-			if (isset($passscan)) {
+			if (!empty($passscan)) {
 				$passscan_temp = $_FILES['passscan']['tmp_name'];
 				$temp = explode(".", $_FILES['passscan']['name']);
 				$extension = end($temp);
