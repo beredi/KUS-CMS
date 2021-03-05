@@ -19,7 +19,7 @@ try{
         $description = $row['description'];?>
         <div class="row" style="margin: 10px; border-bottom: 1px solid #9d9d9d">
             <div class="col-sm-12">
-                <h4 class="text-info font-weight-bold" style="font-size: 18px;"><?=$title?></h4><a href="tutorials.php?delete=<?=$tutorial_id?>" class="btn btn-danger float-right"><i class="far fa-trash-alt"></i> Vymazať</a>
+                <h4 class="text-info font-weight-bold" style="font-size: 18px;"><?=$title?></h4><a href="tutorials.php?delete=<?=$tutorial_id?>" class="btn btn-danger float-right delete-button"><i class="far fa-trash-alt"></i> Vymazať</a>
             </div>
             <div class="col-sm-12">
                 <p class="text-muted" style="font-size: 12px;"><?=$description?></p>

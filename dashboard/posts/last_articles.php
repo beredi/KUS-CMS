@@ -86,7 +86,7 @@
             <td class=\"tdWidth\">";
 
             if (strpos($_SESSION['user_role'], 'admin')){
-                echo  " <a href=\"posts.php?delete=$post_id\"><i class=\"far fa-trash-alt\"></i> Vymazať</a>
+                echo  " <a href=\"posts.php?delete=$post_id\" class='delete-button'><i class=\"far fa-trash-alt\"></i> Vymazať</a>
             ";
             }
 

@@ -64,7 +64,7 @@
                     echo "
                      <td class=\"text-right tdWidth\"><a href=\"events.php?source=edit_event&edit=$event_id\"><i class=\"far fa-edit\"></i> Upraviť</a></td>
                      
-                <td class=\"text-right tdWidth\"><a href=\"events.php?delete=$event_id\"><i class=\"far fa-trash-alt\"></i> Vymazať</a></td>
+                <td class=\"text-right tdWidth\"><a href=\"events.php?delete=$event_id\" class='delete-button'><i class=\"far fa-trash-alt\"></i> Vymazať</a></td>
               
             </tr>
                     ";

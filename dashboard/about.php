@@ -130,7 +130,7 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <h2 class="float-left"><?=$title?></h2>
                             <div class="float-right">
-                                <a href="about.php?delete=<?=$id?>" class="btn btn-lg btn-danger"><i class="far fa-trash-alt"></i> Vymazať túto sekciu</a>
+                                <a href="about.php?delete=<?=$id?>" class="btn btn-lg btn-danger delete-button"><i class="far fa-trash-alt"></i> Vymazať túto sekciu</a>
                             </div>
                         </div>
                     </div>

@@ -110,7 +110,7 @@
                 <div id="uzivateliaMenu" class="collapse">
                     <ul class="nav navbar-nav">
                         <?php
-                        if (strpos($_SESSION['user_role'], 'admin')||strpos($_SESSION['user_role'], 'moderator')){
+                        if (isUser('admin') || isUser('moderator')){
                             echo "
                         <li class=\"dropdown-item\" ><a href=\"users.php?source=add_user\" class=\"nav-link\"><i class=\"fas fa-pencil-alt\"></i> Pridať užívateľa</a></li>
                             ";
@@ -119,6 +119,9 @@
 
                         <li class="dropdown-item" ><a href="users.php?source=user_roles" class="nav-link"><i class="far fa-check-circle"></i> Roly užívateľov</a></li>
                         <li class="dropdown-item" ><a href="users.php" class="nav-link"><i class="fas fa-list-ul"></i> Zobraziť všetkých užívateľov</a></li>
+	                    <?php if (isUser('admin') || isUser('moderator')){ ?>
+                        <li class="dropdown-item" ><a href="members.php" class="nav-link"><i class="fas fa-id-card"></i> Zoznam členov spolku</a></li>
+	                    <?php } ?>
                     </ul>
                 </div>
             </li>

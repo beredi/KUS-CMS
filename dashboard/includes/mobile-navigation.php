@@ -96,6 +96,10 @@
                             ?>
                             <li class="nav-item"  style="width: 100%;"><a href="users.php?source=user_roles" class="nav-link text-light"><i class="far fa-check-circle"></i> Roly užívateľov</a></li>
                             <li class="nav-item"  style="width: 100%;"><a href="users.php" class="nav-link text-light"><i class="fas fa-list-ul"></i> Zobraziť všetkých užívateľov</a></li>
+                            <?php if (isUser('admin') || isUser('moderator')){ ?>
+                            <li class="nav-item"  style="width: 100%;"><a href="members.php" class="nav-link text-light"><i class="fas fa-id-card"></i> Zoznam členov spolku</a></li>
+                            <?php } ?>
+
                         </ul>
                     </div>
                 </li>
