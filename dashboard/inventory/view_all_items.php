@@ -35,7 +35,7 @@
               <td class=\"tdWidth\"><a href=\"inventory.php?source=edit_item&edit={$id}\"><i class=\"far fa-edit\"></i> Upraviť</a></td>
             <td class=\"tdWidth\">";
 			if (isUser('admin')){
-				echo  " <a href=\"inventory.php?delete=$id\"><i class=\"far fa-trash-alt\"></i> Vymazať</a>
+				echo  " <a class='delete-button' href=\"inventory.php?delete=$id\"><i class=\"far fa-trash-alt\"></i> Vymazať</a>
             ";
 			}
 			echo "</td>
