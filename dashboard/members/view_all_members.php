@@ -9,6 +9,7 @@
 <table class="table table-hover table-striped" id="uzivatelia">
 	<thead>
 	<tr>
+        <th>Titul</th>
 		<th>Meno</th>
 		<th>Priezvisko</th>
 		<th>Dátum narodenia</th>
@@ -41,6 +42,7 @@
 			$id = $row['id'];
 			$name = $row['name'];
 			$lastname = $row['lastname'];
+			$degree = $row['degree'];
 			$dateofbirth = $row['dateofbirth'];
 			$adress = $row['adress'];
 			$JMBG = $row['JMBG'];
@@ -54,6 +56,7 @@
 			echo "
             
             <tr>
+                <td>$degree</td>
                 <td>$name</td>
                 <td>$lastname</td>
                 <td>".date('d.m.Y', strtotime($dateofbirth))."</td>

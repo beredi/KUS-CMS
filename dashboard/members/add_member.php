@@ -13,6 +13,8 @@ if (isset($_SESSION['user_role'])){
 				$email = $_POST['email'];
 				$passnumber = $_POST['passnumber'];
 				$year = $_POST['year'];
+				$degree = $_POST['degree'];
+				$sex = $_POST['sex'];
 
 				$passscan = $_FILES['passscan']['name'];
 				if (isset($passscan)) {
@@ -30,7 +32,7 @@ if (isset($_SESSION['user_role'])){
 					include "includes/db.php";
 
 
-					$query = "INSERT INTO members(name, lastname, dateofbirth, adress, JMBG, number, email, passnumber, passscan, year) VALUES (:name, :lastname, :dateofbirth, :adress, :JMBG, :number, :email, :passnumber, :passscan, :year) ";
+					$query = "INSERT INTO members(name, lastname, dateofbirth, adress, JMBG, number, email, passnumber, passscan, year, degree, sex) VALUES (:name, :lastname, :dateofbirth, :adress, :JMBG, :number, :email, :passnumber, :passscan, :year, :degree, :sex) ";
 
 					$send_info = $connection->prepare($query);
 
@@ -44,6 +46,8 @@ if (isset($_SESSION['user_role'])){
 					$send_info->bindParam(':passnumber', $passnumber);
 					$send_info->bindParam(':passscan', $passscan);
 					$send_info->bindParam(':year', $year);
+					$send_info->bindParam(':degree', $degree);
+					$send_info->bindParam(':sex', $sex);
 
 					$send_info->execute();
 					echo "<h3 class='text-success'>Člen $name $lastname bol úspešne pridaný</h3>";
@@ -77,6 +81,17 @@ if (isset($_SESSION['user_role'])){
 <h2>Pridať člena</h2>
 <div class="col-md-6 col-sm-12">
 	<form action="" method="post" enctype="multipart/form-data" class="my-2">
+        <div class="form-group">
+            <label for="sex">Pohlavie: <span class="text-danger">(required)</span> </label>
+            <select name="sex" class="form-control" required>
+                <option value="M">Muž</option>
+                <option value="F">Žena</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="degree">Titul:</label>
+            <input type="text" class="form-control" id="degree" placeholder="Zadajte titul" name="degree" autocomplete="off">
+        </div>
 		<div class="form-group">
 			<label for="name">Meno: <span class="text-danger">(required)</span> </label>
 			<input type="text" class="form-control" id="name" placeholder="Zadajte meno" name="name" required autocomplete="off">

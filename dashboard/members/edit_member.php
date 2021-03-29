@@ -19,6 +19,7 @@ if (isset($_GET['edit'])){
 			$id = $row['id'];
 			$name = $row['name'];
 			$lastname = $row['lastname'];
+			$degree = $row['degree'];
 			$dateofbirth = $row['dateofbirth'];
 			$adress = $row['adress'];
 			$JMBG = $row['JMBG'];
@@ -27,6 +28,7 @@ if (isset($_GET['edit'])){
 			$passnumber = $row['passnumber'];
 			$year = $row['year'];
 			$oldpassscan = $row['passscan'];
+			$sex = $row['sex'];
 		}
 	}
 	catch (Exception $e){
@@ -39,6 +41,7 @@ if (isset($_GET['edit'])){
 		if (isset($_POST['edit_member'])){
 			$name = $_POST['name'];
 			$lastname = $_POST['lastname'];
+			$degree = $_POST['degree'];
 			$dateofbirth = $_POST['dateofbirth'];
 			$adress = $_POST['adress'];
 			$JMBG = $_POST['JMBG'];
@@ -46,6 +49,7 @@ if (isset($_GET['edit'])){
 			$email = $_POST['email'];
 			$passnumber = $_POST['passnumber'];
 			$year = $_POST['year'];
+			$sex = $_POST['sex'];
 
 			$passscan = $_FILES['passscan']['name'];
 			if (!empty($passscan)) {
@@ -75,7 +79,9 @@ if (isset($_GET['edit'])){
 				$query .= "email = :email, ";
 				$query .= "passnumber = :passnumber, ";
 				$query .= "year = :year, ";
-				$query .= "passscan = :passscan ";
+				$query .= "passscan = :passscan, ";
+				$query .= "degree = :degree, ";
+				$query .= "sex = :sex ";
 				$query .= "WHERE id = :id ";
 
 				$send_info = $connection->prepare($query);
@@ -90,6 +96,8 @@ if (isset($_GET['edit'])){
 				$send_info->bindParam(':passnumber', $passnumber);
 				$send_info->bindParam(':passscan', $passscan);
 				$send_info->bindParam(':year', $year);
+				$send_info->bindParam(':degree', $degree);
+				$send_info->bindParam(':sex', $sex);
 				$send_info->bindParam(':id', $id);
 
 				$send_info->execute();
@@ -121,6 +129,25 @@ if (isset($_GET['edit'])){
 <h2>Upraviť člena</h2>
 <div class="col-md-6 col-sm-12">
 	<form action="" method="post" enctype="multipart/form-data" class="my-2">
+        <div class="form-group">
+            <label for="sex">Pohlavie: <span class="text-danger">(required)</span> </label>
+            <select name="sex" class="form-control" required>
+                <option value="M"
+                    <?php
+                    if($sex && $sex == 'M') echo 'selected';
+                    ?>
+                >Muž</option>
+                <option value="F"
+	                <?php
+	                if($sex && $sex == 'F') echo 'selected';
+	                ?>
+                >Žena</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="degree">Titul:</label>
+            <input type="text" class="form-control" id="degree" placeholder="Zadajte titul" name="degree" autocomplete="off" value="<?=$degree?>">
+        </div>
 		<div class="form-group">
 			<label for="name">Meno: <span class="text-danger">(required)</span> </label>
 			<input type="text" class="form-control" id="name" placeholder="Zadajte meno" name="name" required autocomplete="off" value="<?=$name?>">
