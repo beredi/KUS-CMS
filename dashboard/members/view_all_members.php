@@ -1,6 +1,10 @@
 <div class="row">
 	<div class="col-md-12" style="margin-bottom: 10px; padding: 10px 20px">
-		<a href="#" class="btn btn-success btn-sm"><i class="fas fa-file-excel"></i> Export do Excelu</a>
+        <a href="#" class="btn btn-info btn-sm" id="random-member" name="all"><i class="fas fa-random"></i> Vybrať náhodne člena</a>
+        <a href="#" class="btn btn-primary btn-sm" id="random-male" name="M"><i class="fas fa-male"></i> Vybrať náhodne muža</a>
+        <a href="#" class="btn btn-danger btn-sm" id="random-female" name="F"><i class="fas fa-female"></i> Vybrať náhodne ženu</a>
+
+        <a href="#" class="btn btn-success btn-sm" style="margin-left: 10px;"><i class="fas fa-file-excel"></i> Export do Excelu</a>
 	</div>
 </div>
 <h2 style="float: left;">Zoznam všetkých členov</h2>
@@ -100,6 +104,7 @@
 	</tbody>
 </table>
 
+<script src="includes/javascript/randomMember.js" lang="js"></script>
 
 <?php
 
