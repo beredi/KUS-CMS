@@ -81,9 +81,8 @@ include 'includes/header.php';
 		        $query = "SELECT * FROM videogallery ORDER BY id DESC LIMIT ".$page_1.", ".$posts_by_page;
 
 		        $send_info = $connection->prepare($query);
+	            $send_info->execute();
 	            $count = $send_info->rowCount();
-
-		        $send_info->execute();
 	            if($count==0){
 		            echo "<h3>Žiadne videá na zobrazenie.</h3>";
 	            }
