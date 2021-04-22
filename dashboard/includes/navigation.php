@@ -126,6 +126,28 @@
                 </div>
             </li>
 
+            <!--Videogallery-->
+            <li class="nav-item">
+                <a data-toggle="collapse" href="#videoMenu" class="nav-link">
+                    <i class="fab fa-youtube"></i> Videogaléria <i class="fas fa-caret-down"></i>
+                </a>
+                <div id="videoMenu" class="collapse">
+                    <ul class="nav navbar-nav">
+
+				        <?php
+				        if (isUser('admin') || isUser('moderator')){ ?>
+                            <li class="dropdown-item" ><a href="videogallery.php?source=add_video" class="nav-link"><i class="fas fa-pencil-alt"></i> Pridať video</a></li>
+
+					        <?php
+				        }
+				        ?>
+                        <li class="dropdown-item" ><a href="videogallery.php" class="nav-link"><i class="fas fa-list-ul"></i> Zobraziť zoznam</a></li>
+                    </ul>
+                </div>
+
+            </li>
+
+
             <!--Inventar-->
 
 	        <?php

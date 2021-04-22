@@ -103,6 +103,28 @@
                         </ul>
                     </div>
                 </li>
+
+
+                <!--Videogallery-->
+
+                <li class="nav-item" style="width: 100%;">
+                    <a data-toggle="collapse" href="#videoMenu" class="nav-link text-light">
+                        <i class="fab fa-youtube"></i> Videogaléria <i class="fas fa-caret-down"></i>
+                    </a>
+
+
+                    <div id="videoMenu" class="collapse">
+                        <ul class="nav">
+
+	                        <?php
+	                        if (isUser('admin') || isUser('moderator')){
+	                        ?>
+                            <li class="nav-item"  style="width: 100%;"><a href="videogallery.php?source=add_video" class="nav-link text-light"><i class="fas fa-pencil-alt"></i> Pridať video</a></li>
+                            <?php   }    ?>
+                            <li class="nav-item"  style="width: 100%;"><a href="videogallery.php" class="nav-link text-light border-bottom"><i class="fas fa-list-ul"></i> Zobraziť zoznam</a></li>
+                        </ul>
+                    </div>
+                </li>
                 <!--Inventory-->
 	            <?php
 	            if (isUser('admin') || isUser('moderator')){
