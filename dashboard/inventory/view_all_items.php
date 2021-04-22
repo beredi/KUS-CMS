@@ -1,5 +1,11 @@
+
+
 <h2>Všetky položky</h2>
 <a href="inventory.php?source=add_item" class="btn btn-primary" style="margin-bottom: 5px;">Pridať položku</a>
+<form action="inventory/inventory_controller.php" method="post" style="display: inline">
+    <button type="submit" name='export-to-excel' class="btn btn-success" style="margin-bottom: 5px;" id="export-to-excel-inventory"><i class="fas fa-file-excel"></i> Export do CSV</button>
+</form>
+
 <table class="table table-hover table-striped" id="clanky">
 	<thead>
 	<tr>
