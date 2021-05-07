@@ -121,3 +121,14 @@ li.nav-item:hover a > i {
 ul.mobnav li:last-child {
     border-bottom: 1px solid #FFF;
 }
+
+.secret-msg-row{
+    border: 1px solid #a7c8ff;
+    padding: 10px;
+    margin: 10px;
+    background: #FFFFFF;
+}
+
+.secret-msg-row:hover {
+    background: #EEEEEE;
+}

@@ -142,9 +142,17 @@
                         Novinky</a></li>";
                 }
                 ?>
+                <!--SECRET MSGS-->
+	            <?php
+	            if (isUser('admin') || isUser('moderator')){
+		            echo "
+                <li class=\"nav-item \" style=\"width: 100%;\"><a class=\"nav-link text-light\" href=\"secret-posts.php\"> <i class=\"fas fa-user-secret\"></i>
+                         Tajné správy</a></li>";
+	            }
+	            ?>
                 <!--LOGY-->
                 <?php
-                if (strpos($_SESSION['user_role'], 'admin')){
+                if (isUser('admin')){
                     echo "
                 <li class=\"nav-item \" style=\"width: 100%;\"><a class=\"nav-link text-light\" href=\"logs.php\"> <i class=\"fas fa-paper-plane\"></i>
                         Logy</a></li>";

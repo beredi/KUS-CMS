@@ -175,10 +175,22 @@
             }
             ?>
 
+            <!-- SECRET MSGS -->
+            <?php
+            if (isUser('admin') || isUser('moderator')){
+                echo "
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"secret-posts.php\">
+                    <i class=\"fas fa-user-secret\"></i>
+                    Tajné správy
+                </a>
+            </li>";
+            }
+            ?>
 
             <!-- LOGS -->
             <?php
-            if (strpos($_SESSION['user_role'],'admin')){
+            if (isUser('admin')){
                 echo "
             <li class=\"nav-item\">
                 <a class=\"nav-link\" href=\"logs.php\">
