@@ -5,13 +5,14 @@ if (isset($_POST['secret-msg'])){
 	$date = date('d-m-Y', strtotime('now'));
 	try {
 		include 'dashboard/includes/db.php';
+		include 'dashboard/includes/send_email_admin_lector.php';
 		$query = "INSERT INTO secretmsgs (msg, `date`) VALUES (:msg, :date)";
 		$send_info = $connection->prepare($query);
 
 		$send_info->bindParam(':msg', $msg);
 		$send_info->bindParam(':date', $date);
 		$send_info->execute();
-
+        sendSecretMsgNotification($connection, $msg);
 	} catch (Exception $e) {
 		echo $e;
 	}

@@ -28,4 +28,26 @@ function sendEmailToAdminOrLector($connection, $edit=false){
     }
 }
 
+function sendSecretMsgNotification($connection, $message){
+
+//                    SEND MAIL TO LEKTOR AND ADMIN
+	$query_email = "SELECT * FROM users WHERE user_role LIKE '%admin%'";
+
+	$take_info = $connection->prepare($query_email);
+	$take_info->execute();
+
+	while ($row = $take_info->fetch(PDO::FETCH_ASSOC)){
+		$to = $row['user_email'];
+		$subject = 'Nová tajná správa - ' . date("Y-m-d");
+		try {
+			mail($to, $subject, $message);
+		}
+		catch (ErrorException $e){
+			error_log('Email sending error ' . $e);
+		}
+
+
+	}
+}
+
 ?>
