@@ -28,15 +28,15 @@ $(document).ready(function () {
     };
 
     // page image
-    $('.contentPageBody').find('img')
-        .addClass('img-responsive')
-        .css({"height": "auto", "display": "inline", 'marginTop': '5px'})
-        .parent().addClass('text-center');
-
     $('.contentPageBody').find('p img').each(function( index ) {
         let description = ($(this).attr('alt'));
         let html = "<p class='italic text-center'>"+description+"</p>";
-        $(this).after(html);
+
+        $(this)
+            .addClass('img-responsive')
+            .css({"height": "auto", "display": "inline", 'marginTop': '5px'})
+            .parent().addClass('text-center')
+            .after(html)
 
     });
 });
