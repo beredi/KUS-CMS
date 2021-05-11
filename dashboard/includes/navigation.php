@@ -208,6 +208,15 @@
                 </a>
             </li>
 
+            <!--            JIRA-->
+            <li class="nav-item">
+                <a class="nav-link" href="https://kusjanakollara.atlassian.net/" target="_blank">
+                    <i class="fas fa-project-diagram"></i> JIRA
+                </a>
+            </li>
+
+
+
         </ul>
         <hr width="90%">
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">

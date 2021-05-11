@@ -158,8 +158,11 @@
                         Logy</a></li>";
                 }
                 ?>
+                <!--TUTORIALS-->
                 <li class="nav-item" style="width: 100%;"><a class="nav-link text-light" href="tutorials.php"> <i class="fas fa-file-video"></i>
                 Tutorialy</a></li>
+                <!--JIRA-->
+                <li class="nav-item" style="width: 100%;"><a class="nav-link text-light" href="https://kusjanakollara.atlassian.net/" target="_blank"><i class="fas fa-project-diagram"></i> JIRA</a></li>
                 <li class="nav-item border-top border-light" style="width: 100%;">
                     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-white-50">
                         <span>prihlásený užívateľ</span><span class="float-right"> <?php
