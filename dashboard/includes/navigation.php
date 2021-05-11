@@ -209,12 +209,18 @@
             </li>
 
             <!--            JIRA-->
+
+	        <?php
+	        if (isUser('admin') || isUser('moderator')){
+	        ?>
             <li class="nav-item">
                 <a class="nav-link" href="https://kusjanakollara.atlassian.net/" target="_blank">
                     <i class="fas fa-project-diagram"></i> JIRA
                 </a>
             </li>
-
+		        <?php
+	        }
+	        ?>
 
 
         </ul>
