@@ -26,4 +26,9 @@ $(document).ready(function () {
 
         document.onscroll = scroll;
     };
+
+    // page image
+    $('.contentPageBody').find('img')
+        .addClass('img-responsive')
+        .css({"height": "auto", "display": "inline", 'marginTop': '5px'});
 });

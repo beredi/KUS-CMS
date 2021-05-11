@@ -39,7 +39,7 @@ if (isset($_GET['pagepseu'])){
                 </div>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 about">
-                     <div class="text-justify contentBody">
+                     <div class="text-justify contentPageBody">
                      <?=$content?>
                      </div>
                 </div>

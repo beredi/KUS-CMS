@@ -206,10 +206,10 @@ a.btn {
     width: 100% !important;
     height: auto !important;
 }
-.contentBody {
-
+.contentBody, .contentPageBody {
     margin-top: 10px;
 }
+
 hr {
     margin: 0;
 }
