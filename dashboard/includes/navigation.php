@@ -240,6 +240,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="https://kusjanakollara.org:2096/" target="_blank">
+                                    <i class="fas fa-envelope"></i>
+                                    E-mail
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="includes/logout.php">
                                     <i class="fas fa-sign-out-alt"></i>
                                     Odhlásiť sa
