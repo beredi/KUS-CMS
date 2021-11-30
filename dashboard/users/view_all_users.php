@@ -129,3 +129,13 @@ if (isset($_GET['delete'])){
 
 ?>
 
+
+<script>
+$(document).ready( function () {
+    $('#uzivatelia').DataTable( {
+        "order": [],
+        "pageLength": 10
+    } );
+} );
+</script>
+

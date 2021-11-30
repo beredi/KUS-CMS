@@ -2,12 +2,13 @@
 <a href="../videogallery.php" class="btn-info btn" style="float: right;" target="_blank"><i class=\"fab fa-youtube\"></i> Zobraziť videogalériu</a>
 <a href="?source=add_video" style="float: right; margin-right: 10px;" class="btn-success btn"><i class="fas fa-plus-circle"></i> Pridať nové video</a>
 
-<table class="table table-hover table-striped" id="uzivatelia">
+<table class="table table-hover table-striped" id="videos">
 	<thead>
 	<tr>
 		<th>Názov</th>
 		<th>Kód</th>
-		<th colspan="2">Akcie</th>
+		<th>Upraviť</th>
+		<th>Vymazať</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -114,3 +115,12 @@ if (isset($_GET['delete'])){
 
 ?>
 
+
+<script>
+$(document).ready( function () {
+    $('#videos').DataTable( {
+        "order": [],
+        "pageLength": 10
+    } );
+} );
+</script>

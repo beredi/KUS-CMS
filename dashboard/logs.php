@@ -159,3 +159,12 @@ if (isset($_GET['delete'])){
 
 ?>
 
+
+<script>
+$(document).ready( function () {
+    $('#logs').DataTable( {
+        "order": [],
+        "pageLength": 10
+    } );
+} );
+</script>

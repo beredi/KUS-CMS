@@ -165,3 +165,11 @@ if (isset($_GET['delete'])){
 
 ?>
 
+<script>
+$(document).ready( function () {
+    $('#clanky').DataTable( {
+        "order": [],
+        "pageLength": 10
+    } );
+} );
+</script>

@@ -6,13 +6,15 @@
     <button type="submit" name='export-to-excel' class="btn btn-success" style="margin-bottom: 5px;" id="export-to-excel-inventory"><i class="fas fa-file-excel"></i> Export do CSV</button>
 </form>
 
-<table class="table table-hover table-striped" id="clanky">
+<table class="table table-hover table-striped" id="items">
 	<thead>
 	<tr>
 		<th>ID</th>
 		<th>Názov</th>
 		<th>Počet</th>
 		<th>Počet na sklade</th>
+		<th></th>
+		<th></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -115,3 +117,13 @@ if (isset($_GET['delete'])){
 
 ?>
 
+
+
+<script>
+$(document).ready( function () {
+    $('#items').DataTable( {
+        "order": [],
+        "pageLength": 10
+    } );
+} );
+</script>

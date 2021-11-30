@@ -18,5 +18,6 @@
     $(function () {
     })
 </script>
+<script type="text/javascript" src="datatables/datatables.min.js"></script>
 </body>
 </html>

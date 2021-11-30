@@ -51,6 +51,10 @@ if($_SESSION['user_email'] == null){
     <!-- Custom styles for this template -->
     <link href="../css/dashboard.css" rel="stylesheet">
     <script src="ckeditor/ckeditor.js"></script>
+
+    <!-- Datatables -->
+    <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css"/>
+
     <style type="text/css">
         div.cke_contents {
             height: 400px!important;
