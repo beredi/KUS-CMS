@@ -1,0 +1,120 @@
+<?php ob_start(); ?>
+<?php
+include "includes/header.php"; //INCLUDE HEADER
+?>
+<!--    <!--MOBILE NAVBAR-->
+<?php
+include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
+?>
+
+
+<!--LG SCREEN NAVBAR-->
+<div class="col-md-10 col-sm-12 d-none d-md-inline">
+
+
+    <a class="float-left text-light mt-2" href="../index.php" target="_blank"><i class="fas fa-external-link-alt"></i> Zobraziť stránku</a>
+    <!--    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+
+
+
+    <!--        USER INFO-->
+
+    <?php
+    include 'includes/profile_dropdown.php';
+    ?>
+</div><!--//LG SCREEN NAVBAR-->
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <?php
+        include "includes/navigation.php";  //INCLUDE NAVIGATION
+        ?>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2 text-muted">Changelog</h1>
+            </div>
+
+            <h5><strong>CMS KUS</strong> <?=VERSION?></h5>
+
+            <table class="table table-hover table-striped" id="changelog">
+                <thead>
+                <tr>
+                    <th style="width: 10%;">Dátum</th>
+                    <th style="width: 90%;">Popis</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="width: 10%;">1. 12. 2021</td>
+                        <td style="width: 90%;">
+                            <ul>
+                                <li>Vytvorený changelog</li>
+                                <li>Pridané Datatables</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%;">16. 6. 2021</td>
+                        <td style="width: 90%;">
+                            <ul>
+                                <li>Vytvorená foto výzva</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%;">18. 5. 2021</td>
+                        <td style="width: 90%;">
+                            <ul>
+                                <li>Navigácia - pridaný email</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%;">11. 5. 2021</td>
+                        <td style="width: 90%;">
+                            <ul>
+                                <li>Článok - pridaný opis obrázku cez ALT atribút</li>
+                                <li>Stránky sekcie - pridaný opis obrázku cez ALT atribút</li>
+                                <li>JIRA</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%;">7. 5. 2021</td>
+                        <td style="width: 90%;">
+                            <ul>
+                                <li>Pridaná sekcia "Tajné správy"</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+
+
+
+
+        </main>
+    </div>
+</div>
+
+<script>
+    $(document).ready( function () {
+        $('#changelog').DataTable( {
+            "order": [],
+            "pageLength": 10
+        } );
+    } );
+</script>
+
+<?php
+
+include 'includes/footer.php';
+
+
+?>
+

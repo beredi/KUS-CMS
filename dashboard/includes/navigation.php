@@ -253,4 +253,7 @@
                             </li>
                         </ul>
     </div>
+    <?php
+    include('version.php');
+    ?>
 </nav>

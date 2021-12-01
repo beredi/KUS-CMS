@@ -181,6 +181,10 @@
                     <a class="nav-link text-light" href="profile.php?edit=<?php echo $_SESSION['user_id'];?>"><i class="fas fa-user"></i> Profil</a></li>
                 <li class="nav-item" style="width: 100%;"><a class="nav-link text-light" href="https://kusjanakollara.org:2096/" target="_blank"><i class="fas fa-envelope"></i> E-mail</a></li>
                 <li class="nav-item" style="width: 100%;"><a class="nav-link text-light" href="includes/logout.php"><i class="fas fa-sign-out-alt"></i>Odhlásiť sa</a></li>
+                <li>
+                    <?php
+                    include('version.php');
+                    ?></li>
             </ul>
         </div>
 </nav><!--//MOBILE NAVBAR-->
