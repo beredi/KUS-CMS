@@ -50,6 +50,7 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
                         <td style="width: 10%;">7. 12. 2021</td>
                         <td style="width: 90%;">
                             <ul>
+                                <li>Pridaná "hviezdička" pri required poliach vo formulároch</li>
                                 <li>Pridaná možnosť pridávania súborov na stiahnutie</li>
                             </ul>
                         </td>
