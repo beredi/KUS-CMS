@@ -36,12 +36,9 @@ function footer($whatKindOfPage){
                 <p><span class="glyphicon glyphicon glyphicon-earphone"></span> +381 63 136 16 02</p>
             </div>
             <div class="col-lg-3 col-lg-offset2 col-md-3 col-md-offset-2 col-sm-12 col-xs-12 ">
-                <h3>Umeleckí vedúci:</h3>
+                <h3>Umelecký vedúci:</h3>
                 <p><span class="glyphicon glyphicon-user"></span> Jaroslav Berédi</p>
                 <p style="font-size: 12px;"><span class="glyphicon glyphicon-envelope"></span> jaroslav.beredi@kusjanakollara.org</p>
-                <hr style="margin: 5px 0 7px 0; opacity: 0.5;" >
-                <p><span class="glyphicon glyphicon-user"></span> Juraj Súdi ml.</p>
-                <p style="font-size: 12px;"><span class="glyphicon glyphicon-envelope"></span> juraj.sudi@kusjanakollara.org</p>
             </div>
             <div class="col-lg-3 col-lg-offset1 col-md-3 col-md-offset-1 col-sm-12 col-xs-12 topFooter">
                 <p class="text-left">KUS Jána Kollára<br>M. Tita 124<br>21425 Selenča, Srbsko</p>
