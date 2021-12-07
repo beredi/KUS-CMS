@@ -44,7 +44,7 @@ if (isset($_SESSION['user_role'])) {
 
 <form action="" method="post" enctype="multipart/form-data" class="my-2">
     <div class="form-group">
-        <label for="post_title">Názov:</label>
+        <label for="post_title" class="required">Názov:</label>
         <input type="text" class="form-control" id="title" placeholder="Zadajte názov tutorialu" name="title" required autocomplete="off">
     </div>
     <div class="form-group">
@@ -52,7 +52,7 @@ if (isset($_SESSION['user_role'])) {
         <input type="text" class="form-control" id="description" aria-describedby="postTags" placeholder="Zadajte popis videa" name="description" autocomplete="off">
     </div>
     <div class="form-group">
-        <label for="post_content">Kód:</label>
+        <label for="post_content" class="required">Kód:</label>
         <textarea class="form-control" rows="10" id="code" name="code" placeholder="Sem skopírujte EMBED kód bez značiek IFRAME a bez height a width..." required></textarea>
     </div>
 

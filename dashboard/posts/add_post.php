@@ -179,7 +179,7 @@ if (isset($_SESSION['user_role'])){
 
 <form action="" method="post" enctype="multipart/form-data" class="my-2">
     <div class="form-group">
-        <label for="post_title">Názov:</label>
+        <label for="post_title" class="required">Názov:</label>
         <input type="text" class="form-control" id="post_title" placeholder="Zadajte názov článku" name="post_title" required autocomplete="off">
     </div>
     <div class="form-group">
@@ -188,11 +188,11 @@ if (isset($_SESSION['user_role'])){
         <small id="postTags" class="form-text text-muted">Zadajte kľúčové slová, ktoré blízko popisujú článok. Jednotlivé slová oddeľujte čiarkou. Napríklad: <span class="text-info">Selenča, KUS, zájazd</span></small>
     </div>
     <div class="form-group mt-3">
-        <label for="post_image">Obrázok: <span class="text-danger">Formát: na ležato (do 10MB!)</span></label>
+        <label for="post_image" class="required">Obrázok: <span class="text-danger">Formát: na ležato (do 10MB!)</span></label>
         <input type="file" class="form-control-file" id="post_image" name="post_image" required>
     </div>
     <div class="form-group">
-        <label for="post_content">Obsah:</label>
+        <label for="post_content" class="required">Obsah:</label>
         <textarea class="form-control" rows="10" id="post_content" name="post_content" placeholder="Napíšte článok..." required></textarea>
     </div>
     <input type="submit" class="btn btn-primary" name="add_post" value="Odoslať">

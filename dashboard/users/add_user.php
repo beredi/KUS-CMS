@@ -156,23 +156,23 @@ if (isset($_SESSION['user_role'])){
         <input type="text" class="form-control text-right" id="user_titul" placeholder="Zadajte titul" name="user_titul" style="width:20%;" autocomplete="off">
     </div>
     <div class="form-group">
-        <label for="user_name">Meno: <span class="text-danger">(required)</span> </label>
+        <label for="user_name" class="required">Meno:</label>
         <input type="text" class="form-control" id="user_name" placeholder="Zadajte meno užívateľa" name="user_name" required autocomplete="off">
     </div>
     <div class="form-group">
-        <label for="user_lastname">Priezvisko: <span class="text-danger">(required)</span></label>
+        <label for="user_lastname" class="required">Priezvisko:</label>
         <input type="text" class="form-control" id="user_lastname" placeholder="Zadajte priezvisko užívateľa" name="user_lastname" required autocomplete="off">
     </div>
     <div class="form-group">
-        <label for="user_email">Email: <span class="text-danger">(required)</span></label>
+        <label for="user_email" class="required">Email:</label>
         <input type="email" class="form-control" id="user_email" placeholder="Zadajte email užívateľa" name="user_email" required autocomplete="off">
     </div>
     <div class="form-group">
-        <label for="user_password">Heslo: <span class="text-danger">(required) min. 5 znakov</span></label>
+        <label for="user_password" class="required">Heslo: <span class="text-danger">min. 5 znakov</span></label>
         <input type="password" class="form-control" id="user_password" placeholder="Zadajte heslo užívateľa" name="user_password" required minlength="5">
     </div>
     <div class="form-group">
-        <label for="user_password_confirm">Zopakovať heslo: <span class="text-danger">(required)</span></label>
+        <label for="user_password_confirm" class="required">Zopakovať heslo:</label>
         <input type="password" class="form-control" id="user_password_confirm" placeholder="Zopakujte heslo užívateľa" name="user_password_confirm" required>
     </div>
     <div class="form-group mt-3">
@@ -185,7 +185,7 @@ if (isset($_SESSION['user_role'])){
         <small id="user_function" class="form-text text-muted">Napríklad: <span class="text-info">Predsedníčka spolku, Tajomník, Umelecký vedúci a pod.</span></small>
     </div>
 
-        Rola: <span class="text-danger">(required)</span>
+        <span class="required">Rola</span>
     <div class="form-check">
             <input type="checkbox" class="form-check-input" name="user_role[]" value="admin" id="admin"  tabIndex="1" onClick="ckChange(this)" disabled>
         <label class="form-check-label" for="admin">Admin

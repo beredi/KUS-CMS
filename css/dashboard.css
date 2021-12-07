@@ -132,3 +132,8 @@ ul.mobnav li:last-child {
 .secret-msg-row:hover {
     background: #EEEEEE;
 }
+
+.required:after {
+    content:"*";
+    color: #fd7575;
+}

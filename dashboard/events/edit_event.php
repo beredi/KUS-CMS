@@ -128,7 +128,7 @@ if (isset($_SESSION['user_role'])){
 <div class="col-md-5 col-sm-12">
     <form action="" method="post" class="my-2" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="event_name">Typ:</label>
+            <label for="event_name" class="required">Typ:</label>
             <input type="text" class="form-control" id="event_name" aria-describedby="eventName" placeholder="Zadajte typ podujatia" name="event_name" value="<?php echo $event_name; ?>"  autocomplete="off" required>
             <small id="eventName" class="form-text text-muted">Napríklad: <span class="text-info">Vystúpenie, Zájazd, Dielňa</span></small>
         </div>
@@ -137,12 +137,12 @@ if (isset($_SESSION['user_role'])){
             <input type="date" class="form-control" id="event_date" aria-describedby="eventDate" name="event_date" value="<?php echo $event_date; ?>">
         </div>
         <div class="form-group">
-            <label for="event_time">Čas uskutočnenia:</label>
+            <label for="event_time" class="required">Čas uskutočnenia:</label>
             <input type="text" class="form-control" id="event_time" aria-describedby="eventTime" name="event_time" autocomplete="off" placeholder="Zadajte čas uskutočnenia" value="<?php echo $event_time; ?>" required>
             <small id="eventTime" class="form-text text-muted">Napíšte čas v 24h formáte. Napríklad: <span class="text-info">7.00, 9.15, 18.30, 20.00</span></small>
         </div>
         <div class="form-group">
-            <label for="event_place">Miesto uskutočnenia:</label>
+            <label for="event_place" class="required">Miesto uskutočnenia:</label>
             <input type="text" class="form-control" id="event_place" aria-describedby="eventPlace" name="event_place" autocomplete="off" placeholder="Zadajte miesto uskutočnenia" value="<?php echo $event_place; ?>" required>
             <small id="eventPlace" class="form-text text-muted">Napríklad: <span class="text-info">Dom kultúry Selenča, Pukanec (SR) a pod.</span></small>
         </div>
@@ -152,7 +152,7 @@ if (isset($_SESSION['user_role'])){
             <img src='../images/events/<?php echo $event_image;?>' alt='image' width="100px">
         </div>
         <div class="form-group">
-            <label for="event_content">Krátky opis:</label>
+            <label for="event_content" class="required">Krátky opis:</label>
             <textarea placeholder="Napíšte krátky opis o podujatí" name="event_content" class="form-control" rows="3" aria-describedby="eventContent" required><?php echo $event_content; ?></textarea>
             <small id="eventContent" class="form-text text-muted">Napríklad: <span class="text-info">Vystúpenie v rámci osláv osady.</span></small>
         </div>

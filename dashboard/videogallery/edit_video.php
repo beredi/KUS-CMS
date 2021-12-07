@@ -52,11 +52,11 @@ if (isset($_SESSION['user_role']) && isset($_GET['edit'])) {
 
 			<form action="" method="post" enctype="multipart/form-data" class="my-2">
 				<div class="form-group">
-					<label for="post_title">Názov:</label>
+					<label for="post_title" class="required">Názov:</label>
 					<input type="text" class="form-control" id="title" placeholder="Zadajte názov videa" name="title" required autocomplete="off" value="<?=$video['title']?>">
 				</div>
 				<div class="form-group">
-					<label for="post_content">Kód:</label>
+					<label for="post_content" class="required">Kód:</label>
 					<textarea class="form-control" rows="10" id="code" name="code" placeholder="Sem skopírujte EMBED kód bez značiek IFRAME a bez height a width..." required><?=$video['code']?></textarea>
 				</div>
 

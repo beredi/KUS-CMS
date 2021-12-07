@@ -51,7 +51,7 @@ if (isset($_POST['add_item'])){
 <div class="col-md-5 col-sm-12">
 	<form action="" method="post" class="my-2" enctype="multipart/form-data">
 		<div class="form-group">
-			<label for="name">Názov:</label>
+			<label for="name" class="required">Názov:</label>
 			<input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Zadajte názov" name="name" required autocomplete="off">
 		</div>
 		<div class="form-group">
@@ -59,7 +59,7 @@ if (isset($_POST['add_item'])){
 			<input type="number" class="form-control" id="count" aria-describedby="count" name="count">
 		</div>
 		<div class="form-group">
-			<label for="actual_count">Počet na sklade:</label>
+			<label for="actual_count" class="required">Počet na sklade:</label>
 			<input type="number" class="form-control" id="actual_count" aria-describedby="actual_count" name="actual_count" required  autocomplete="off">
 		</div>
 		<input type="submit" class="btn btn-primary" name="add_item" value="Pridať">

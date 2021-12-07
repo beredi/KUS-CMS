@@ -272,7 +272,7 @@ else {
 
 <form action="" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="post_title">Názov:</label>
+        <label for="post_title" class="required">Názov:</label>
         <input type="text" class="form-control" id="post_title" value='<?php echo $post_title;?>' name="post_title" required autocomplete="off">
         <input type="text" name="post_author" value="<?php echo $post_author;?>" hidden>
     </div>
@@ -287,7 +287,7 @@ else {
     <img src='../images/articles/<?php echo $post_image;?>' alt='image' width="100px">
     </div>
     <div class="form-group">
-        <label for="post_content">Obsah:</label>
+        <label for="post_content" class="required">Obsah:</label>
         <textarea class="form-control" rows="10" id="post_content" name="post_content" required><?php echo $post_content;?></textarea>
     </div>
     <input type="submit" class="btn btn-primary" name="edit_post" value="Upraviť">

@@ -130,7 +130,7 @@ if (isset($_GET['edit'])){
 <div class="col-md-6 col-sm-12">
 	<form action="" method="post" enctype="multipart/form-data" class="my-2">
         <div class="form-group">
-            <label for="sex">Pohlavie: <span class="text-danger">(required)</span> </label>
+            <label for="sex" class="required">Pohlavie: </label>
             <select name="sex" class="form-control" required>
                 <option value="M"
                     <?php
@@ -149,11 +149,11 @@ if (isset($_GET['edit'])){
             <input type="text" class="form-control" id="degree" placeholder="Zadajte titul" name="degree" autocomplete="off" value="<?=$degree?>">
         </div>
 		<div class="form-group">
-			<label for="name">Meno: <span class="text-danger">(required)</span> </label>
+			<label for="name" class="required">Meno:</label>
 			<input type="text" class="form-control" id="name" placeholder="Zadajte meno" name="name" required autocomplete="off" value="<?=$name?>">
 		</div>
 		<div class="form-group">
-			<label for="lastname">Priezvisko: <span class="text-danger">(required)</span></label>
+			<label for="lastname" class="required">Priezvisko:</label>
 			<input type="text" class="form-control" id="lastname" placeholder="Zadajte priezvisko" name="lastname" required autocomplete="off" value="<?=$lastname?>">
 		</div>
 		<div class="form-group">

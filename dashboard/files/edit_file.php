@@ -60,7 +60,7 @@ if (isset($_SESSION['user_role']) && isset($_GET['edit'])) {
 			<h2>Upraviť súbor</h2>
             <form action="" method="post" enctype="multipart/form-data" class="my-2">
             <div class="form-group">
-                <label for="name">Názov:</label>
+                <label for="name" class="required">Názov:</label>
                 <input type="text" class="form-control" id="name" placeholder="Zadajte názov súboru" name="name" required autocomplete="off" value="<?=$file['name']?>">
             </div>
             <div class="form-group">

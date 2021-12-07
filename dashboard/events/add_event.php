@@ -70,11 +70,9 @@ if (isset($_POST['add_event'])){
 ?>
 
 <h2>Pridať podujatie</h2>
-
-<div class="col-md-5 col-sm-12">
 <form action="" method="post" class="my-2" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="event_name">Typ:</label>
+        <label for="event_name" class="required">Typ:</label>
         <input type="text" class="form-control" id="event_name" aria-describedby="eventName" placeholder="Zadajte typ podujatia" name="event_name" required autocomplete="off">
         <small id="eventName" class="form-text text-muted">Napríklad: <span class="text-info">Vystúpenie, Zájazd, Dielňa</span></small>
     </div>
@@ -83,12 +81,12 @@ if (isset($_POST['add_event'])){
         <input type="date" class="form-control" id="event_date" aria-describedby="eventDate" name="event_date">
     </div>
     <div class="form-group">
-        <label for="event_time">Čas uskutočnenia:</label>
+        <label for="event_time" class="required">Čas uskutočnenia:</label>
         <input type="text" class="form-control" id="event_time" aria-describedby="eventTime" name="event_time" placeholder="Zadajte čas uskutočnenia" required  autocomplete="off">
         <small id="eventTime" class="form-text text-muted">Napíšte čas v 24h formáte. Napríklad: <span class="text-info">7.00, 9.15, 18.30, 20.00</span></small>
     </div>
     <div class="form-group">
-        <label for="event_place">Miesto uskutočnenia:</label>
+        <label for="event_place" class="required">Miesto uskutočnenia:</label>
         <input type="text" class="form-control" id="event_place" aria-describedby="eventPlace" name="event_place" placeholder="Zadajte miesto uskutočnenia" autocomplete="off" required>
         <small id="eventPlace" class="form-text text-muted">Napríklad: <span class="text-info">Dom kultúry Selenča, Pukanec (SR) a pod.</span></small>
     </div>
@@ -97,7 +95,7 @@ if (isset($_POST['add_event'])){
         <input type="file" class="form-control-file" id="event_photo" name="event_photo">
     </div>
     <div class="form-group">
-        <label for="event_content">Krátky opis:</label>
+        <label for="event_content" class="required">Krátky opis:</label>
         <textarea placeholder="Napíšte krátky opis o podujatí" name="event_content" class="form-control" rows="3" aria-describedby="eventContent" required></textarea>
         <small id="eventContent" class="form-text text-muted">Napríklad: <span class="text-info">Vystúpenie v rámci osláv osady.</span></small>
     </div>
@@ -106,4 +104,3 @@ if (isset($_POST['add_event'])){
 
 
 </form>
-</div>
