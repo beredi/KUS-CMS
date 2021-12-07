@@ -125,6 +125,28 @@
                         </ul>
                     </div>
                 </li>
+
+
+                <!--Files-->
+
+                <li class="nav-item" style="width: 100%;">
+                    <a data-toggle="collapse" href="#filesMenu" class="nav-link text-light">
+                        <i class="fas fa-folder-open"></i> Súbory <i class="fas fa-caret-down"></i>
+                    </a>
+
+
+                    <div id="filesMenu" class="collapse">
+                        <ul class="nav">
+
+				            <?php
+				            if (isUser('admin') || isUser('moderator')){
+					            ?>
+                                <li class="nav-item"  style="width: 100%;"><a href="files.php?source=add_file" class="nav-link text-light"><i class="fas fa-pencil-alt"></i> Pridať súbor</a></li>
+				            <?php   }    ?>
+                            <li class="nav-item"  style="width: 100%;"><a href="files.php" class="nav-link text-light border-bottom"><i class="fas fa-list-ul"></i> Zobraziť všetky súbory</a></li>
+                        </ul>
+                    </div>
+                </li>
                 <!--Inventory-->
 	            <?php
 	            if (isUser('admin') || isUser('moderator')){
