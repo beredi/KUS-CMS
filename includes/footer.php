@@ -4,27 +4,6 @@
 //FOOTER
 
 function footer($whatKindOfPage){
-    if ($whatKindOfPage=="contact"){
-    echo '
-        <div class="container-fluid footerBott">
-    <div class="row">
-        <div class="col-lg-12 col-md-12 hidden-sm hidden-xs">
-            <p class="text-center top">&copy;KUS JÁNA KOLLÁRA SELENČA 2017 - '.date('Y').' | DESIGN BY Jaroslav Beredi</p>
-        </div>
-        <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
-            <p class="text-center top smallText">&copy;KUS JÁNA KOLLÁRA SELENČA 2017 - '.date('Y').' | DESIGN BY Jaroslav Beredi</p>
-        </div>
-        <div class="hidden-lg hidden-md col-sm-12 col-xs-12" id="fixed">
-            <p class="text-center top smallText">&copy;KUS JÁNA KOLLÁRA SELENČA 2017 - '.date('Y'). ' | DESIGN BY Jaroslav Beredi</p>
-        </div>
-    </div>
-</div>
-
-<script src="../js/bootstrap.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../lightbox/js/lightbox.js"></script>';
-    }
-    else {
         echo '    <!--FOOTER-->
 <div class="container-fluid footer top">
     <div class="container" id="contact">
@@ -73,7 +52,6 @@ function footer($whatKindOfPage){
         </div>
     </div>
 </div>';
-    }
 
 }
 

@@ -156,6 +156,7 @@ img.clanok {
 */
 .contactContainer {
     background-color: rgba(40, 50, 127, 1);
+    min-height: 30vh;
 }
 label {
     margin-top: 5px;

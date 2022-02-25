@@ -4,19 +4,29 @@ include 'includes/header.php';
 
 
 <?php
-    function contact($name, $function, $mail, $photo_url){
+// phoneNumbers must be an array
+    function contact($name, $function, $mail, $photo_url, $phoneNumbers = null){
       echo '<div class="contact">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <img src="'.$photo_url.'" class="img-responsive contactImg"  alt="'.$name.'">
+                    <img src="'.$photo_url.'" class="img-responsive contactImg img-circle"  alt="'.$name.'">
                 </div>
 
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                    <h3><small>'.$function.':</small><br>'.$name.'</h3>
                     <p style="font-size: 12px;">'.$mail.'</p>';
 
-      if ($mail=="malvina.zolnanova@kusjanakollara.org"){
-          echo '<p><span class="glyphicon glyphicon glyphicon-earphone"></span> +381 63 136 16 02</p>';
+      if ($phoneNumbers != null){
+          $echo = '';
+          foreach ($phoneNumbers as $phoneNumber){
+              $echo .= '<p><span class="glyphicon glyphicon glyphicon-earphone"></span> ';
+              $echo .= $phoneNumber['number'];
+	          if ($phoneNumber['viber']) $echo .= ' <i class="fab fa-viber" style="color: #794F99; font-weight: bold;" title="Viber"></i> ';
+	          if ($phoneNumber['whatsapp']) $echo .= ' <i class="fab fa-whatsapp" style="color: #25CA45; font-weight: bold;" title="Whatsapp"></i> ';
+              $echo .= '</p>';
+          }
+
+          echo $echo;
 
       }
 
@@ -38,91 +48,51 @@ include 'includes/header.php';
     <!--CONTENT-->
 <div class="container-fluid contactContainer">
     <div class="container">
-    <div class="row top2">
-
-        <!--Malvína-->
-        <div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-1 col-sm-12 col-xs-12 text-right">
-            <?php
-            contact("Malvína Zolňanová","Predsedníčka", "malvina.zolnanova@kusjanakollara.org", "images/ludia/person.jpg");
-            ?>
-        </div>
-
-        <!--Tereza-->
-        <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-12 col-xs-12 text-right">
-            <?php
-                contact("Tereza Žjaková","Zástupkyňa predsedníčky,
-vedúca mladšej divadelnej skupiny", "tereza.zjakova@kusjanakollara.org", "images/ludia/person.jpg");
-            ?>
-        </div>
-
-    </div>
-    <div class="row">
-
-        <!--Svetlana
-        <div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-1 col-sm-12 col-xs-12 text-right">
-            <?php
-                contact("PaedDr. Svetlana Zolňanová", "Tajomníčka", "-", "images/ludia/person.jpg");
-            ?>
-        </div>-->
-		
-		<!--Jaro-->
-		<div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-1 col-sm-12 col-xs-12 text-right">
-			<?php
-			contact("Jaroslav Beredi", "Vedúci tanečnej a speváckej skupiny", "jaroslav.beredi@kusjanakollara.org", "images/ludia/person.jpg");
-			?>
-		</div>
-
-        <!--ANDREA-->
-        <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-12 col-xs-12 text-right">
-            <?php
-            contact("Andrea Šoškićová", "Pokladníčka, vedúca detskej skupiny", "andrea.soskicova@kusjanakollara.org", "images/ludia/person.jpg");
-            ?>
-        </div>
-
-    </div>
-	<div class="row">
-
-
-
-		<!--Juraj-->
-		<div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-1 col-sm-12 col-xs-12 text-right">
-			<?php
-			contact("Juraj Súdi ml.", "Vedúci orchestra a speváckej skupiny", "juraj.sudi@kusjanakollara.org", "images/ludia/person.jpg");
-			?>
-		</div>
-
-		<!--Rasto
-		<div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-12 col-xs-12 text-right">
-			<?php
-			contact("Rastislav Rybársky", "Vedúci staršej divadelnej skupiny", "rastislav.rybarsky@kusjanakollara.org", "images/ludia/person.jpg");
-			?>
-		</div>
-		-->
-	</div>
-        <div class="row">
-
-
-            <!--Anna
+        <div class="row top2">
+            <!--Malvína-->
             <div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-1 col-sm-12 col-xs-12 text-right">
                 <?php
-                contact("Anna Berédiová", "Vedúca speváckej skupiny", "anna.berediova@kusjanakollara.org", "images/ludia/person.jpg");
+                contact(
+                        "Malvína Zolňanová",
+                        "Predsedníčka",
+                        "malvina.zolnanova@kusjanakollara.org",
+                        "images/ludia/malvina.png",
+                        array(
+                                array(
+                                    'number' => '+381 63 136 16 02',
+                                    'viber' => true,
+	                                'whatsapp' => true
+                                )
+                        )
+                );
                 ?>
-            </div>-->
+            </div>
 
-
-        </div>
-
-        <div class="row">
-
-            <!--Bernard
+            <!--Jaro-->
             <div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-1 col-sm-12 col-xs-12 text-right">
                 <?php
-                contact("Bernard Govda", "Vedúci knižnice", "bernard.govda@kusjanakollara.org", "images/ludia/person.jpg");
+                contact(
+                        "Jaroslav Beredi",
+                        "Umelecký vedúci",
+                        "jaroslav.beredi@kusjanakollara.org",
+                    "images/ludia/jaro.png",
+                        array(
+                                array(
+	                                'number' => '(SRB) +381 62 967 84 69',
+                                    'viber' => false,
+	                                'whatsapp' => false
+                                ),
+                                array(
+	                                'number' => '(SK) +421 949 632 867',
+                                    'viber' => true,
+                                    'whatsapp' => true
+                                )
+                        )
+                )
                 ?>
-            </div>-->
+            </div>
+
         </div>
-
-
     </div>
 </div>
     <!--FOOTER-->
