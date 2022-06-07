@@ -74,35 +74,33 @@
                     </div>
                 </li>
 
+                <!--Clenovia-->
 
-
-                <!--Uzivatelia-->
-
+	            <?php if (isUser('admin') || isUser('moderator')){ ?>
                 <li class="nav-item" style="width: 100%;">
-                    <a data-toggle="collapse" href="#uzivateliaMenu" class="nav-link text-light">
-                        <i class="fas fa-users"></i> Užívatelia <i class="fas fa-caret-down"></i>
+                    <a data-toggle="collapse" href="#clenoviaMenu" class="nav-link text-light">
+                        <i class="fas fa-portrait"></i> Členovia <i class="fas fa-caret-down"></i>
                     </a>
 
 
-                    <div id="uzivateliaMenu" class="collapse">
+                    <div id="clenoviaMenu" class="collapse">
                         <ul class="nav">
-                            <?php
-                            if (strpos($_SESSION['user_role'], 'admin') || strpos($_SESSION['user_role'], 'moderator')){
-                                echo "
-                                
-                            <li class=\"nav-item\"  style=\"width: 100%;\"><a href=\"users.php?source=add_user\" class=\"nav-link text-light\"><i class=\"fas fa-pencil-alt\"></i> Pridať užívateľa</a></li>
-                                ";
-                            }
-                            ?>
-                            <li class="nav-item"  style="width: 100%;"><a href="users.php?source=user_roles" class="nav-link text-light"><i class="far fa-check-circle"></i> Roly užívateľov</a></li>
-                            <li class="nav-item"  style="width: 100%;"><a href="users.php" class="nav-link text-light"><i class="fas fa-list-ul"></i> Zobraziť všetkých užívateľov</a></li>
-                            <?php if (isUser('admin') || isUser('moderator')){ ?>
-                            <li class="nav-item"  style="width: 100%;"><a href="members.php" class="nav-link text-light"><i class="fas fa-id-card"></i> Zoznam členov spolku</a></li>
-                            <?php } ?>
+
+                            <li class="nav-item"  style="width: 100%;">
+                                <a href="members.php?source=add_member" class="nav-link text-light">
+                                <i class="fas fa-pencil-alt"></i> Pridať člena
+                                </a>
+                            </li>
+                            <li class="nav-item"  style="width: 100%;">
+                                <a href="members.php" class="nav-link text-light">
+                                    <i class="fas fa-id-card"></i> Zoznam členov spolku</a>
+                            </li>
 
                         </ul>
                     </div>
                 </li>
+	            <?php } ?>
+
 
 
                 <!--Videogallery-->
@@ -183,15 +181,39 @@
                 <!--TUTORIALS-->
                 <li class="nav-item" style="width: 100%;"><a class="nav-link text-light" href="tutorials.php"> <i class="fas fa-file-video"></i>
                 Tutorialy</a></li>
-                <!--JIRA-->
-                <?php
-                if (isUser('admin') || isUser('moderator')){
-                    ?>
 
-                    <li class="nav-item" style="width: 100%;"><a class="nav-link text-light" href="https://kusjanakollara.atlassian.net/" target="_blank"><i class="fas fa-project-diagram"></i> JIRA</a></li>
-                <?php
-                }
-                ?>
+                <!--Pouzivatelia-->
+
+                <li class="nav-item" style="width: 100%;">
+                    <a data-toggle="collapse" href="#uzivateliaMenu" class="nav-link text-light">
+                        <i class="fas fa-users"></i> Používatelia <i class="fas fa-caret-down"></i>
+                    </a>
+
+
+                    <div id="uzivateliaMenu" class="collapse">
+                        <ul class="nav">
+				            <?php
+				            if (strpos($_SESSION['user_role'], 'admin') || strpos($_SESSION['user_role'], 'moderator')){
+					            echo "
+                                
+                            <li class=\"nav-item\"  style=\"width: 100%;\">
+                                <a href=\"users.php?source=add_user\" class=\"nav-link text-light\">
+                                <i class=\"fas fa-pencil-alt\"></i> Pridať používateľa
+                                </a>
+                            </li>
+                                ";
+				            }
+				            ?>
+                            <li class="nav-item"  style="width: 100%;">
+                                <a href="users.php" class="nav-link text-light">
+                                    <i class="fas fa-list-ul"></i> Zobraziť všetkých používateľov</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+
+
                 <li class="nav-item border-top border-light" style="width: 100%;">
                     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-white-50">
                         <span>prihlásený užívateľ</span><span class="float-right"> <?php

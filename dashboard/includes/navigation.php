@@ -99,32 +99,30 @@
                 </div>
             </li>
 
-            <!--Uzivatelia-->
+            <!--Clenovia-->
 
+        <?php if (isUser('admin') || isUser('moderator')){ ?>
             <li class="nav-item">
-                <a data-toggle="collapse" href="#uzivateliaMenu" class="nav-link">
-                    <i class="fas fa-users"></i> Užívatelia <i class="fas fa-caret-down"></i>
+                <a data-toggle="collapse" href="#clenoviaMenu" class="nav-link">
+                    <i class="fas fa-portrait"></i> Členovia spolku <i class="fas fa-caret-down"></i>
                 </a>
 
-
-                <div id="uzivateliaMenu" class="collapse">
+                <div id="clenoviaMenu" class="collapse">
                     <ul class="nav navbar-nav">
-                        <?php
-                        if (isUser('admin') || isUser('moderator')){
-                            echo "
-                        <li class=\"dropdown-item\" ><a href=\"users.php?source=add_user\" class=\"nav-link\"><i class=\"fas fa-pencil-alt\"></i> Pridať užívateľa</a></li>
-                            ";
-                        }
-                        ?>
-
-                        <li class="dropdown-item" ><a href="users.php?source=user_roles" class="nav-link"><i class="far fa-check-circle"></i> Roly užívateľov</a></li>
-                        <li class="dropdown-item" ><a href="users.php" class="nav-link"><i class="fas fa-list-ul"></i> Zobraziť všetkých užívateľov</a></li>
-	                    <?php if (isUser('admin') || isUser('moderator')){ ?>
-                        <li class="dropdown-item" ><a href="members.php" class="nav-link"><i class="fas fa-id-card"></i> Zoznam členov spolku</a></li>
-	                    <?php } ?>
+                        <li class="dropdown-item" >
+                            <a href="members.php?source=add_member" class="nav-link">
+                                <i class="fas fa-pencil-alt"></i> Pridať člena
+                            </a>
+                        </li>
+                        <li class="dropdown-item" >
+                            <a href="members.php" class="nav-link">
+                                <i class="fas fa-id-card"></i> Zoznam členov spolku
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
+        <?php } ?>
 
             <!--Videogallery-->
             <li class="nav-item">
@@ -229,20 +227,36 @@
                 </a>
             </li>
 
-            <!--            JIRA-->
+            <!--Pouzivatelia-->
 
-	        <?php
-	        if (isUser('admin') || isUser('moderator')){
-	        ?>
             <li class="nav-item">
-                <a class="nav-link" href="https://kusjanakollara.atlassian.net/" target="_blank">
-                    <i class="fas fa-project-diagram"></i> JIRA
+                <a data-toggle="collapse" href="#uzivateliaMenu" class="nav-link">
+                    <i class="fas fa-users"></i> Používatelia <i class="fas fa-caret-down"></i>
                 </a>
-            </li>
-		        <?php
-	        }
-	        ?>
 
+
+                <div id="uzivateliaMenu" class="collapse">
+                    <ul class="nav navbar-nav">
+				        <?php
+				        if (isUser('admin') || isUser('moderator')){
+					        echo "
+                        <li class=\"dropdown-item\" >
+                            <a href=\"users.php?source=add_user\" class=\"nav-link\">
+                                <i class=\"fas fa-pencil-alt\"></i> Pridať používateľa
+                            </a>
+                        </li>
+                            ";
+				        }
+				        ?>
+
+                        <li class="dropdown-item" >
+                            <a href="users.php" class="nav-link">
+                                <i class="fas fa-list-ul"></i> Zobraziť všetkých používateľov
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
         </ul>
         <hr width="90%">

@@ -147,7 +147,7 @@ include "includes/header.php"; //INCLUDE HEADER
                     <div class="card text-right" style="width: 100%;">
                         <div class="card-body">
                             <h2 class="card-title"><a href="users.php">
-                                    <i class="fas fa-users"></i> Užívatelia <span class="badge badge-secondary"><?php
+                                    <i class="fas fa-users"></i> Používatelia <span class="badge badge-secondary"><?php
                                         try {
                                             include 'includes/db.php';
 

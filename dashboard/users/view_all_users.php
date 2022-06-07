@@ -1,4 +1,4 @@
-<h2>Všetci užívatelia</h2>
+<h2>Všetci používatelia</h2>
 
 <table class="table table-hover table-striped" id="uzivatelia">
     <thead>
