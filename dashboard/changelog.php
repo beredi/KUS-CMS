@@ -2,7 +2,7 @@
 <?php
 include "includes/header.php"; //INCLUDE HEADER
 ?>
-<!--    <!--MOBILE NAVBAR-->
+<!--    MOBILE NAVBAR-->
 <?php
 include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
 ?>
@@ -13,11 +13,6 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
 
 
     <a class="float-left text-light mt-2" href="../index.php" target="_blank"><i class="fas fa-external-link-alt"></i> Zobraziť stránku</a>
-    <!--    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
-
-
-
-    <!--        USER INFO-->
 
     <?php
     include 'includes/profile_dropdown.php';
@@ -36,7 +31,7 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
                 <h1 class="h2 text-muted">Changelog</h1>
             </div>
 
-            <h5><strong>CMS KUS</strong> <?=VERSION?></h5>
+            <h5><strong>CMS KUS</strong> <?=$VERSION?></h5>
 
             <table class="table table-hover table-striped" id="changelog">
                 <thead>
@@ -47,6 +42,15 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
                 </thead>
                 <tbody>
                     <tr>
+                        <td style="width: 10%;">7. 6. 2022</td>
+                        <td style="width: 90%;">
+                            <ul>
+                                <li>Fix: Nadchádzajúce podujatia - zoradenie podľa dátumu, nezobrazujú sa tie, čo už boli.</li>
+                                <li>Pridaný menu item: Členovia spolku</li>
+                                <li>Zmenení užívatelia na používateľov</li>
+                            </ul>
+                        </td>
+                    </tr><tr>
                         <td style="width: 10%;">7. 12. 2021</td>
                         <td style="width: 90%;">
                             <ul>

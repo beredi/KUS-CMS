@@ -216,7 +216,7 @@
 
                 <li class="nav-item border-top border-light" style="width: 100%;">
                     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-white-50">
-                        <span>prihlásený užívateľ</span><span class="float-right"> <?php
+                        <span>prihlásený používateľ</span><span class="float-right"> <?php
                             if (isset($_SESSION['user_role'])){
                                 echo $_SESSION['user_name']." ".$_SESSION['user_lastname'];
                             }

@@ -1,4 +1,4 @@
-<nav class="navbar col-md-2 d-none d-md-block bg-light sidebar">
+<nav class="navbar col-md-2 d-none d-md-block bg-light sidebar position-relative">
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
@@ -261,7 +261,7 @@
         </ul>
         <hr width="90%">
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>prihlásený užívateľ</span><span class="float-right"> <?php
+            <span>prihlásený používateľ</span><span class="float-right"> <?php
                 if (isset($_SESSION['user_name'])){
                     echo $_SESSION['user_name']." ".$_SESSION['user_lastname'];
                 }
@@ -287,8 +287,8 @@
                                 </a>
                             </li>
                         </ul>
+	    <?php
+	    include('version.php');
+	    ?>
     </div>
-    <?php
-    include('version.php');
-    ?>
 </nav>
