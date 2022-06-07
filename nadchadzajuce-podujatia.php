@@ -17,7 +17,7 @@ include 'includes/header.php';
     try{
         include 'dashboard/includes/db.php';
 
-        $query = "SELECT * FROM events ORDER BY event_date ASC";
+        $query = "SELECT * FROM events WHERE DATE(event_date) >= curdate() ORDER BY event_date ASC";
 
         $send_info = $connection->prepare($query);
         $send_info->execute();
