@@ -1,4 +1,5 @@
-INSERT INTO `pages` (page_title, page_description, page_content, page_pseu) VALUES ('Folklórna sekcia', 'Viac informácií o našich tanečníkoch.', 'Hovorí sa, že rock and roll a beetová hudba podnietili vznik folklórnych skupín za cieľom zachovávania slovenských ľudových tradícií. V Selenči však prvá folklórna skupina vznikla pre potreby zúčastnenia sa na Slovenských národných slávnostiach. Generácie tanečníkov narodených začiatkom 30. rokov minulého storočia už nie sú medzi nami.
+INSERT INTO `pages` (page_title, page_description, page_content, page_pseu)
+VALUES ('Folklórna sekcia', 'Viac informácií o našich tanečníkoch.', 'Hovorí sa, že rock and roll a beetová hudba podnietili vznik folklórnych skupín za cieľom zachovávania slovenských ľudových tradícií. V Selenči však prvá folklórna skupina vznikla pre potreby zúčastnenia sa na Slovenských národných slávnostiach. Generácie tanečníkov narodených začiatkom 30. rokov minulého storočia už nie sú medzi nami.
 
 Prvý významnejší festival, na ktorý spomínajú niekdajší folkloristi bol v roku 1968 vo Východnej.
 
@@ -11,7 +12,8 @@ Koncom deväťdesiatych rokov dorastenci detského folklórneho súboru Pramieno
 Po choreografiách Ivany Horvátovej sa do folklórnych vôd zapája Malvína Zolňanová a dnešní folkloristi sa pod jej vedením prezentujú na domácich festivaloch v Rumunsku, Maďarsku a na Slovensku.
 
 V súčasnosti je na poste umeleckého vedúceho Marián Trusina.', 'folklor');
-INSERT INTO `pages` (page_title, page_description, page_content, page_pseu) VALUES ('Divadelná sekcia', 'Viac informácií o divadle.', 'S divadlom sa začalo pracovať dávneho 06. januára roku 1895, keď sa Juliana Medvedcká rozhodla režírovať jednoaktovku Pán Tomáš, v ktorej účinkovalo 9 hercov. A tak sa to roztočilo.
+INSERT INTO `pages` (page_title, page_description, page_content, page_pseu)
+VALUES ('Divadelná sekcia', 'Viac informácií o divadle.', 'S divadlom sa začalo pracovať dávneho 06. januára roku 1895, keď sa Juliana Medvedcká rozhodla režírovať jednoaktovku Pán Tomáš, v ktorej účinkovalo 9 hercov. A tak sa to roztočilo.
 
 V rokoch 1895 až 1949 sa v Selenči divadelné predstavenia hrávali pri evanjelickej a katolíckej cirkvi a v rámci rôznych organiazácií, ako sú MOMS, Národný front, Čítací krúžok, AFŽ, Remeselnícke družstvo, Športový klub Kriváň a Dobrovoľný hasičský spolok. V tomto období v Selenči zahrali asi 30 divadelných hier. V období Druhej svetovej vojny sa divadlá nehrávali.
 

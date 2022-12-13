@@ -1,23 +1,24 @@
 <?php
 
-function articleHeader($title, $imagePath, $content, $keywords){
-    ?>
+function articleHeader($title, $imagePath, $content, $keywords)
+{
+	?>
 
     <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
 <!--HTML5 Document by Jaroslav Beredi-->
 <head>
     <meta charset="UTF-8">
-    <title><?=$title?></title>
-    <meta name="description" content="<?=$content?>">
+    <title><?= $title ?></title>
+    <meta name="description" content="<?= $content ?>">
     <meta name="author" content="Jaroslav Beredi">
-    <meta name="keywords" content="<?=$keywords?>">
+    <meta name="keywords" content="<?= $keywords ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:image" content="images/articles/<?=$imagePath?>" />
+    <meta property="og:image" content="images/articles/<?= $imagePath ?>"/>
     <link rel="image_src"
           type="image/jpeg"
-          href="images/articles/<?=$imagePath?>" />
+          href="images/articles/<?= $imagePath ?>"/>
 
 
     <script src="https://kit.fontawesome.com/7782f26b25.js" crossorigin="anonymous"></script>
@@ -32,13 +33,17 @@ function articleHeader($title, $imagePath, $content, $keywords){
 
     <!--BOOTSTRAP-->
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -57,7 +62,7 @@ function articleHeader($title, $imagePath, $content, $keywords){
     <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="faviconapple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
@@ -67,7 +72,7 @@ function articleHeader($title, $imagePath, $content, $keywords){
     <meta name="theme-color" content="#ffffff">
 
 </head>
-    <?php
+	<?php
 }
 
 

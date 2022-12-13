@@ -1,16 +1,18 @@
 * {
-     font-family: 'Raleway', sans-serif;
- }
+    font-family: 'Raleway', sans-serif;
+}
 
 body {
     font-size: .875rem;
 }
+
 li.nav-item a > i {
     opacity: 0.7;
 }
+
 li.nav-item:hover a > i {
-     opacity: 1;
- }
+    opacity: 1;
+}
 
 
 .feather {
@@ -122,7 +124,7 @@ ul.mobnav li:last-child {
     border-bottom: 1px solid #FFF;
 }
 
-.secret-msg-row{
+.secret-msg-row {
     border: 1px solid #a7c8ff;
     padding: 10px;
     margin: 10px;
@@ -134,6 +136,6 @@ ul.mobnav li:last-child {
 }
 
 .required:after {
-    content:"*";
+    content: "*";
     color: #fd7575;
 }

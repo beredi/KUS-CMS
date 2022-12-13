@@ -133,6 +133,7 @@ tr.file > td.size {
     opacity: 0;
     filter: alpha(opacity=0);
 }
+
 #upload input, #upload input::-webkit-file-upload-button {
     cursor: pointer;
 }

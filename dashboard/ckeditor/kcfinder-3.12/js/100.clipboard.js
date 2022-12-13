@@ -1,27 +1,27 @@
 /** This file is part of KCFinder project
-  *
-  *      @desc Clipboard functionality
-  *   @package KCFinder
-  *   @version 3.12
-  *    @author Pavel Tzonkov <sunhater@sunhater.com>
-  * @copyright 2010-2014 KCFinder Project
-  *   @license http://opensource.org/licenses/GPL-3.0 GPLv3
-  *   @license http://opensource.org/licenses/LGPL-3.0 LGPLv3
-  *      @link http://kcfinder.sunhater.com
-  */
+ *
+ *      @desc Clipboard functionality
+ *   @package KCFinder
+ *   @version 3.12
+ *    @author Pavel Tzonkov <sunhater@sunhater.com>
+ * @copyright 2010-2014 KCFinder Project
+ *   @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ *   @license http://opensource.org/licenses/LGPL-3.0 LGPLv3
+ *      @link http://kcfinder.sunhater.com
+ */
 
-_.initClipboard = function() {
+_.initClipboard = function () {
     if (!_.clipboard || !_.clipboard.length) return;
 
     var size = 0,
         jClipboard = $('#clipboard');
 
-    $.each(_.clipboard, function(i, val) {
+    $.each(_.clipboard, function (i, val) {
         size += val.size;
     });
     size = _.humanSize(size);
     jClipboard.disableTextSelect().html('<div title="' + _.label("Clipboard") + ' (' + _.clipboard.length + ' ' + _.label("files") + ', ' + size + ')" onclick="_.openClipboard()"></div>');
-    var resize = function() {
+    var resize = function () {
         jClipboard.css({
             left: $(window).width() - jClipboard.outerWidth(),
             top: $(window).height() - jClipboard.outerHeight()
@@ -29,13 +29,13 @@ _.initClipboard = function() {
     };
     resize();
     jClipboard.show();
-    $(window).unbind().resize(function() {
+    $(window).unbind().resize(function () {
         _.resize();
         resize();
     });
 };
 
-_.removeFromClipboard = function(i) {
+_.removeFromClipboard = function (i) {
     if (!_.clipboard || !_.clipboard[i]) return false;
     if (_.clipboard.length == 1) {
         _.clearClipboard();
@@ -56,7 +56,7 @@ _.removeFromClipboard = function(i) {
     return true;
 };
 
-_.copyClipboard = function(dir) {
+_.copyClipboard = function (dir) {
     if (!_.clipboard || !_.clipboard.length) return;
     var files = [],
         failed = 0;
@@ -69,7 +69,7 @@ _.copyClipboard = function(dir) {
         _.alert(_.label("The files in the Clipboard are not readable."));
         return;
     }
-    var go = function(callBack) {
+    var go = function (callBack) {
         if (dir == _.dir)
             _.fadeFiles();
         $.ajax({
@@ -78,14 +78,14 @@ _.copyClipboard = function(dir) {
             url: _.getURL("cp_cbd"),
             data: {dir: dir, files: files},
             async: false,
-            success: function(data) {
+            success: function (data) {
                 if (callBack) callBack();
                 _.check4errors(data);
                 _.clearClipboard();
                 if (dir == _.dir)
                     _.refresh();
             },
-            error: function() {
+            error: function () {
                 if (callBack) callBack();
                 $('#files > div').css({
                     opacity: "",
@@ -98,7 +98,7 @@ _.copyClipboard = function(dir) {
 
     if (failed)
         _.confirm(
-            _.label("{count} files in the Clipboard are not readable. Do you want to copy the rest?", {count:failed}),
+            _.label("{count} files in the Clipboard are not readable. Do you want to copy the rest?", {count: failed}),
             go
         )
     else
@@ -106,7 +106,7 @@ _.copyClipboard = function(dir) {
 
 };
 
-_.moveClipboard = function(dir) {
+_.moveClipboard = function (dir) {
     if (!_.clipboard || !_.clipboard.length) return;
     var files = [],
         failed = 0;
@@ -120,7 +120,7 @@ _.moveClipboard = function(dir) {
         return;
     }
 
-    var go = function(callBack) {
+    var go = function (callBack) {
         _.fadeFiles();
         $.ajax({
             type: "post",
@@ -128,13 +128,13 @@ _.moveClipboard = function(dir) {
             url: _.getURL("mv_cbd"),
             data: {dir: dir, files: files},
             async: false,
-            success: function(data) {
+            success: function (data) {
                 if (callBack) callBack();
                 _.check4errors(data);
                 _.clearClipboard();
                 _.refresh();
             },
-            error: function() {
+            error: function () {
                 if (callBack) callBack();
                 $('#files > div').css({
                     opacity: "",
@@ -154,7 +154,7 @@ _.moveClipboard = function(dir) {
         go();
 };
 
-_.deleteClipboard = function() {
+_.deleteClipboard = function () {
     if (!_.clipboard || !_.clipboard.length) return;
     var files = [],
         failed = 0;
@@ -167,21 +167,21 @@ _.deleteClipboard = function() {
         _.alert(_.label("The files in the Clipboard are not removable."))
         return;
     }
-    var go = function(callBack) {
+    var go = function (callBack) {
         _.fadeFiles();
         $.ajax({
             type: "post",
             dataType: "json",
             url: _.getURL("rm_cbd"),
-            data: {files:files},
+            data: {files: files},
             async: false,
-            success: function(data) {
+            success: function (data) {
                 if (callBack) callBack();
                 _.check4errors(data);
                 _.clearClipboard();
                 _.refresh();
             },
-            error: function() {
+            error: function () {
                 if (callBack) callBack();
                 $('#files > div').css({
                     opacity: "",
@@ -200,17 +200,17 @@ _.deleteClipboard = function() {
         go();
 };
 
-_.downloadClipboard = function() {
+_.downloadClipboard = function () {
     if (!_.clipboard || !_.clipboard.length) return;
     var files = [];
     for (i = 0; i < _.clipboard.length; i++)
         if (_.clipboard[i].readable)
             files[i] = _.clipboard[i].dir + "/" + _.clipboard[i].name;
     if (files.length)
-        _.post(_.getURL('downloadClipboard'), {files:files});
+        _.post(_.getURL('downloadClipboard'), {files: files});
 };
 
-_.clearClipboard = function() {
+_.clearClipboard = function () {
     $('#clipboard').html("");
     _.clipboard = [];
 };

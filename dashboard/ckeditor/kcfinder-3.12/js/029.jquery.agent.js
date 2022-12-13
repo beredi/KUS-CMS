@@ -1,16 +1,16 @@
 /** This file is part of KCFinder project
-  *
-  *      @desc User Agent jQuery Plugin
-  *   @package KCFinder
-  *   @version 3.12
-  *    @author Pavel Tzonkov <sunhater@sunhater.com>
-  * @copyright 2010-2014 KCFinder Project
-  *   @license http://opensource.org/licenses/GPL-3.0 GPLv3
-  *   @license http://opensource.org/licenses/LGPL-3.0 LGPLv3
-  *      @link http://kcfinder.sunhater.com
-  */
+ *
+ *      @desc User Agent jQuery Plugin
+ *   @package KCFinder
+ *   @version 3.12
+ *    @author Pavel Tzonkov <sunhater@sunhater.com>
+ * @copyright 2010-2014 KCFinder Project
+ *   @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ *   @license http://opensource.org/licenses/LGPL-3.0 LGPLv3
+ *      @link http://kcfinder.sunhater.com
+ */
 
-(function($) {
+(function ($) {
     $.agent = {};
 
     var agent = " " + navigator.userAgent,
@@ -34,18 +34,18 @@
             }
         ];
 
-    $.each(patterns, function(i, pattern) {
+    $.each(patterns, function (i, pattern) {
         var elements = agent.match(pattern.expr);
         if (elements === null)
             return;
-        $.each(elements, function(j, ag) {
+        $.each(elements, function (j, ag) {
             ag = ag.replace(/^\s+/, "").toLowerCase();
             var key = ag.replace(pattern.expr, "$1"),
                 val = true;
             if (typeof pattern.delim != "undefined") {
                 ag = ag.split(pattern.delim);
                 key = ag[0];
-                val =  ag[1];
+                val = ag[1];
             }
 
             if (typeof pattern.keys != "undefined") {
@@ -76,9 +76,9 @@
     // Check for mobile device
     $.mobile = false;
     var keys = "mobile|android|iphone|ipad|ipod|iemobile|phone".split('|');
-        a = $.agent;
+    a = $.agent;
 
-    $.each([a, a.platform], function(i, p) {
+    $.each([a, a.platform], function (i, p) {
         for (var j = 0; j < keys.length; j++) {
             if (p[keys[j]]) {
                 $.mobile = true;

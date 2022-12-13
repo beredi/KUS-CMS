@@ -18,23 +18,22 @@ if (isset($_GET['edit'])) {
 			$actual_count = $row['actual_count'];
 
 		}
-	}
-	catch (Exception $e){
+	} catch (Exception $e) {
 		echo $e;
 	}
 }
 
-if (isset($_SESSION['user_role'])){
+if (isset($_SESSION['user_role'])) {
 
-	if (isUser('admin') || isUser('moderator')){
+	if (isUser('admin') || isUser('moderator')) {
 
 
-		if (isset($_POST['edit_item'])){
+		if (isset($_POST['edit_item'])) {
 			$name = $_POST['name'];
 			$count = $_POST['count'];
 			$actual_count = $_POST['actual_count'];
 
-			try{
+			try {
 				include "includes/db.php";
 
 
@@ -59,42 +58,39 @@ if (isset($_SESSION['user_role'])){
 				$logAction = "Aktualizoval položku " . $name;
 				createLog($connection, $logAction, "inventár");
 				header('Location: inventory.php');
-			}
-			catch (Exception $e){
+			} catch (Exception $e) {
 				echo $e;
 			}
 		}
 
-	}
-	else {
+	} else {
 		header('Location: index.php');
 	}
 }
 ?>
 
 
-
-
-
 <h2>Upraviť podujatie</h2>
 
 <div class="col-md-5 col-sm-12">
-	<form action="" method="post" class="my-2" enctype="multipart/form-data">
-		<div class="form-group">
-			<label for="name" class="required">Názov:</label>
-			<input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Zadajte názov" name="name" required autocomplete="off" value="<?=$name?>">
-		</div>
-		<div class="form-group">
-			<label for="count">Počet:</label>
-			<input type="number" class="form-control" id="count" aria-describedby="count" name="count" value="<?=$count?>">
-		</div>
-		<div class="form-group">
-			<label for="actual_count" class="required">Počet na sklade:</label>
-			<input type="number" class="form-control" id="actual_count" aria-describedby="actual_count" name="actual_count" required  autocomplete="off" value="<?=$actual_count?>">
-		</div>
-		<input type="submit" class="btn btn-primary" name="edit_item" value="Upraviť">
+    <form action="" method="post" class="my-2" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name" class="required">Názov:</label>
+            <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Zadajte názov"
+                   name="name" required autocomplete="off" value="<?= $name ?>">
+        </div>
+        <div class="form-group">
+            <label for="count">Počet:</label>
+            <input type="number" class="form-control" id="count" aria-describedby="count" name="count"
+                   value="<?= $count ?>">
+        </div>
+        <div class="form-group">
+            <label for="actual_count" class="required">Počet na sklade:</label>
+            <input type="number" class="form-control" id="actual_count" aria-describedby="actual_count"
+                   name="actual_count" required autocomplete="off" value="<?= $actual_count ?>">
+        </div>
+        <input type="submit" class="btn btn-primary" name="edit_item" value="Upraviť">
 
 
-
-	</form>
+    </form>
 </div>

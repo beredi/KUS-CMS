@@ -1,21 +1,24 @@
 <h2 style="float: left;">Zoznam všetkých videov</h2>
-<a href="../videogallery.php" class="btn-info btn" style="float: right;" target="_blank"><i class=\"fab fa-youtube\"></i> Zobraziť videogalériu</a>
-<a href="?source=add_video" style="float: right; margin-right: 10px;" class="btn-success btn"><i class="fas fa-plus-circle"></i> Pridať nové video</a>
+<a href="../videogallery.php" class="btn-info btn" style="float: right;" target="_blank"><i class=\"fab
+                                                                                            fa-youtube\"></i> Zobraziť
+    videogalériu</a>
+<a href="?source=add_video" style="float: right; margin-right: 10px;" class="btn-success btn"><i
+            class="fas fa-plus-circle"></i> Pridať nové video</a>
 
 <table class="table table-hover table-striped" id="videos">
-	<thead>
-	<tr>
-		<th>Názov</th>
-		<th>Kód</th>
-		<th>Upraviť</th>
-		<th>Vymazať</th>
-	</tr>
-	</thead>
-	<tbody>
+    <thead>
+    <tr>
+        <th>Názov</th>
+        <th>Kód</th>
+        <th>Upraviť</th>
+        <th>Vymazať</th>
+    </tr>
+    </thead>
+    <tbody>
 
 	<?php
 
-	try{
+	try {
 		include 'includes/db.php';
 
 
@@ -37,38 +40,37 @@
                 <td>$title</td>
                 <td>$code</td>
                 <td class=\"text-right tdWidth\">";
-			if (isUser('admin') || isUser('moderator')){
+			if (isUser('admin') || isUser('moderator')) {
 				echo "<a href=\"videogallery.php?source=edit_video&edit={$id}\"><i class=\"far fa-edit\"></i> Upraviť</a>
                 ";
 			}
 
 			echo " </td>
                 <td class=\"text-right tdWidth\">";
-			if (isUser('admin') || isUser('moderator')){
+			if (isUser('admin') || isUser('moderator')) {
 				echo "<a href=\"videogallery.php?delete=$id\" class='delete-button'><i class=\"far fa-trash-alt\"></i> Vymazať</a>";
 			}
-			echo    "</td>
+			echo "</td>
             </tr>
             ";
 
 		}
 
 
-	}
-	catch (Exception $e){
+	} catch (Exception $e) {
 		echo $e;
 	}
 	?>
 
 
-	</tbody>
+    </tbody>
 </table>
 
 <?php
 
-if (isset($_GET['delete'])){
+if (isset($_GET['delete'])) {
 	$id = $_GET['delete'];
-	try{ //ziska nazov podla ID
+	try { //ziska nazov podla ID
 		include 'includes/db.php';
 
 
@@ -83,15 +85,14 @@ if (isset($_GET['delete'])){
 
 		$title = $result['title'];
 
-	}
-	catch (Exception $e){
+	} catch (Exception $e) {
 		echo $e;
 	}
 
-	if (isset($_SESSION['user_role'])){
-		if (isUser('admin') || isUser('moderator')){
+	if (isset($_SESSION['user_role'])) {
+		if (isUser('admin') || isUser('moderator')) {
 
-			try{
+			try {
 				include 'includes/db.php';
 
 				$query = "DELETE FROM videogallery WHERE id=:id";
@@ -105,8 +106,7 @@ if (isset($_GET['delete'])){
 				$logAction = "Vymazal video " . $title;
 				createLog($connection, $logAction, "videogallery");
 				header('Location: videogallery.php');
-			}
-			catch (Exception $e){
+			} catch (Exception $e) {
 				echo $e;
 			}
 		}
@@ -117,10 +117,10 @@ if (isset($_GET['delete'])){
 
 
 <script>
-$(document).ready( function () {
-    $('#videos').DataTable( {
-        "order": [],
-        "pageLength": 10
-    } );
-} );
+    $(document).ready(function () {
+        $('#videos').DataTable({
+            "order": [],
+            "pageLength": 10
+        });
+    });
 </script>

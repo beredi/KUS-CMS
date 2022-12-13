@@ -10,12 +10,11 @@ if (isset($_SESSION['user_role'])) {
 		$file = $_FILES['file']['name'];
 		$file_temp = $_FILES['file']['tmp_name'];
 
-		if(isset($file)){
-			if(!empty($file)){
+		if (isset($file)) {
+			if (!empty($file)) {
 				move_uploaded_file($file_temp, "../images/files/$file");
 
-			}
-			else {
+			} else {
 				echo 'Neúspešné nahrávanie súboru';
 			}
 		}
@@ -54,20 +53,22 @@ if (isset($_SESSION['user_role'])) {
 <h2>Pridať súbor</h2>
 
 <form action="" method="post" enctype="multipart/form-data" class="my-2">
-	<div class="form-group">
-		<label for="name" class="required">Názov:</label>
-		<input type="text" class="form-control" id="name" placeholder="Zadajte názov súboru" name="name" required autocomplete="off">
-	</div>
-	<div class="form-group">
-		<label for="description">Popis:</label>
-		<input type="text" class="form-control" id="description" placeholder="Zadajte popis súboru" name="description" autocomplete="off">
-	</div>
-	<div class="form-group">
-		<label for="file" class="required"><i class="fas fa-upload"></i> Súbor:</label>
+    <div class="form-group">
+        <label for="name" class="required">Názov:</label>
+        <input type="text" class="form-control" id="name" placeholder="Zadajte názov súboru" name="name" required
+               autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label for="description">Popis:</label>
+        <input type="text" class="form-control" id="description" placeholder="Zadajte popis súboru" name="description"
+               autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label for="file" class="required"><i class="fas fa-upload"></i> Súbor:</label>
         <input type="file" class="form-control-file" id="file" name="file" required>
-	</div>
+    </div>
 
 
-	<input type="submit" class="btn btn-primary" name="add_file" value="Pridať">
+    <input type="submit" class="btn btn-primary" name="add_file" value="Pridať">
 
 </form>

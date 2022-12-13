@@ -34,7 +34,7 @@ if (isset($_SESSION['user_role']) && isset($_GET['edit'])) {
 			echo $e;
 		}
 	}
-	if (isset($_GET['edit'])){
+	if (isset($_GET['edit'])) {
 		$id = $_GET['edit'];
 		try {
 			include "includes/db.php";
@@ -48,25 +48,27 @@ if (isset($_SESSION['user_role']) && isset($_GET['edit'])) {
 			$video = $send_info->fetch(PDO::FETCH_ASSOC);
 			?>
 
-			<h2>Upraviť video</h2>
+            <h2>Upraviť video</h2>
 
-			<form action="" method="post" enctype="multipart/form-data" class="my-2">
-				<div class="form-group">
-					<label for="post_title" class="required">Názov:</label>
-					<input type="text" class="form-control" id="title" placeholder="Zadajte názov videa" name="title" required autocomplete="off" value="<?=$video['title']?>">
-				</div>
-				<div class="form-group">
-					<label for="post_content" class="required">Kód:</label>
-					<textarea class="form-control" rows="10" id="code" name="code" placeholder="Sem skopírujte EMBED kód bez značiek IFRAME a bez height a width..." required><?=$video['code']?></textarea>
-				</div>
+            <form action="" method="post" enctype="multipart/form-data" class="my-2">
+                <div class="form-group">
+                    <label for="post_title" class="required">Názov:</label>
+                    <input type="text" class="form-control" id="title" placeholder="Zadajte názov videa" name="title"
+                           required autocomplete="off" value="<?= $video['title'] ?>">
+                </div>
+                <div class="form-group">
+                    <label for="post_content" class="required">Kód:</label>
+                    <textarea class="form-control" rows="10" id="code" name="code"
+                              placeholder="Sem skopírujte EMBED kód bez značiek IFRAME a bez height a width..."
+                              required><?= $video['code'] ?></textarea>
+                </div>
 
 
-				<input type="submit" class="btn btn-primary" name="edit_video" value="Upraviť">
+                <input type="submit" class="btn btn-primary" name="edit_video" value="Upraviť">
 
 
-
-			</form>
-<?php
+            </form>
+			<?php
 
 
 		} catch (Exception $e) {

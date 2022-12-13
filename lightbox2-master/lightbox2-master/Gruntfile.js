@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   grunt.initConfig({
     concat: {
@@ -62,8 +62,8 @@ module.exports = function(grunt) {
     },
     cssmin: {
       minify: {
-          src: 'dist/css/lightbox.css',
-          dest: 'dist/css/lightbox.min.css'
+        src: 'dist/css/lightbox.css',
+        dest: 'dist/css/lightbox.min.css'
       }
     }
   });

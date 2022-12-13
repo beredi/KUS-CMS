@@ -1,23 +1,23 @@
 /** This file is part of KCFinder project
-  *
-  *      @desc Object initializations
-  *   @package KCFinder
-  *   @version 3.12
-  *    @author Pavel Tzonkov <sunhater@sunhater.com>
-  * @copyright 2010-2014 KCFinder Project
-  *   @license http://opensource.org/licenses/GPL-3.0 GPLv3
-  *   @license http://opensource.org/licenses/LGPL-3.0 LGPLv3
-  *      @link http://kcfinder.sunhater.com
-  */
+ *
+ *      @desc Object initializations
+ *   @package KCFinder
+ *   @version 3.12
+ *    @author Pavel Tzonkov <sunhater@sunhater.com>
+ * @copyright 2010-2014 KCFinder Project
+ *   @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ *   @license http://opensource.org/licenses/LGPL-3.0 LGPLv3
+ *      @link http://kcfinder.sunhater.com
+ */
 
-_.init = function() {
+_.init = function () {
     if (!_.checkAgent()) return;
 
-    $('body').click(function() {
+    $('body').click(function () {
         _.menu.hide();
     }).rightClick();
 
-    $('#menu').unbind().click(function() {
+    $('#menu').unbind().click(function () {
         return false;
     });
 
@@ -34,13 +34,13 @@ _.init = function() {
     _.scrollbarWidth = 100 - div.width();
     div.parent().remove();
 
-    $.each($.agent, function(i) {
+    $.each($.agent, function (i) {
         if (i != "platform")
             $('body').addClass(i)
     });
 
     if ($.agent.platform)
-        $.each($.agent.platform, function(i) {
+        $.each($.agent.platform, function (i) {
             $('body').addClass(i)
         });
 
@@ -48,7 +48,7 @@ _.init = function() {
         $('body').addClass("mobile");
 };
 
-_.checkAgent = function() {
+_.checkAgent = function () {
     if (($.agent.msie && !$.agent.opera && !$.agent.chromeframe && (parseInt($.agent.msie) < 9)) ||
         ($.agent.opera && (parseInt($.agent.version) < 10)) ||
         ($.agent.firefox && (parseFloat($.agent.firefox) < 1.8))
@@ -63,7 +63,7 @@ _.checkAgent = function() {
     return true;
 };
 
-_.initOpeners = function() {
+_.initOpeners = function () {
 
     try {
 
@@ -74,7 +74,7 @@ _.initOpeners = function() {
             else
                 _.opener.callBack = true;
 
-        // TinyMCE 4
+            // TinyMCE 4
         } else if (_.opener.name == "tinymce4")
             _.opener.callBack = true;
 
@@ -88,7 +88,7 @@ _.initOpeners = function() {
             } else
                 _.opener.CKEditor = null;
 
-        // FCKeditor
+            // FCKeditor
         } else if ((!_.opener.name || (_.opener.name == "fckeditor")) && window.opener && window.opener.SetUrl) {
             _.opener.name = "fckeditor";
             _.opener.callBack = true;
@@ -104,24 +104,25 @@ _.initOpeners = function() {
                     : window.parent.KCFinder.callBack;
 
             if ((
-                    window.opener &&
-                    window.opener.KCFinder &&
-                    window.opener.KCFinder.callBackMultiple
-                ) || (
-                    window.parent &&
-                    window.parent.KCFinder &&
-                    window.parent.KCFinder.callBackMultiple
-                )
+                window.opener &&
+                window.opener.KCFinder &&
+                window.opener.KCFinder.callBackMultiple
+            ) || (
+                window.parent &&
+                window.parent.KCFinder &&
+                window.parent.KCFinder.callBackMultiple
+            )
             )
                 _.opener.callBackMultiple = window.opener
                     ? window.opener.KCFinder.callBackMultiple
                     : window.parent.KCFinder.callBackMultiple;
         }
 
-    } catch(e) {}
+    } catch (e) {
+    }
 };
 
-_.initContent = function() {
+_.initContent = function () {
     $('div#folders').html(_.label("Loading folders..."));
     $('div#files').html(_.label("Loading files..."));
     $.ajax({
@@ -129,7 +130,7 @@ _.initContent = function() {
         dataType: "json",
         url: _.getURL("init"),
         async: false,
-        success: function(data) {
+        success: function (data) {
             if (_.check4errors(data))
                 return;
             _.dirWritable = data.dirWritable;
@@ -140,25 +141,25 @@ _.initContent = function() {
             _.files = data.files ? data.files : [];
             _.orderFiles();
         },
-        error: function() {
+        error: function () {
             $('div#folders').html(_.label("Unknown error."));
             $('div#files').html(_.label("Unknown error."));
         }
     });
 };
 
-_.initResizer = function() {
+_.initResizer = function () {
     var cursor = ($.agent.opera) ? 'move' : 'col-resize';
     $('#resizer').css('cursor', cursor).draggable({
         axis: 'x',
-        start: function() {
+        start: function () {
             $(this).css({
                 opacity: "0.4",
                 filter: "alpha(opacity=40)"
             });
             $('#all').css('cursor', cursor);
         },
-        stop: function() {
+        stop: function () {
             $(this).css({
                 opacity: "0",
                 filter: "alpha(opacity=0)"
@@ -172,7 +173,7 @@ _.initResizer = function() {
                 left = parseInt($(this).css('left')) + parseInt($(this).css('width')),
                 w = 0, r;
 
-            $('#toolbar a').each(function() {
+            $('#toolbar a').each(function () {
                 if ($(this).css('display') != "none")
                     w += $(this).outerWidth(true);
             });
@@ -201,7 +202,7 @@ _.initResizer = function() {
     });
 };
 
-_.resize = function() {
+_.resize = function () {
     var jLeft = $('#left'),
         jRight = $('#right'),
         jStatus = $('#status'),
@@ -237,7 +238,7 @@ _.resize = function() {
     });
 };
 
-_.setTitle = function(title) {
+_.setTitle = function (title) {
     document.title = title;
     if (_.opener.name == "tinymce")
         tinyMCEPopup.editor.windowManager.setTitle(window, title);
@@ -248,7 +249,7 @@ _.setTitle = function(title) {
     }
 };
 
-_.fixFilesHeight = function() {
+_.fixFilesHeight = function () {
     var jFiles = $('#files'),
         jSettings = $('#settings');
 

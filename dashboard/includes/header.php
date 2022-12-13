@@ -2,8 +2,8 @@
 
 session_start();
 
-if($_SESSION['user_email'] == null){
-    header('Location: ../login.php');
+if ($_SESSION['user_email'] == null) {
+	header('Location: ../login.php');
 }
 ?>
 
@@ -20,8 +20,9 @@ if($_SESSION['user_email'] == null){
 
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
-<!--        FONT AWESOME-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!--        FONT AWESOME-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <!--FAVICON-->
     <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
@@ -32,7 +33,7 @@ if($_SESSION['user_email'] == null){
     <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="../faviconapple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="../favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../favicon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
@@ -43,9 +44,14 @@ if($_SESSION['user_email'] == null){
 
     <title>Dashboard</title>
     <!--JQUERY-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -57,7 +63,7 @@ if($_SESSION['user_email'] == null){
 
     <style type="text/css">
         div.cke_contents {
-            height: 400px!important;
+            height: 400px !important;
         }
     </style>
 
@@ -65,9 +71,10 @@ if($_SESSION['user_email'] == null){
 
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow d-md-flex d-sm-none">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.php"><img src="../images/znak-copy.png" width="25px"> KUS Jána Kollára</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.php"><img src="../images/znak-copy.png" width="25px"> KUS
+        Jána Kollára</a>
 
-<?php
+	<?php
 
-    include 'includes/access.php';
-?>
+	include 'includes/access.php';
+	?>

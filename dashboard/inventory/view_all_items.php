@@ -1,27 +1,27 @@
-
-
 <h2>Všetky položky</h2>
 <a href="inventory.php?source=add_item" class="btn btn-primary" style="margin-bottom: 5px;">Pridať položku</a>
 <form action="inventory/inventory_controller.php" method="post" style="display: inline">
-    <button type="submit" name='export-to-excel' class="btn btn-success" style="margin-bottom: 5px;" id="export-to-excel-inventory"><i class="fas fa-file-excel"></i> Export do CSV</button>
+    <button type="submit" name='export-to-excel' class="btn btn-success" style="margin-bottom: 5px;"
+            id="export-to-excel-inventory"><i class="fas fa-file-excel"></i> Export do CSV
+    </button>
 </form>
 
 <table class="table table-hover table-striped" id="items">
-	<thead>
-	<tr>
-		<th>ID</th>
-		<th>Názov</th>
-		<th>Počet</th>
-		<th>Počet na sklade</th>
-		<th></th>
-		<th></th>
-	</tr>
-	</thead>
-	<tbody>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Názov</th>
+        <th>Počet</th>
+        <th>Počet na sklade</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
 
 	<?php
 
-	try{
+	try {
 		include 'includes/db.php';
 
 
@@ -42,8 +42,8 @@
                 <td>$actual_count</td>
               <td class=\"tdWidth\"><a href=\"inventory.php?source=edit_item&edit={$id}\"><i class=\"far fa-edit\"></i> Upraviť</a></td>
             <td class=\"tdWidth\">";
-			if (isUser('admin')){
-				echo  " <a class='delete-button' href=\"inventory.php?delete=$id\"><i class=\"far fa-trash-alt\"></i> Vymazať</a>
+			if (isUser('admin')) {
+				echo " <a class='delete-button' href=\"inventory.php?delete=$id\"><i class=\"far fa-trash-alt\"></i> Vymazať</a>
             ";
 			}
 			echo "</td>
@@ -53,22 +53,21 @@
 		}
 
 
-	}
-	catch (Exception $e){
+	} catch (Exception $e) {
 		echo $e;
 	}
 	?>
 
 
-	</tbody>
+    </tbody>
 </table>
 
 
 <?php
 
-if (isset($_GET['delete'])){
+if (isset($_GET['delete'])) {
 	$id = $_GET['delete'];
-	try{ //ziska nazov podla ID
+	try { //ziska nazov podla ID
 		include 'includes/db.php';
 
 
@@ -80,17 +79,16 @@ if (isset($_GET['delete'])){
 		$result = $send_info->fetch(PDO::FETCH_ASSOC);
 		$name = $result['name'];
 
-	}
-	catch (Exception $e){
+	} catch (Exception $e) {
 		echo $e;
 	}
 
-	if (isset($_SESSION['user_role'])){
+	if (isset($_SESSION['user_role'])) {
 
 
-		if (isUser('admin')){
+		if (isUser('admin')) {
 
-			try{
+			try {
 				include 'includes/db.php';
 
 				$query = "DELETE FROM inventory WHERE id=:id";
@@ -106,8 +104,7 @@ if (isset($_GET['delete'])){
 				createLog($connection, $logAction, "inventár");
 
 				header('Location: inventory.php');
-			}
-			catch (Exception $e){
+			} catch (Exception $e) {
 				echo $e;
 			}
 		}
@@ -118,12 +115,11 @@ if (isset($_GET['delete'])){
 ?>
 
 
-
 <script>
-$(document).ready( function () {
-    $('#items').DataTable( {
-        "order": [],
-        "pageLength": 10
-    } );
-} );
+    $(document).ready(function () {
+        $('#items').DataTable({
+            "order": [],
+            "pageLength": 10
+        });
+    });
 </script>

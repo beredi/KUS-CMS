@@ -3,9 +3,9 @@ include 'includes/header.php';
 ?>
 <body>
 <div class="container">
-    <?php
-    include 'includes/navbar.php';
-    ?>
+	<?php
+	include 'includes/navbar.php';
+	?>
 
     <!--CAROUSEL-->
     <div id="myCarousel" class="carousel slide hidden-sm hidden-xs" data-ride="carousel">
@@ -18,52 +18,51 @@ include 'includes/header.php';
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-            <?php
+			<?php
 
 
-            try {
+			try {
 
-                include "dashboard/includes/db.php";
+				include "dashboard/includes/db.php";
 
-                $query_select = "SELECT * FROM news";
-                $send_info = $connection->prepare($query_select);
+				$query_select = "SELECT * FROM news";
+				$send_info = $connection->prepare($query_select);
 
-                $send_info->execute();
+				$send_info->execute();
 
 
-                while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
-                    $value = $row['news_value'];
-                    }
-            }
-            catch (Exception $e){
+				while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
+					$value = $row['news_value'];
+				}
+			} catch (Exception $e) {
 
-            }
-            if ($value==0) {
+			}
+			if ($value == 0) {
 
-                try {
+				try {
 
-                include "dashboard/includes/db.php";
-                $query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_id DESC LIMIT 3";
+					include "dashboard/includes/db.php";
+					$query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_id DESC LIMIT 3";
 
-                $select_info = $connection->prepare($query);
+					$select_info = $connection->prepare($query);
 
-                $select_info->execute();
+					$select_info->execute();
 
-                $i = 1;
-                while ($row = $select_info->fetch(PDO::FETCH_ASSOC)) {
-                    $post_title = $row['post_title'];
-                    $post_image = $row['post_image'];
-                    $post_id = $row['post_id'];
+					$i = 1;
+					while ($row = $select_info->fetch(PDO::FETCH_ASSOC)) {
+						$post_title = $row['post_title'];
+						$post_image = $row['post_image'];
+						$post_id = $row['post_id'];
 
-                    echo "
+						echo "
                     
             <div class=\"item ";
 
-                    if ($i == 1) {
-                        echo 'active';
-                    }
+						if ($i == 1) {
+							echo 'active';
+						}
 
-                    echo "\">
+						echo "\">
                 <div style=\"width: 100%; height: 640px;\">
                     <img src=\"images/articles/$post_image\"  alt=\"$post_title\" style=\"width: 100%; margin: auto 0;\">
                 </div>
@@ -74,40 +73,37 @@ include 'includes/header.php';
             </div>
                     ";
 
-                    $i++;
-                }
-            }
-                catch (Exception $e){
-                    echo $e;
-                }
-            }
-            else
-            {
+						$i++;
+					}
+				} catch (Exception $e) {
+					echo $e;
+				}
+			} else {
 
-                try {
+				try {
 
-                    include "dashboard/includes/db.php";
-                    $query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_position DESC LIMIT 3";
+					include "dashboard/includes/db.php";
+					$query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_position DESC LIMIT 3";
 
-                    $select_info = $connection->prepare($query);
+					$select_info = $connection->prepare($query);
 
-                    $select_info->execute();
+					$select_info->execute();
 
-                    $i = 1;
-                    while ($row = $select_info->fetch(PDO::FETCH_ASSOC)) {
-                        $post_title = $row['post_title'];
-                        $post_image = $row['post_image'];
-                        $post_id = $row['post_id'];
+					$i = 1;
+					while ($row = $select_info->fetch(PDO::FETCH_ASSOC)) {
+						$post_title = $row['post_title'];
+						$post_image = $row['post_image'];
+						$post_id = $row['post_id'];
 
-                        echo "
+						echo "
                     
             <div class=\"item ";
 
-                        if ($i == 1) {
-                            echo 'active';
-                        }
+						if ($i == 1) {
+							echo 'active';
+						}
 
-                        echo "\">
+						echo "\">
                 <div style=\"width: 100%; height: 640px;\">
                     <img src=\"images/articles/$post_image\"  alt=\"$post_title\" style=\"width: 100%; margin: auto 0;\">
                 </div>
@@ -118,21 +114,17 @@ include 'includes/header.php';
             </div>
                     ";
 
-                        $i++;
-                    }
-                }
-                catch (Exception $e){
-                    echo $e;
-                }
+						$i++;
+					}
+				} catch (Exception $e) {
+					echo $e;
+				}
 
 
+			}
 
 
-            }
-
-
-
-            ?>
+			?>
 
         </div>
 
@@ -149,25 +141,25 @@ include 'includes/header.php';
     <!--SMALL SCREEN-->
     <div class="row hidden-lg hidden-md">
         <h3 style="margin-left: 2px;">Posledné články:</h3>
-        <?php
+		<?php
 
-        try{
-            include 'dashboard/includes/db.php';
-
-
-            $query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_id DESC LIMIT 3";
-
-            $send_info = $connection->prepare($query);
-
-            $send_info->execute();
-
-            while ($row = $send_info->fetch(PDO::FETCH_ASSOC)){
-                $post_id = $row['post_id'];
-                $post_title = $row['post_title'];
-                $post_image = $row['post_image'];
+		try {
+			include 'dashboard/includes/db.php';
 
 
-                echo "        
+			$query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_id DESC LIMIT 3";
+
+			$send_info = $connection->prepare($query);
+
+			$send_info->execute();
+
+			while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
+				$post_id = $row['post_id'];
+				$post_title = $row['post_title'];
+				$post_image = $row['post_image'];
+
+
+				echo "        
             <div class=\"media\">
                 <div class=\"media-top top\">
                     <a href=\"clanok.php?p_id=$post_id\"><img src=\"images/articles/$post_image\" class=\"media-object\" style=\"width:100%\" alt=\"$post_title\"></a>
@@ -177,13 +169,12 @@ include 'includes/header.php';
                 </div>
             </div>
         ";
-            }
+			}
 
-        }
-        catch (Exception $e){
-            echo $e;
-        }
-        ?>
+		} catch (Exception $e) {
+			echo $e;
+		}
+		?>
     </div>
 </div>
 <?php include 'includes/footer.php'; ?>
@@ -192,7 +183,6 @@ include 'includes/header.php';
 <?php
 footer("other");
 ?>
-
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

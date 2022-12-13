@@ -1,14 +1,14 @@
 <?php
 
 
-if (isset($_POST['sex'])){
+if (isset($_POST['sex'])) {
 
 	try {
 		include '../includes/db.php';
 
 		$sex = $_POST['sex'];
 		$query = "SELECT name, lastname FROM members";
-		if($sex != 'all') $query .= " WHERE  sex = '" . $sex . "'";
+		if ($sex != 'all') $query .= " WHERE  sex = '" . $sex . "'";
 		$query .= " ORDER BY RAND() LIMIT 1";
 
 
@@ -26,8 +26,7 @@ if (isset($_POST['sex'])){
 		);
 
 		echo json_encode($result);
-	}
-	catch (Exception $e){
+	} catch (Exception $e) {
 		echo $e;
 	}
 

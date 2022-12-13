@@ -1,25 +1,24 @@
-
 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
     <h5>Posledné články:</h5>
-<?php
+	<?php
 
-try{
-include 'dashboard/includes/db.php';
-
-
-$query = "SELECT * FROM posts WHERE post_status ='published' ORDER BY post_id DESC LIMIT 3";
-
-    $send_info = $connection->prepare($query);
-
-    $send_info->execute();
-
-    while ($row = $send_info->fetch(PDO::FETCH_ASSOC)){
-        $post_id = $row['post_id'];
-        $post_title = $row['post_title'];
-        $post_image = $row['post_image'];
+	try {
+		include 'dashboard/includes/db.php';
 
 
-        echo "        
+		$query = "SELECT * FROM posts WHERE post_status ='published' ORDER BY post_id DESC LIMIT 3";
+
+		$send_info = $connection->prepare($query);
+
+		$send_info->execute();
+
+		while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
+			$post_id = $row['post_id'];
+			$post_title = $row['post_title'];
+			$post_image = $row['post_image'];
+
+
+			echo "        
             <div class=\"media\">
                 <div class=\"media-top top\">
                     <a href=\"clanok.php?p_id=$post_id\"><img src=\"images/articles/$post_image\" class=\"media-object\" style=\"width:100%\" alt=\"$post_title\"></a>
@@ -29,13 +28,12 @@ $query = "SELECT * FROM posts WHERE post_status ='published' ORDER BY post_id DE
                 </div>
             </div>
         ";
-    }
+		}
 
-}
-catch (Exception $e){
-    echo $e;
-}
-?></div>
+	} catch (Exception $e) {
+		echo $e;
+	}
+	?></div>
 
 
 <!--<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 clanokBody">

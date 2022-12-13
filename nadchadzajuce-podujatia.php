@@ -1,42 +1,41 @@
-
 <?php
 include 'includes/header.php';
 ?>
 <body>
 <div class="container">
-    <?php
-    include 'includes/navbar.php';
-    ?>
+	<?php
+	include 'includes/navbar.php';
+	?>
     <div class="row">
         <div class="col-lg-12">
             <h1>Nadchádzajúce podujatia<br>
                 <small>Pozrite si, čo všetko plánujeme v blízkej budúcnosti.</small></h1>
         </div>
     </div>
-    <?php
-    try{
-        include 'dashboard/includes/db.php';
+	<?php
+	try {
+		include 'dashboard/includes/db.php';
 
-        $query = "SELECT * FROM events WHERE DATE(event_date) >= curdate() ORDER BY event_date ASC";
+		$query = "SELECT * FROM events WHERE DATE(event_date) >= curdate() ORDER BY event_date ASC";
 
-        $send_info = $connection->prepare($query);
-        $send_info->execute();
+		$send_info = $connection->prepare($query);
+		$send_info->execute();
 
-        $count = $send_info->rowCount();
-        if($count==0){
-            echo "<h3>Žiadne informácie o nadchádzajúcich podujatiach.</h3>";
-        }
-        while($row = $send_info->fetch(PDO::FETCH_ASSOC)){
-            $event_name = $row['event_name'];
+		$count = $send_info->rowCount();
+		if ($count == 0) {
+			echo "<h3>Žiadne informácie o nadchádzajúcich podujatiach.</h3>";
+		}
+		while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
+			$event_name = $row['event_name'];
 
-            $event_date1 = strtotime($row['event_date']);
-            $event_date = date( 'd. M. Y', $event_date1 );
-            $event_time = $row['event_time'];
-            $event_place = $row['event_place'];
-            $event_photo = $row['event_photo'];
-            $event_content = $row['event_content'];
+			$event_date1 = strtotime($row['event_date']);
+			$event_date = date('d. M. Y', $event_date1);
+			$event_time = $row['event_time'];
+			$event_place = $row['event_place'];
+			$event_photo = $row['event_photo'];
+			$event_content = $row['event_content'];
 
-            echo "
+			echo "
       
         <div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12 nextEvent\">
             <div class=\"media\">
@@ -56,12 +55,12 @@ include 'includes/header.php';
             ";
 
 
-        }
+		}
 
-    }catch (Exception $e){
-        echo $e;
-    }
-    ?>
+	} catch (Exception $e) {
+		echo $e;
+	}
+	?>
 </div>
 
 <!--FOOTER-->

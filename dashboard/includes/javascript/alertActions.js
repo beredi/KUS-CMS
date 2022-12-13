@@ -1,8 +1,7 @@
+$(document).ready(function () {
 
-$( document ).ready(function (){
-
-    $('.delete-button').click(function (){
-        if (!confirm('Chcete vymazať túto položku?')){
+    $('.delete-button').click(function () {
+        if (!confirm('Chcete vymazať túto položku?')) {
             return false;
         }
     });

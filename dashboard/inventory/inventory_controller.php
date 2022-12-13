@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['export-to-excel'])){
+if (isset($_POST['export-to-excel'])) {
 	try {
 		include '../includes/db.php';
 
@@ -18,20 +18,19 @@ if (isset($_POST['export-to-excel'])){
 			$setData .= trim($rowData) . "\n";
 		}
 
-		$filename = 'inventar-'.date('d-m-Y').'.csv';
+		$filename = 'inventar-' . date('d-m-Y') . '.csv';
 		$data = ($columnHeader) . "\n" . $setData . "\n";
 		$data = explode("\n", $data);
 		header('Content-Encoding: UTF-8');
 		header('Content-type: text/csv; charset=UTF-8');
-		header('Content-Disposition: attachment; filename="'.$filename.'"');
+		header('Content-Disposition: attachment; filename="' . $filename . '"');
 		$fp = fopen('php://output', 'wb');
-		foreach ( $data as $line ) {
+		foreach ($data as $line) {
 			$val = explode("\t", $line);
 			fputcsv($fp, $val);
 		}
 		fclose($fp);
-	}
-	catch (Exception $e){
+	} catch (Exception $e) {
 		echo $e;
 	}
 }

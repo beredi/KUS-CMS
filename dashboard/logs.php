@@ -14,33 +14,34 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
 <?php
 ?>
 <?php
-if (isset($_SESSION['user_role'])){
-    if (!strpos($_SESSION['user_role'],'admin')){
-        header('Location: index.php');
-    }
+if (isset($_SESSION['user_role'])) {
+	if (!strpos($_SESSION['user_role'], 'admin')) {
+		header('Location: index.php');
+	}
 }
 ?>
 <!--LG SCREEN NAVBAR-->
 <div class="col-md-10 col-sm-12 d-none d-md-inline">
 
 
-    <a class="float-left text-light mt-2" href="../index.php" target="_blank"><i class="fas fa-external-link-alt"></i> Zobraziť stránku</a>
+    <a class="float-left text-light mt-2" href="../index.php" target="_blank"><i class="fas fa-external-link-alt"></i>
+        Zobraziť stránku</a>
     <!--    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
 
 
     <!--        USER INFO-->
 
-    <?php
-    include 'includes/profile_dropdown.php';
-    ?>
+	<?php
+	include 'includes/profile_dropdown.php';
+	?>
 </div><!--//LG SCREEN NAVBAR-->
 </nav>
 
 <div class="container-fluid">
     <div class="row">
-        <?php
-        include "includes/navigation.php";  //INCLUDE NAVIGATION
-        ?>
+		<?php
+		include "includes/navigation.php";  //INCLUDE NAVIGATION
+		?>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -59,28 +60,28 @@ if (isset($_SESSION['user_role'])){
                 </thead>
                 <tbody>
 
-                <?php
+				<?php
 
-                try{
-                    include 'includes/db.php';
+				try {
+					include 'includes/db.php';
 
 
-                    $query = "SELECT * from logs INNER JOIN users on logs.log_author=users.user_id ORDER BY id DESC";
+					$query = "SELECT * from logs INNER JOIN users on logs.log_author=users.user_id ORDER BY id DESC";
 
-                    $send_info = $connection->prepare($query);
+					$send_info = $connection->prepare($query);
 
-                    $send_info->execute();
+					$send_info->execute();
 
-                    while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
-                        $log_id = $row['id'];
-                        $log_date = $row['log_date'];
-                        $log_author = $row['log_author'];
-                        $log_section = $row['log_section'];
-                        $log_action = $row['log_action'];
-                        $user_name = $row['user_name'];
-                        $user_lastname = $row['user_lastname'];
+					while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
+						$log_id = $row['id'];
+						$log_date = $row['log_date'];
+						$log_author = $row['log_author'];
+						$log_section = $row['log_section'];
+						$log_action = $row['log_action'];
+						$user_name = $row['user_name'];
+						$user_lastname = $row['user_lastname'];
 
-                        echo "
+						echo "
             
             <tr>
                 <td>$log_date</td>
@@ -90,29 +91,26 @@ if (isset($_SESSION['user_role'])){
     
             <td class=\"tdWidth\">";
 
-                        if (strpos($_SESSION['user_role'], 'admin')){
-                            echo  " <a href=\"logs.php?delete=$log_id\"><i class=\"far fa-trash-alt\"></i> Vymazať</a>
+						if (strpos($_SESSION['user_role'], 'admin')) {
+							echo " <a href=\"logs.php?delete=$log_id\"><i class=\"far fa-trash-alt\"></i> Vymazať</a>
             ";
-                        }
+						}
 
-                        echo "</td>
+						echo "</td>
             </tr>";
 
 
-                    }
+					}
 
 
-                }
-                catch (Exception $e){
-                    echo $e;
-                }
-                ?>
+				} catch (Exception $e) {
+					echo $e;
+				}
+				?>
 
 
                 </tbody>
             </table>
-
-
 
 
         </main>
@@ -129,31 +127,30 @@ include 'includes/footer.php';
 
 <?php
 
-if (isset($_GET['delete'])){
-    $log_id = $_GET['delete'];
+if (isset($_GET['delete'])) {
+	$log_id = $_GET['delete'];
 
 
-    if (isset($_SESSION['user_role'])){
+	if (isset($_SESSION['user_role'])) {
 
 
-        if (strpos($_SESSION['user_role'], 'admin')){
+		if (strpos($_SESSION['user_role'], 'admin')) {
 
-            try{
-                include 'includes/db.php';
+			try {
+				include 'includes/db.php';
 
-                $query = "DELETE FROM logs WHERE id=:log_id";
+				$query = "DELETE FROM logs WHERE id=:log_id";
 
 
-                $send_info = $connection->prepare($query);
-                $send_info->bindParam(':log_id', $log_id);
-                $send_info->execute();
-                header('Location: logs.php');
-            }
-            catch (Exception $e){
-                echo $e;
-            }
-        }
-    }
+				$send_info = $connection->prepare($query);
+				$send_info->bindParam(':log_id', $log_id);
+				$send_info->execute();
+				header('Location: logs.php');
+			} catch (Exception $e) {
+				echo $e;
+			}
+		}
+	}
 
 }
 
@@ -161,10 +158,10 @@ if (isset($_GET['delete'])){
 
 
 <script>
-$(document).ready( function () {
-    $('#logs').DataTable( {
-        "order": [],
-        "pageLength": 10
-    } );
-} );
+    $(document).ready(function () {
+        $('#logs').DataTable({
+            "order": [],
+            "pageLength": 10
+        });
+    });
 </script>

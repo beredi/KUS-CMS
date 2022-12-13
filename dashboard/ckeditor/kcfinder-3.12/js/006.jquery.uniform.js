@@ -144,7 +144,7 @@ Enjoy!
      * @param Object options Uniform options for this element
      */
     function classUpdateChecked($tag, $el, options) {
-        setTimeout(function() { // sunhater@sunhater.com
+        setTimeout(function () { // sunhater@sunhater.com
 
             var c = "checked",
                 isChecked = $el.is(":" + c);
@@ -189,18 +189,18 @@ Enjoy!
      */
     function divSpanWrap($el, $container, method) {
         switch (method) {
-        case "after":
-            // Result:  <element /> <container />
-            $el.after($container);
-            return $el.next();
-        case "before":
-            // Result:  <container /> <element />
-            $el.before($container);
-            return $el.prev();
-        case "wrap":
-            // Result:  <container> <element /> </container>
-            $el.wrap($container);
-            return $el.parent();
+            case "after":
+                // Result:  <element /> <container />
+                $el.after($container);
+                return $el.next();
+            case "before":
+                // Result:  <container /> <element />
+                $el.before($container);
+                return $el.prev();
+            case "wrap":
+                // Result:  <container> <element /> </container>
+                $el.wrap($container);
+                return $el.parent();
         }
 
         return null;
@@ -810,7 +810,7 @@ Enjoy!
                         // span and div accordingly
                         sizingInvisible($el, function () {
                             // Force "display: block" - related to bug #287
-                            swap($([ $span[0], $div[0] ]), {
+                            swap($([$span[0], $div[0]]), {
                                 display: "block"
                             }, function () {
                                 var spanPad;
