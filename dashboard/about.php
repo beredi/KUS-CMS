@@ -102,6 +102,7 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
 </div><!--//LG SCREEN NAVBAR-->
 </nav>
 <div class="container-fluid">
+    <div class="row">
         <?php
         include "includes/navigation.php";  //INCLUDE NAVIGATION
 
@@ -199,6 +200,7 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
 
     <?php
         }?>
+    </div>
 </div>
 
 <script>
