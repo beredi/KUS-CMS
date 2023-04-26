@@ -18,8 +18,6 @@
 <a href="members.php?source=add_member" class="btn-primary btn" style="float: right;">Pridať člena</a>
 
 <table class="table table-hover table-striped" id="uzivatelia">
-    <thead>
-    <tr>
 	<thead>
 	<tr>
         <th></th>
