@@ -53,6 +53,12 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
 				case 'edit_member':
 					include 'members/edit_member.php';
 					break;
+				case 'show_member':
+					include 'members/show_member.php';
+					break;
+				case 'new_payment':
+					include 'members/new_payment.php';
+					break;
 				default:
 					include 'members/view_all_members.php';
 
@@ -66,6 +72,38 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
 
 <?php
 
+
+
+if (isset($_GET['delete_payment'])) {
+    $id = $_GET['delete_payment'];
+
+    try {
+        include 'includes/db.php';
+
+        $query1 = "SELECT * from payments WHERE id=:id";
+
+        $send_info1 = $connection->prepare($query1);
+        $send_info1->bindParam(':id', $id);
+        $send_info1->execute();
+
+
+        $result = $send_info1->fetch(PDO::FETCH_ASSOC);
+
+        $query = "DELETE FROM payments WHERE id=:id";
+
+
+        $send_info = $connection->prepare($query);
+        $send_info->bindParam(':id', $id);
+        $send_info->execute();
+        // LOG
+        include "includes/add_log.php";
+        $logAction = "Vymazal platbu pre clena s id " . $result['member_id'];
+        createLog($connection, $logAction, "členovia");
+        header('Location: members.php?source=show_member&member_id='.$result['member_id']);
+    } catch (Exception $e) {
+        echo $e;
+    }
+}
 include 'includes/footer.php';
 
 

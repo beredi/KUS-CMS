@@ -77,4 +77,5 @@ if ($_SESSION['user_email'] == null) {
 	<?php
 
 	include 'includes/access.php';
+	include 'includes/crypt.php';
 	?>

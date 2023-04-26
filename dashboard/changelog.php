@@ -43,6 +43,15 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
                 </thead>
                 <tbody>
                 <tr>
+                    <td style="width: 10%;">26. 04. 2023</td>
+                    <td style="width: 90%;">
+                        <ul>
+                            <li>Pridaná user role: tajomník</li>
+                            <li>Pridané platby pre členov spolku</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
                     <td style="width: 10%;">7. 6. 2022</td>
                     <td style="width: 90%;">
                         <ul>

@@ -2,7 +2,7 @@
 
 if (isset($_SESSION['user_role'])) {
 
-	if (isUser('admin') || isUser('moderator')) {
+	if (isUser('admin') || isUser('moderator') || isUser('secretary')) {
 		if (isset($_POST['add_member'])) {
 			$name = $_POST['name'];
 			$lastname = $_POST['lastname'];

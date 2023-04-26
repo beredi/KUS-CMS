@@ -94,7 +94,7 @@
 
                 <!--Clenovia-->
 
-				<?php if (isUser('admin') || isUser('moderator')) { ?>
+				<?php if (isUser('admin') || isUser('moderator') || isUser('secretary')) { ?>
                     <li class="nav-item" style="width: 100%;">
                         <a data-toggle="collapse" href="#clenoviaMenu" class="nav-link text-light">
                             <i class="fas fa-portrait"></i> Členovia <i class="fas fa-caret-down"></i>

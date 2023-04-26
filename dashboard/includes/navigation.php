@@ -91,7 +91,7 @@
                     <ul class="nav navbar-nav">
 						<?php
 						if (isset($_SESSION['user_role'])) {
-							if (!strpos($_SESSION['user_role'], 'uzivatel')) {
+							if (isUser('admin') || isUser('moderator')) {
 								echo "
                                 
                         <li class=\"dropdown-item\" ><a href=\"events.php?source=add_event\" class=\"nav-link\"><i class=\"fas fa-pencil-alt\"></i> Pridať podujatie</a></li>
@@ -108,7 +108,7 @@
 
             <!--Clenovia-->
 
-			<?php if (isUser('admin') || isUser('moderator')) { ?>
+			<?php if (isUser('admin') || isUser('moderator') || isUser('secretary')) { ?>
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#clenoviaMenu" class="nav-link">
                         <i class="fas fa-portrait"></i> Členovia spolku <i class="fas fa-caret-down"></i>
@@ -195,7 +195,7 @@
 
             <!--Carousel-->
 			<?php
-			if (!strpos($_SESSION['user_role'], 'uzivatel')) {
+			if (isUser('admin') || isUser('moderator')) {
 				echo "
             <li class=\"nav-item\">
                 <a class=\"nav-link\" href=\"news.php\">

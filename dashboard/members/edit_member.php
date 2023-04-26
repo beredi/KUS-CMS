@@ -35,7 +35,7 @@ if (isset($_GET['edit'])) {
 	}
 
 
-	if (isUser('admin') || isUser('moderator')) {
+	if (isUser('admin') || isUser('moderator') || isUser('secretary')) {
 		if (isset($_POST['edit_member'])) {
 			$name = $_POST['name'];
 			$lastname = $_POST['lastname'];

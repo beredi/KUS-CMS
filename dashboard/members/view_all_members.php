@@ -20,6 +20,10 @@
 <table class="table table-hover table-striped" id="uzivatelia">
     <thead>
     <tr>
+	<thead>
+	<tr>
+        <th></th>
+        <th></th>
         <th>Titul</th>
         <th>Meno</th>
         <th>Priezvisko</th>
@@ -63,10 +67,22 @@
 			$year = $row['year'];
 			$passscan = $row['passscan'];
 
+            $query2 = "SELECT * from payments WHERE member_id = $id AND date LIKE '".date('Y', strtotime('now'))."%'";
+            $getPayments = $connection->prepare($query2);
+            $getPayments->execute();
+            $rowCount = $getPayments->rowCount();
+            $userPaid = $rowCount > 0;
 
-			echo "
-            
-            <tr>
+            echo "<tr>";
+            if ($userPaid){
+                echo "<td><p class='bg-success text-white text-center p-1 rounded' title='Člen zaplatil za aktuálny rok'><i class=\"fas fa-dollar-sign\"></i></p></td>";
+            }
+            else {
+                echo "<td><p class='bg-danger text-white text-center p-1 rounded' title='Člen nezaplatil za aktuálny rok'><i class=\"fas fa-dollar-sign\"></i></p></td>";
+            }
+
+			echo "     
+                <td><a href='members.php?source=show_member&member_id=$id'><i class=\"fas fa-eye font-weight-bold text-primary\" style='font-size: 20px'></i></a></td>
                 <td>$degree</td>
                 <td>$name</td>
                 <td>$lastname</td>
@@ -84,14 +100,14 @@
 			}
 			echo "</td>
                 <td class=\"text-right tdWidth\">";
-			if (isUser('admin') || isUser('moderator')) {
+			if (isUser('admin') || isUser('moderator') || isUser('secretary')) {
 				echo "<a href=\"members.php?source=edit_member&edit={$id}\"><i class=\"far fa-edit\"></i> Upraviť</a>
                 ";
 			}
 
 			echo " </td>
                 <td class=\"text-right tdWidth\">";
-			if (isUser('admin') || isUser('moderator')) {
+			if (isUser('admin') || isUser('moderator') || isUser('secretary')) {
 				echo "<a href=\"members.php?delete=$id\" class='delete-button'><i class=\"far fa-trash-alt\"></i> Vymazať</a>";
 			}
 			echo "</td>
@@ -136,7 +152,7 @@ if (isset($_GET['delete'])) {
 	}
 
 	if (isset($_SESSION['user_role'])) {
-		if (isUser('admin') || isUser('moderator')) {
+		if (isUser('admin') || isUser('moderator') || isUser('secretary')) {
 
 			try {
 				include 'includes/db.php';
