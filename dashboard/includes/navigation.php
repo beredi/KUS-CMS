@@ -130,6 +130,7 @@
                     </div>
                 </li>
 			<?php } ?>
+            </li>
 
             <!--Videogallery-->
             <li class="nav-item">

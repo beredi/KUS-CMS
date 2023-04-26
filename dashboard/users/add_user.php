@@ -187,6 +187,15 @@ if (isset($_SESSION['user_role'])) {
             <input type="checkbox" class="form-check-input" name="user_role[]" value="lektor" id="lektor" tabIndex="1"
                    onClick="ckChange(this)" disabled>
             <label class="form-check-label" for="lektor">Lektor</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" name="user_role[]" value="secretary" id="secretary" tabIndex="1" onClick="ckChange(this)" disabled>
+        <label class="form-check-label" for="secretary">Tajomník</label>
+
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" name="user_role[]" value="lektor" id="lektor" tabIndex="1" onClick="ckChange(this)" disabled>
+        <label class="form-check-label" for="lektor">Lektor</label>
 
         </div>
         <div class="form-check">
