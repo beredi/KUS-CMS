@@ -46,6 +46,7 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
                     <td style="width: 10%;">08. 07. 2023</td>
                     <td style="width: 90%;">
                         <ul>
+                            <li>Členom možno priradiť jednotlivé sekcie</li>
                             <li>Pridané nastavenia a sekcie</li>
                         </ul>
                     </td>

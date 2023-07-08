@@ -5,6 +5,19 @@ if (isset($_SESSION['user_role'])){
     if(isUser('admin') || isUser('moderator') || isUser('secretary')){
         if (isset($_GET['member_id'])){
             $member_id = $_GET['member_id'];
+            $sekcie = [];
+            try {
+                $query = "SELECT * from sekcie";
+                $send_info = $connection->prepare($query);
+                $send_info->execute();
+
+                while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
+                    $sekcie[$row['id']] =$row['name'];
+                }
+            } catch (Exception $e) {
+                echo $e;
+            }
+
             try{
                 include "includes/db.php";
 
@@ -43,6 +56,24 @@ if (isset($_SESSION['user_role'])){
                         </div>
                         <div class="row">
                             <p><i class="fas fa-user"></i> Meno a priezvisko: <strong class="ml-1"><?=$rows['name']?> <?=$rows['lastname']?></strong></p>
+                        </div>
+                        <div class="row">
+                            <p><i class="fas fa-users"></i> Sekcie:
+
+                                <?php
+
+                                $sekcieArray = explode(',',$rows['sekcie']);
+                                if ($sekcieArray) {
+                                    $firstElement = true;
+                                    foreach ($sekcieArray as $sekciaId) {
+                                    ?>
+                                        <strong class="ml-1"><?=!$firstElement ? ' | ' : ''?><?=$sekcie[$sekciaId]?></strong>
+                                    <?php
+                                        $firstElement = false;
+                                    }
+                                }
+
+                                ?></p>
                         </div>
                         <div class="row">
                             <p><i class="fas fa-calendar"></i> Dátum narodenia: <strong class="ml-1"><?=date('d. m. Y', strtotime($rows['dateofbirth']))?></strong></p>

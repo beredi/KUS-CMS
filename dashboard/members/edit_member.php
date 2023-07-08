@@ -29,10 +29,28 @@ if (isset($_GET['edit'])) {
 			$year = $row['year'];
 			$oldpassscan = $row['passscan'];
 			$sex = $row['sex'];
+            $selectedSekcieIds = $row['sekcie'];
 		}
 	} catch (Exception $e) {
 		echo $e;
 	}
+
+
+    $sekcie = [];
+
+    try {
+        $query = "SELECT * from sekcie";
+        $send_info = $connection->prepare($query);
+        $send_info->execute();
+
+        while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
+            $sekcie[] = array('id' => $row['id'], 'name' => $row['name']);
+        }
+    } catch (Exception $e) {
+        echo $e;
+    }
+
+    $sekcieJson = json_encode($sekcie);
 
 
 	if (isUser('admin') || isUser('moderator') || isUser('secretary')) {
@@ -48,7 +66,7 @@ if (isset($_GET['edit'])) {
 			$passnumber = $_POST['passnumber'];
 			$year = $_POST['year'];
 			$sex = $_POST['sex'];
-
+            $sekcieEdited = $_POST['sekcieIds'];
 			$passscan = $_FILES['passscan']['name'];
 			if (!empty($passscan)) {
 				$passscan_temp = $_FILES['passscan']['tmp_name'];
@@ -78,7 +96,8 @@ if (isset($_GET['edit'])) {
 				$query .= "year = :year, ";
 				$query .= "passscan = :passscan, ";
 				$query .= "degree = :degree, ";
-				$query .= "sex = :sex ";
+				$query .= "sex = :sex, ";
+				$query .= "sekcie = :sekcie ";
 				$query .= "WHERE id = :id ";
 
 				$send_info = $connection->prepare($query);
@@ -95,6 +114,7 @@ if (isset($_GET['edit'])) {
 				$send_info->bindParam(':year', $year);
 				$send_info->bindParam(':degree', $degree);
 				$send_info->bindParam(':sex', $sex);
+				$send_info->bindParam(':sekcie', $sekcieEdited);
 				$send_info->bindParam(':id', $id);
 
 				$send_info->execute();
@@ -105,6 +125,7 @@ if (isset($_GET['edit'])) {
 				include "includes/add_log.php";
 				$logAction = "Upravil člena " . $name . " " . $lastname;
 				createLog($connection, $logAction, "členovia");
+                header('Location: members.php');
 
 			} catch (Exception $e) {
 				echo $e;
@@ -196,9 +217,56 @@ if (isset($_GET['edit'])) {
             <input type="number" class="form-control" id="year" placeholder="Zadajte rok" name="year" autocomplete="off"
                    value="<?= $year ?>">
         </div>
+        <div class="form-group">
+            <label for="sekcie">Aktívny/-a v sekciách:</label>
+            <select id="select-tools" placeholder="Vyberte z ponúknutých sekcií">
+            </select>
+        </div>
         <input type="submit" class="btn btn-primary my-1 float-right" style="width: 50%;" name="edit_member"
                value="Upraviť">
 
 
     </form>
 </div>
+
+<script>
+    $(document).ready(function() {
+        var sekcieOptions = <?php echo $sekcieJson; ?>;
+        <?php
+        $arrayOptions = explode(',', $selectedSekcieIds);
+        ?>
+        var selectedSekcieIds = <?= json_encode($arrayOptions) ?>;
+
+        var selectize; // Declare the selectize variable
+
+        // Initialize selectize with options
+        selectize = $('#select-tools').selectize({
+            maxItems: null,
+            valueField: 'id',
+            labelField: 'name',
+            searchField: 'name',
+            options: sekcieOptions,
+            create: false,
+            plugins: ['remove_button'],
+            onChange: function() {
+                selectedSekcieIds = this.items;
+            },
+            onInitialize: function() {
+                // Set the initially selected values
+                if (Array.isArray(selectedSekcieIds)) {
+                    selectedSekcieIds.forEach(function(value) {
+                        this.addItem(value, true); // Use 'this' instead of 'selectize'
+                    }, this); // Pass 'this' as the second argument to ensure correct context
+                }
+            }
+        });
+
+        $('form').submit(function() {
+            var hiddenInput = $('<input>')
+                .attr('type', 'hidden')
+                .attr('name', 'sekcieIds')
+                .val(selectedSekcieIds.join(','));
+            $(this).append(hiddenInput);
+        });
+    });
+</script>

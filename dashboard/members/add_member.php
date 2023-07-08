@@ -15,6 +15,7 @@ if (isset($_SESSION['user_role'])) {
 			$year = $_POST['year'];
 			$degree = $_POST['degree'];
 			$sex = $_POST['sex'];
+            $sekciePosted = $_POST['sekcieIds'];
 
 			$passscan = $_FILES['passscan']['name'];
 			if (isset($passscan)) {
@@ -32,7 +33,7 @@ if (isset($_SESSION['user_role'])) {
 				include "includes/db.php";
 
 
-				$query = "INSERT INTO members(name, lastname, dateofbirth, adress, JMBG, number, email, passnumber, passscan, year, degree, sex) VALUES (:name, :lastname, :dateofbirth, :adress, :JMBG, :number, :email, :passnumber, :passscan, :year, :degree, :sex) ";
+				$query = "INSERT INTO members(name, lastname, dateofbirth, adress, JMBG, number, email, passnumber, passscan, year, degree, sex, sekcie) VALUES (:name, :lastname, :dateofbirth, :adress, :JMBG, :number, :email, :passnumber, :passscan, :year, :degree, :sex, :sekcie) ";
 
 				$send_info = $connection->prepare($query);
 
@@ -48,6 +49,7 @@ if (isset($_SESSION['user_role'])) {
 				$send_info->bindParam(':year', $year);
 				$send_info->bindParam(':degree', $degree);
 				$send_info->bindParam(':sex', $sex);
+				$send_info->bindParam(':sekcie', $sekciePosted);
 
 				$send_info->execute();
 				echo "<h3 class='text-success'>Člen $name $lastname bol úspešne pridaný</h3>";
@@ -58,13 +60,29 @@ if (isset($_SESSION['user_role'])) {
 				$logAction = "Pridal používateľa " . $name . " " . $lastname;
 				createLog($connection, $logAction, "členovia");
 
+                header('Location: members.php');
+
 			} catch (Exception $e) {
 				echo $e;
 			}
 
-
 		}
 
+
+        $sekcie = [];
+
+        try {
+            $query = "SELECT * from sekcie";
+            $send_info = $connection->prepare($query);
+            $send_info->execute();
+
+            while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
+                $sekcie[] = array('id' => $row['id'], 'name' => $row['name']);
+            }
+        } catch (Exception $e) {
+            echo $e;
+        }
+        $sekcieJson = json_encode($sekcie);
 
 	} else {
 		header('Location: index.php');
@@ -141,9 +159,45 @@ if (isset($_SESSION['user_role'])) {
             <input type="number" class="form-control" id="year" placeholder="Zadajte rok" name="year"
                    autocomplete="off">
         </div>
+        <div class="form-group">
+            <label for="sekcie">Aktívny/-a v sekciách:</label>
+            <select id="select-tools" placeholder="Vyberte z ponúknutých sekcií">
+            </select>
+        </div>
         <input type="submit" class="btn btn-primary my-1 float-right" style="width: 50%;" name="add_member"
                value="Pridať">
 
 
     </form>
 </div>
+
+<script>
+    $(document).ready(function() {
+        var sekcieOptions = <?php echo $sekcieJson; ?>;
+        var selectedSekcieIds = [];
+
+        var selectize; // Declare the selectize variable
+
+        // Initialize selectize with options
+        selectize = $('#select-tools').selectize({
+            maxItems: null,
+            valueField: 'id',
+            labelField: 'name',
+            searchField: 'name',
+            options: sekcieOptions,
+            create: false,
+            plugins: ['remove_button'],
+            onChange: function() {
+                selectedSekcieIds = this.items;
+            }
+        });
+
+        $('form').submit(function() {
+            var hiddenInput = $('<input>')
+                .attr('type', 'hidden')
+                .attr('name', 'sekcieIds')
+                .val(selectedSekcieIds.join(','));
+            $(this).append(hiddenInput);
+        });
+    });
+</script>
