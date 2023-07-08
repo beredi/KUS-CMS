@@ -113,22 +113,7 @@
                                     <a href="members.php" class="nav-link text-light">
                                         <i class="fas fa-id-card"></i> Zoznam členov spolku</a>
                                 </li>
-                    <div id="uzivateliaMenu" class="collapse">
-                        <ul class="nav">
-                            <?php
-                            if (strpos($_SESSION['user_role'], 'admin') || strpos($_SESSION['user_role'], 'moderator')){
-                                echo "
-                                
-                            <li class=\"nav-item\"  style=\"width: 100%;\"><a href=\"users.php?source=add_user\" class=\"nav-link text-light\"><i class=\"fas fa-pencil-alt\"></i> Pridať užívateľa</a></li>
-                                ";
-                            }
-                            ?>
-                            <li class="nav-item"  style="width: 100%;"><a href="users.php" class="nav-link text-light"><i class="fas fa-list-ul"></i> Zobraziť všetkých užívateľov</a></li>
-                            <?php if (isUser('admin') || isUser('moderator')){ ?>
-                            <li class="nav-item"  style="width: 100%;"><a href="members.php" class="nav-link text-light"><i class="fas fa-id-card"></i> Zoznam členov spolku</a></li>
-                            <?php } ?>
-
-                            </ul>
+                                </ul>
                         </div>
                     </li>
 				<?php } ?>
@@ -252,6 +237,16 @@
                         </ul>
                     </div>
                 </li>
+
+
+                <!--Nastavenia-->
+                <?php
+                if (isUser('admin')) {
+                    echo "
+                <li class=\"nav-item \" style=\"width: 100%;\"><a class=\"nav-link text-light\" href=\"settings.php\"> <i class=\"fas fa-cog\"></i>
+                Nastavenia</a></li>";
+                }
+                ?>
 
 
                 <li class="nav-item border-top border-light" style="width: 100%;">

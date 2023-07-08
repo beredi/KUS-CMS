@@ -2,6 +2,7 @@
 
 function createLog($connection, $logAction, $logSection)
 {
+	session_start();
 	//ZAPIS DO LOGOV
 	$queryLogs = "INSERT INTO logs(log_date, log_author, log_section, log_action) VALUES (:log_date, :log_author, :log_section, :log_action)";
 

@@ -270,6 +270,19 @@
                 </div>
             </li>
 
+            <!--Nastavenia-->
+            <?php
+            if (isUser('admin')) {
+                echo "
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"settings.php\">
+                    <i class=\"fas fa-cog\"></i>
+                    Nastavenia
+                </a>
+            </li>";
+            }
+            ?>
+
         </ul>
         <hr width="90%">
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
