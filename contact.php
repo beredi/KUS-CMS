@@ -75,7 +75,7 @@ function contact($name, $function, $mail, $photo_url, $phoneNumbers = null)
 					"Jaroslav Beredi",
 					"Umelecký vedúci",
 					"jaroslav.beredi@kusjanakollara.org",
-					"images/ludia/jaro.png",
+					"images/ludia/jaro.jpg",
 					array(
 						array(
 							'number' => '(SRB) +381 62 967 84 69',
