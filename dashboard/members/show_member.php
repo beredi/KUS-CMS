@@ -54,57 +54,66 @@ if (isset($_SESSION['user_role'])){
                         <div class="row my-2">
                             <h3>Údaje o členovi:</h3>
                         </div>
-                        <div class="row">
-                            <p><i class="fas fa-user"></i> Meno a priezvisko: <strong class="ml-1"><?=$rows['name']?> <?=$rows['lastname']?></strong></p>
-                        </div>
-                        <div class="row">
-                            <p><i class="fas fa-users"></i> Sekcie:
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <p><i class="fas fa-user"></i> Meno a priezvisko: <strong class="ml-1"><?=$rows['name']?> <?=$rows['lastname']?></strong></p>
+                                </div>
 
+                                        <?php
+                                        if ($sekcieString = $rows['sekcie']) {
+                                            ?>
+
+                                <div class="row">
+                                    <p><i class="fas fa-users"></i> Sekcie:
+                                            <?php
+                                            $sekcieArray = explode(',', $sekcieString);
+
+                                            $firstElement = true;
+                                            foreach ($sekcieArray as $sekciaId) {
+                                                ?>
+                                                <strong class="ml-1"><?= !$firstElement ? ' | ' : '' ?><?= $sekcie[$sekciaId] ?></strong>
+                                                <?php
+                                                $firstElement = false;
+                                            }
+                                            ?>
+                                    </p>
+                                </div>
+                                        <?php
+                                        }
+                                        ?>
+                                <div class="row">
+                                    <p><i class="fas fa-calendar"></i> Dátum narodenia: <strong class="ml-1"><?=date('d. m. Y', strtotime($rows['dateofbirth']))?></strong></p>
+                                </div>
+                                <div class="row">
+                                    <p><i class="fas fa-map-marker"></i> Adresa: <strong class="ml-1"><?=$rows['adress']?></strong></p>
+                                </div>
+                                <div class="row">
+                                    <p><i class="fas fa-id-card-alt"></i> JMBG: <strong class="ml-1"><?=$rows['JMBG']?></strong></p>
+                                </div>
+                                <div class="row">
+                                    <p><i class="fas fa-phone"></i> Telefónne číslo: <strong class="ml-1"><?=$rows['number']?></strong></p>
+                                </div>
+                                <div class="row">
+                                    <p><i class="fas fa-envelope"></i> Email: <strong class="ml-1"><?=$rows['email']?></strong></p>
+                                </div>
+                                <div class="row">
+                                    <p>Číslo pasu: <strong class="ml-1"><?=$rows['passnumber']?></strong></p>
+                                </div>
+                                <div class="row">
+                                    <p>Rok zapojenia sa do spolku: <strong class="ml-1"><?=$rows['year']?></strong></p>
+                                </div>
                                 <?php
-
-                                $sekcieArray = explode(',',$rows['sekcie']);
-                                if ($sekcieArray) {
-                                    $firstElement = true;
-                                    foreach ($sekcieArray as $sekciaId) {
-                                    ?>
-                                        <strong class="ml-1"><?=!$firstElement ? ' | ' : ''?><?=$sekcie[$sekciaId]?></strong>
-                                    <?php
-                                        $firstElement = false;
+                                 if (!empty($rows['passscan'])){
+                                ?>
+                                    <div class="row">
+                                        Scan pasu: <strong class="ml-1"><a href='../images/pass-scan/<?=$rows['passscan']?>' target='_blank'>LINK</a></strong>
+                                    </div>
+                                <?php
                                     }
-                                }
-
-                                ?></p>
-                        </div>
-                        <div class="row">
-                            <p><i class="fas fa-calendar"></i> Dátum narodenia: <strong class="ml-1"><?=date('d. m. Y', strtotime($rows['dateofbirth']))?></strong></p>
-                        </div>
-                        <div class="row">
-                            <p><i class="fas fa-map-marker"></i> Adresa: <strong class="ml-1"><?=$rows['adress']?></strong></p>
-                        </div>
-                        <div class="row">
-                            <p><i class="fas fa-id-card-alt"></i> JMBG: <strong class="ml-1"><?=$rows['JMBG']?></strong></p>
-                        </div>
-                        <div class="row">
-                            <p><i class="fas fa-phone"></i> Telefónne číslo: <strong class="ml-1"><?=$rows['number']?></strong></p>
-                        </div>
-                        <div class="row">
-                            <p><i class="fas fa-envelope"></i> Email: <strong class="ml-1"><?=$rows['email']?></strong></p>
-                        </div>
-                        <div class="row">
-                            <p>Číslo pasu: <strong class="ml-1"><?=$rows['passnumber']?></strong></p>
-                        </div>
-                        <div class="row">
-                            <p>Rok zapojenia sa do spolku: <strong class="ml-1"><?=$rows['year']?></strong></p>
-                        </div>
-                        <?php
-                         if (!empty($rows['passscan'])){
-                        ?>
-                            <div class="row">
-                                Scan pasu: <strong class="ml-1"><a href='../images/pass-scan/<?=$rows['passscan']?>' target='_blank'>LINK</a></strong>
+                                ?>
                             </div>
-                        <?php
-                            }
-                        ?>
+                        </div>
                     </div>
                     <div class="row mt-5">
                         <h3 class="font-weight-bold">História platieb</h3>
