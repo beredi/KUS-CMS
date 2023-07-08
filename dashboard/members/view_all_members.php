@@ -20,7 +20,7 @@
 <table class="table table-hover table-striped" id="uzivatelia">
 	<thead>
 	<tr>
-        <th></th>
+        <th>Zaplatil</th>
         <th></th>
         <th>Titul</th>
         <th>Meno</th>
@@ -73,10 +73,10 @@
 
             echo "<tr>";
             if ($userPaid){
-                echo "<td><p class='bg-success text-white text-center p-1 rounded' title='Člen zaplatil za aktuálny rok'><i class=\"fas fa-dollar-sign\"></i></p></td>";
+                echo "<td><p class='bg-success text-white text-center p-1 rounded' title='Člen zaplatil za aktuálny rok'><i class=\"fas fa-dollar-sign\"></i></p><span class='invisible'>'.$userPaid.'</span> </td>";
             }
             else {
-                echo "<td><p class='bg-danger text-white text-center p-1 rounded' title='Člen nezaplatil za aktuálny rok'><i class=\"fas fa-dollar-sign\"></i></p></td>";
+                echo "<td><p class='bg-danger text-white text-center p-1 rounded' title='Člen nezaplatil za aktuálny rok'><i class=\"fas fa-dollar-sign\"></i></p><span class='invisible'>'.$userPaid.'</span></td>";
             }
 
 			echo "     
