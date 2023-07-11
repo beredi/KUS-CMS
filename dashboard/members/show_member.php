@@ -6,6 +6,7 @@ if (isset($_SESSION['user_role'])){
         if (isset($_GET['member_id'])){
             $member_id = $_GET['member_id'];
             $sekcie = [];
+            include 'includes/db.php';
             try {
                 $query = "SELECT * from sekcie";
                 $send_info = $connection->prepare($query);
