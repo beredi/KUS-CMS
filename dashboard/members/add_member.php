@@ -72,6 +72,7 @@ if (isset($_SESSION['user_role'])) {
         $sekcie = [];
 
         try {
+            include 'includes/db.php';
             $query = "SELECT * from sekcie";
             $send_info = $connection->prepare($query);
             $send_info->execute();
