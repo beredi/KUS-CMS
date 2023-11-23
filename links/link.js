@@ -34,10 +34,19 @@ $(document).ready(function () {
     .each(function (index) {
       let description = $(this).attr("alt");
       let html = "<p class='italic text-center'>" + description + "</p>";
+      const height = $(this).height();
+      const width = $(this).width();
+
+      const additionalCSS = {
+        height: "auto",
+        display: "inline",
+        margin: "0 5px 0 1px",
+        width: width > height ? "80%" : "50%",
+      };
 
       $(this)
         .addClass("img-responsive")
-        .css({ height: "auto", display: "inline", marginTop: "5px" })
+        .css(additionalCSS)
         .parent()
         .addClass("text-center")
         .after(html);
