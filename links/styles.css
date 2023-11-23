@@ -59,6 +59,15 @@ span.bold {
   color: #fff;
 }
 
+a.footer-anchor-tag {
+  color: #fefefe;
+}
+
+a.footer-anchor-tag:hover {
+  color: #dddddd;
+  text-decoration: none;
+}
+
 #fixed {
   position: fixed;
   width: 100%;
