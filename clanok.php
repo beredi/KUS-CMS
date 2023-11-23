@@ -111,8 +111,8 @@ articleHeader($post_title, $post_image, $temp_post_content, $post_tags);
 				}
 				?>
             </h2>
-            <hr>
-            <!---TEXT
+           <!--- <hr>
+            TEXT
             <div class="text-justify contentPageBody">
 				<?php echo $post_content; ?>
                 <p class="text-muted">Kľúčové slová: <?php echo $post_tags; ?></p>
