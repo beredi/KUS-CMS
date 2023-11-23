@@ -312,3 +312,12 @@ ul.pager li a.active-page {
     float: right !important;
   }
 }
+
+.padding-footer-text div {
+  padding: 10px 0px;
+}
+
+.padding-footer-text p,
+.padding-footer-text div p {
+  margin: 0;
+}

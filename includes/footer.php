@@ -19,10 +19,16 @@ function footer($whatKindOfPage)
                 <p><span class="glyphicon glyphicon-user"></span> Jaroslav Berédi</p>
                 <p style="font-size: 12px;"><span class="glyphicon glyphicon-envelope"></span> jaroslav.beredi@kusjanakollara.org</p>
             </div>
-            <div class="col-lg-3 col-lg-offset2 col-md-3 col-md-offset-2 col-sm-12 col-xs-12">
-                <p class="text-left">KUS Jána Kollára<br>M. Tita 124<br>21425 Selenča, Srbsko</p>
-                <p class="text-left">PIB: 101450672<br>Matični broj: 08055769</p>
-
+            <div class="col-lg-3 col-lg-offset2 col-md-3 col-md-offset-2 col-sm-12 col-xs-12 padding-footer-text">
+                <p class="headerText">KUS Jána Kollára</p>
+                <div>
+                    <p>M. Tita 124</p>
+                    <p>21425 Selenča, Srbsko</p>
+                </div>
+                <div>
+                    <p class="text-left">PIB: 101450672</p>
+                    <p>Matični broj: 08055769</p>
+                </div>
                 <p><span class="glyphicon glyphicon-envelope"></span> info@kusjanakollara.org</p>
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
