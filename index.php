@@ -6,7 +6,7 @@ include 'includes/header.php';
 	<?php
 	include 'includes/navbar.php';
 	?>
-
+	<h1 class="text-center">Kultúrno-umelecký spolok <strong>Jána Kollára</strong> zo Selenče</h1>
     <!--CAROUSEL-->
     <div id="myCarousel" class="carousel slide hidden-sm hidden-xs" data-ride="carousel">
         <!-- Indicators -->
