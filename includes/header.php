@@ -13,7 +13,7 @@ session_start();
       <meta name="author" content="Jaroslav Beredi">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel='canonical' href="https://www.kusjanakollara.org/" />
+      <link rel='canonical' href="https://kusjanakollara.org/" />
 
       <meta property="og:title" content="Kultúrno-umelecký spolok Jána Kollára zo Selenče">
       <meta property="og:description" content="Prezentujeme kultúru a umenie Slovákov z Vojvodiny zo Srbska. Zachovávame ľudovú tradíciu, folkór a ochotnícke divadlo našej osady Selenče.">
