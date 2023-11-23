@@ -64,7 +64,7 @@ include 'includes/header.php';
 
 						echo "\">
                 <div style=\"width: 100%; height: 640px;\">
-                    <img src=\"images/articles/$post_image\"  alt=\"$post_title\" style=\"width: 100%; margin: auto 0;\">
+                    <img src=\"images/articles/$post_image\"  alt=\"$post_title\" width=\"100%\" height=\"auto\" style=\"width: 100%; margin: auto 0;\">
                 </div>
                 <div class=\"carousel-caption\">
                     <h2 class=\"carousel-title\">$post_title</h2>
@@ -105,7 +105,7 @@ include 'includes/header.php';
 
 						echo "\">
                 <div style=\"width: 100%; height: 640px;\">
-                    <img src=\"images/articles/$post_image\"  alt=\"$post_title\" style=\"width: 100%; margin: auto 0;\">
+                    <img src=\"images/articles/$post_image\"  alt=\"$post_title\" style=\"width: 100%; margin: auto 0;\" width=\"100%\" height=\"auto\">
                 </div>
                 <div class=\"carousel-caption\">
                     <h2 class=\"carousel-caption\">$post_title</h2>
@@ -162,7 +162,7 @@ include 'includes/header.php';
 				echo "        
             <div class=\"media\">
                 <div class=\"media-top top\">
-                    <a href=\"clanok.php?p_id=$post_id\"><img src=\"images/articles/$post_image\" class=\"media-object\" style=\"width:100%\" alt=\"$post_title\"></a>
+                    <a href=\"clanok.php?p_id=$post_id\"><img src=\"images/articles/$post_image\" class=\"media-object\" style=\"width:100%\" alt=\"$post_title\" width=\"100%\" height=\"auto\"></a>
                 </div>
                 <div class=\"media-body\" style='border: 0; border-bottom: 1px solid rgba(44,50,127,0.1);'>
                     <h3 class=\"media-heading\"><a href=\"clanok.php?p_id=$post_id\">$post_title</a></h3>

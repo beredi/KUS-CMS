@@ -28,10 +28,10 @@ function footer($whatKindOfPage)
 
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                        <a href="https://www.facebook.com/kusjanakollara/" target="_blank"><img class="img-responsive linkO" alt="fb link" src="images/facebook.png" title="Facebook Link"></a>
+                        <a href="https://www.facebook.com/kusjanakollara/" target="_blank"><img class="img-responsive linkO" width="100%" height="100%" alt="fb link" src="images/facebook.png" title="Facebook Link"></a>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                        <a href="https://www.instagram.com/kus_jana_kollara/" target="_blank"><img class="img-responsive linkO" alt="instagram link" src="images/instagram.png" title="Instagram Link"></a>
+                        <a href="https://www.instagram.com/kus_jana_kollara/" target="_blank"><img class="img-responsive linkO" width="100%" height="100%" alt="instagram link" src="images/instagram.png" title="Instagram Link"></a>
                     </div>
                 </div>
             </div>

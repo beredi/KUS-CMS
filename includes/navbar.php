@@ -1,20 +1,8 @@
 <div class="row top navbar">
     <div class="col-lg-1 col-lg-offset-0 col-md-1 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
-
-        <img class="img-responsive" src="images/kus-jana-kollara-selenca.jpg" alt="Kultúrno-umelecký spolok Jána Kollára zo Selenče">
+        <img width="65px" height="65px" class="hidden-sm hidden-xs" src="images/kus-jana-kollara-selenca.jpg" alt="Kultúrno-umelecký spolok Jána Kollára zo Selenče">
+        <img width="100%" height="100%" class="hidden-md hidden-lg" src="images/kus-jana-kollara-selenca.jpg" alt="Kultúrno-umelecký spolok Jána Kollára zo Selenče">
     </div>
-    <!--<div class="col-lg-4 hidden-md hidden-sm hidden-xs headerText top">
-        <p> KULTÚRNO UMELECKÝ SPOLOK <br>
-            <span class="bold"> JÁNA KOLLÁRA </span> SELENČA</p>
-    </div>
-    <div class="hidden-lg col-md-3 hidden-sm hidden-xs headerTextMd topMd">
-        <p> KULTÚRNO UMELECKÝ SPOLOK <br>
-            <span class="bold"> JÁNA KOLLÁRA </span> SELENČA</p>
-    </div>
-    <div class="hidden-lg hidden-md col-sm-12 col-xs-12 headerTextSm text-center top">
-        <p> KULTÚRNO UMELECKÝ SPOLOK <br>
-            <span class="bold"> JÁNA KOLLÁRA </span> SELENČA</p>
-    </div>-->
 
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed btn btn-lg " data-toggle="collapse" data-target="#navbar-collapse">
@@ -63,7 +51,7 @@
                     </ul>
                 </li>
                 <li><a href="contact">KONTAKT</a></li>
-                <li><a href="https://youtube.com/playlist?list=PL5TOFzYQgXD803XLd-g8Pmsx1QXmPz6wN&si=vH6o6DeTUlBlDhUW" target="_blank">RÁDIO BÁČKA</a></li>
+                <li><a href="https://youtube.com/playlist?list=PL5TOFzYQgXD803XLd-g8Pmsx1QXmPz6wN&si=vH6o6DeTUlBlDhUW" target="_blank">RÁDIO BAČKA</a></li>
                 <li><a href="login" class="text-muted">LOGIN</a></li>
             </ul>
         </div>
