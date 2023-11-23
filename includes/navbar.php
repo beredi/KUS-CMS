@@ -22,7 +22,7 @@
         </button>
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse">
-        <div class="col-lg-10 col-lg-offset-1 col-md-11 col-sm-12 col-xs-12 top">
+        <div class="col-lg-10 col-lg-offset-1 col-md-11 col-sm-12 col-xs-12">
             <ul class="nav navbar-nav">
                 <li><a href="index"><span class="glyphicon glyphicon glyphicon-home"></span> ÚVOD</a></li>
                 <li><a href="about?pagepseu=about"> O NÁS </a></li>
