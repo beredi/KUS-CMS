@@ -52,7 +52,6 @@
                 </li>
                 <li><a href="contact">KONTAKT</a></li>
                 <li><a href="https://youtube.com/playlist?list=PL5TOFzYQgXD803XLd-g8Pmsx1QXmPz6wN&si=vH6o6DeTUlBlDhUW" target="_blank"><i class="fab fa-youtube"></i> RÁDIO BAČKA</a></li>
-                <li><a href="login" class="text-muted">LOGIN</a></li>
             </ul>
         </div>
     </div>
