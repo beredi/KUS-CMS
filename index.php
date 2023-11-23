@@ -67,7 +67,7 @@ include 'includes/header.php';
                     <img src=\"images/articles/$post_image\"  alt=\"$post_title\" style=\"width: 100%; margin: auto 0;\">
                 </div>
                 <div class=\"carousel-caption\">
-                    <h3>$post_title</h3>
+                    <h2 class=\"carousel-title\">$post_title</h2>
                     <p><a href=\"clanok.php?p_id=$post_id\" role=\"button\" class=\"btn-primary btn\">Čítaj viac!</a> </p>
                 </div>
             </div>
@@ -108,7 +108,7 @@ include 'includes/header.php';
                     <img src=\"images/articles/$post_image\"  alt=\"$post_title\" style=\"width: 100%; margin: auto 0;\">
                 </div>
                 <div class=\"carousel-caption\">
-                    <h3>$post_title</h3>
+                    <h2 class=\"carousel-caption\">$post_title</h2>
                     <p><a href=\"clanok.php?p_id=$post_id\" role=\"button\" class=\"btn-primary btn\">Čítaj viac!</a> </p>
                 </div>
             </div>
@@ -140,7 +140,7 @@ include 'includes/header.php';
     </div>
     <!--SMALL SCREEN-->
     <div class="row hidden-lg hidden-md">
-        <h3 style="margin-left: 2px;">Posledné články:</h3>
+        <h2 style="margin-left: 2px;">Posledné články:</h2>
 		<?php
 
 		try {
@@ -165,7 +165,7 @@ include 'includes/header.php';
                     <a href=\"clanok.php?p_id=$post_id\"><img src=\"images/articles/$post_image\" class=\"media-object\" style=\"width:100%\" alt=\"$post_title\"></a>
                 </div>
                 <div class=\"media-body\" style='border: 0; border-bottom: 1px solid rgba(44,50,127,0.1);'>
-                    <h4 class=\"media-heading\"><a href=\"clanok.php?p_id=$post_id\">$post_title</a></h4>
+                    <h3 class=\"media-heading\"><a href=\"clanok.php?p_id=$post_id\">$post_title</a></h3>
                 </div>
             </div>
         ";

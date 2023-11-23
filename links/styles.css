@@ -41,6 +41,11 @@ span.bold {
   margin-top: 10px;
 }
 
+.carousel-title {
+  color: white;
+  font-size: 20pt;
+}
+
 .footer {
   background-color: #2c327f;
   color: #fff;
