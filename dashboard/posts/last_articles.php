@@ -6,7 +6,6 @@
         <th>Dátum</th>
         <th>Posledný upravil</th>
         <th>Stav</th>
-        <th>Kľúčové slová</th>
         <th>Obrázok</th>
         <th>Zobraziť</th>
         <th>Upraviť</th>
@@ -38,7 +37,6 @@
 			$post_author = $post_author_name . ' ' . $post_author_lastname;
 			$post_date = $row['post_date'];
 			$post_image = $row['post_image'];
-			$post_tags = $row['post_tags'];
 			$post_status = $row['post_status'];
 			$post_last_edited_id = $row['post_last_edited'];
 			foreach ($users as $user) {
@@ -69,7 +67,6 @@
 				echo 'Publikovaný';
 			}
 			echo "</td>
-                <td>$post_tags</td>
                 <td><img src=\"../images/articles/$post_image\" alt=\"placeholder\" width=\"100px\"></td>
                 <td class=\"tdWidth\"><a href=\"../clanok.php?p_id=$post_id\" target='_blank'><i class=\"fas fa-search\"></i> Zobraziť</a></td>
               <td class=\"tdWidth\">
