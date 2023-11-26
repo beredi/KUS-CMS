@@ -1,21 +1,32 @@
 <?php
 
-function articleHeader($title, $imagePath, $content, $keywords)
+function articleHeader($title, $imagePath, $content, $keywords, $id)
 {
+      
+    $temp_post_content = strip_tags($content);
+    $final_post_content = (substr($temp_post_content, 0, 160) . "...");
 	?>
 
     <!DOCTYPE html>
     <html lang="en">
 <!--HTML5 Document by Jaroslav Beredi-->
 <head>
-    <meta charset="UTF-8">
-    <title><?= $title ?></title>
-    <meta name="description" content="<?= $content ?>">
-    <meta name="author" content="Jaroslav Beredi">
-    <meta name="keywords" content="<?= $keywords ?>">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:image" content="images/articles/<?= $imagePath ?>"/>
+      <meta charset="UTF-8">
+      <title><?= $title ?></title>
+      <meta name="description" content="<?= $final_post_content ?>">
+      <meta name="author" content="Jaroslav Beredi">
+      <meta name="keywords" content="<?= $keywords ?>">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <meta property="og:image" content="images/articles/<?= $imagePath ?>"/>
+      <meta property="og:title" content="<?= $title ?>">
+      <meta property="og:description" content="<?= $final_post_content ?>">
+      <meta property="og:url" content="https://www.kusjanakollara.org/clanok.php?p_id=<?= $id ?>">
+      <meta property="og:type" content="article">
+
+
+    <link rel="canonical" href="https://kusjanakollara.org/" />
     <link rel="image_src"
           type="image/jpeg"
           href="images/articles/<?= $imagePath ?>"/>

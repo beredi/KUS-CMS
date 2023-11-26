@@ -8,14 +8,11 @@ include 'includes/header.php';
 function contact($name, $function, $mail, $photo_url, $phoneNumbers = null)
 {
 	echo '<div class="contact">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <img src="' . $photo_url . '" class="img-responsive contactImg img-circle"  alt="' . $name . '">
-                </div>
-
-                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                   <h3><small>' . $function . ':</small><br>' . $name . '</h3>
-                    <p style="font-size: 12px;">' . $mail . '</p>';
+				<img src="' . $photo_url . '" class="contactImg img-circle" width="50%" height="auto"  alt="' . $name . '">
+				<div class="contact-info">
+					<p>' . $function . ':</p>
+					<p><strong>' . $name . '</strong></p>
+					<p>' . $mail . '</p>';
 
 	if ($phoneNumbers != null) {
 		$echo = '';
@@ -31,7 +28,7 @@ function contact($name, $function, $mail, $photo_url, $phoneNumbers = null)
 
 	}
 
-	echo '</div>
+	echo '
             </div>
             </div>';
 }
@@ -40,23 +37,20 @@ function contact($name, $function, $mail, $photo_url, $phoneNumbers = null)
 
 
 <body>
-<div class="container">
-	<?php
-	include 'includes/navbar.php';
-	?>
-</div>
+<?php include 'includes/navbar.php'; ?>
 <!--CONTENT-->
-<div class="container-fluid contactContainer">
+<div class="container-fluid content">
     <div class="container">
-        <div class="row top2">
+		<h1>Kontaktné informácie vedúcich</h1>
+        <div class="row">
             <!--Malvína-->
-            <div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-1 col-sm-12 col-xs-12 text-right">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 				<?php
 				contact(
 					"Malvína Zolňanová",
-					"Predsedníčka",
+					"Predsedníčka spolku",
 					"malvina.zolnanova@kusjanakollara.org",
-					"images/ludia/malvina.png",
+					"images/ludia/malvina.jpg",
 					array(
 						array(
 							'number' => '+381 63 136 16 02',
@@ -69,7 +63,7 @@ function contact($name, $function, $mail, $photo_url, $phoneNumbers = null)
             </div>
 
             <!--Jaro-->
-            <div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-1 col-sm-12 col-xs-12 text-right">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 				<?php
 				contact(
 					"Jaroslav Beredi",

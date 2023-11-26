@@ -21,7 +21,7 @@
 			echo "        
             <div class=\"media\">
                 <div class=\"media-top top\">
-                    <a href=\"clanok.php?p_id=$post_id\"><img src=\"images/articles/$post_image\" class=\"media-object\" style=\"width:100%\" alt=\"$post_title\"></a>
+                    <a href=\"clanok.php?p_id=$post_id\"><img src=\"images/articles/$post_image\" class=\"media-object\" width=\"100%\" height=\"auto\" alt=\"$post_title\"></a>
                 </div>
                 <div class=\"media-body\" style='border: 0; border-bottom: 1px solid rgba(44,50,127,0.1);'>
                     <h4 class=\"media-heading\"><a href=\"clanok.php?p_id=$post_id\">$post_title</a></h4>

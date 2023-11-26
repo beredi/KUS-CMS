@@ -2,14 +2,13 @@
 include 'includes/header.php';
 ?>
 <body>
-<div class="container">
-	<?php
-	include 'includes/navbar.php';
-	?>
+	
+<?php include 'includes/navbar.php'; ?>
+<div class="container content">
     <div class="row">
         <div class="col-lg-12">
-            <h1>Nadchádzajúce podujatia<br>
-                <small>Pozrite si, čo všetko plánujeme v blízkej budúcnosti.</small></h1>
+            <h1>Nadchádzajúce podujatia</h1>
+			<p class="text-muted">Pozrite si, čo všetko plánujeme v blízkej budúcnosti.</p>
         </div>
     </div>
 	<?php

@@ -2,9 +2,9 @@
 include 'includes/header.php';
 ?>
 <body>
+<?php include 'includes/navbar.php'; ?>
 <div class="container content">
 	<?php
-	include 'includes/navbar.php';
 	try {
 		include 'dashboard/includes/db.php';
 
@@ -39,9 +39,9 @@ include 'includes/header.php';
 	?>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="float-left">Predchádzajúce podujatia<br>
-                <small class="float-left">Prečítajte si o tom, kde sme vystúpili a čo sme všetko organizovali.</small>
-            </h1>
+            <h1>Predchádzajúce podujatia</h1>
+        	<p class="text-muted">Prečítajte si o tom, kde sme vystúpili a čo sme všetko organizovali.</p>
+            
         </div>
     </div>
     <div class="row">
@@ -89,6 +89,9 @@ include 'includes/header.php';
 			if ($count == 0) {
 				echo "<h3>Žiadne články na zobrazenie.</h3>";
 			}
+			
+			include 'includes/article.php';
+
 			while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
 				$post_id = $row['post_id'];
 				$post_title = $row['post_title'];
@@ -96,11 +99,13 @@ include 'includes/header.php';
 				$temp_post_content = strip_tags($row['post_content']);
 
 				$post_content = (substr($temp_post_content, 0, 190) . "...");
-
-
-				echo "
+				
+				echo "<div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12 \" style='margin: 2px auto; height: 450px;'>";
+				generateArticleCard($post_id, $post_image, $post_title, $post_content);
+				echo "</div>";
+				/*echo "
                 
-            <div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12 \" style='margin: 2px auto; max-height: 500px;'>
+            <div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12 \" style='margin: 2px auto; height: 450px;'>
                 <div class=\"media clanokMedia \">
                     <div class=\"media-top\">
                         <a href=\"clanok.php?p_id=$post_id\"><img src=\"images/articles/$post_image\" class=\"media-object\" style=\"width:100%;\" alt=\"$post_title\"></a>
@@ -111,7 +116,7 @@ include 'includes/header.php';
                     </div>
                 </div>
             </div>
-                ";
+                "*/;
 
 			}
 

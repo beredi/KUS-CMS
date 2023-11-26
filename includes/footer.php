@@ -31,11 +31,14 @@ function footer($whatKindOfPage)
                 </div>
                 <p><span class="glyphicon glyphicon-envelope"></span> info@kusjanakollara.org</p>
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
                         <a href="https://www.facebook.com/kusjanakollara/" target="_blank"><img class="img-responsive linkO" width="100%" height="100%" alt="fb link" src="images/facebook.png" title="Facebook Link"></a>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
                         <a href="https://www.instagram.com/kus_jana_kollara/" target="_blank"><img class="img-responsive linkO" width="100%" height="100%" alt="instagram link" src="images/instagram.png" title="Instagram Link"></a>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+                        <a href="https://www.youtube.com/@kusjanakollaraselenca1752" target="_blank"><img class="img-responsive linkO" width="100%" height="100%" alt="youtube link" src="images/youtube.png" title="YouTube link"></a>
                     </div>
                 </div>
             </div>

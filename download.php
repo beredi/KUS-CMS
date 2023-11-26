@@ -2,11 +2,6 @@
 include 'includes/header.php';
 ?>
 <body>
-<div class="container content">
-	<?php
-	include 'includes/navbar.php';
-	?>
-</div>
 
 <?php
 
@@ -38,7 +33,11 @@ try {
 	echo $e;
 }
 ?>
-<div class="container">
+
+<?php
+include 'includes/navbar.php';
+?>
+<div class="container content">
     <h1>Na stiahnutie<br>
         <small>Pozrite si naše publikácie a promo materiál.</small></h1>
     <div class="row">

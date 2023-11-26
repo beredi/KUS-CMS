@@ -16,7 +16,7 @@ try {
 	$send_info->execute();
 
 	while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
-
+		$id = $row['post_id'];
 		$post_title = $row['post_title'];
 		$post_image = $row['post_image'];
 		$post_tags = $row['post_tags'];
@@ -33,15 +33,13 @@ try {
 	echo $e;
 }
 
-articleHeader($post_title, $post_image, $temp_post_content, $post_tags);
+articleHeader($post_title, $post_image, $temp_post_content, $post_tags, $id);
 
 
 ?>
 <body>
+<?php include 'includes/navbar.php'; ?>
 <div class="container content">
-	<?php
-	include 'includes/navbar.php';
-	?>
     <!--CONTENT-->
 
 
@@ -93,7 +91,8 @@ articleHeader($post_title, $post_image, $temp_post_content, $post_tags);
 
 			}
 			?>
-            <h2><?php echo $post_title; ?><br>
+            <h1><?php echo $post_title; ?></h1>
+			<div class="article-infobar">
                 <small>
                     <!-- Share on FB button -->
                     <span class="glyphicon glyphicon glyphicon-calendar"></span> <?php echo $post_date; ?> | <span
@@ -110,7 +109,7 @@ articleHeader($post_title, $post_image, $temp_post_content, $post_tags);
 
 				}
 				?>
-            </h2>
+            </div>
             <hr>
             <!--TEXT-->
             <div class="text-justify contentPageBody">

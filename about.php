@@ -7,11 +7,9 @@ if (isset($_GET['pagepseu'])) {
 ?>
 
 <body>
+<?php include 'includes/navbar.php'; ?>
 <div class="container content">
 	<?php
-
-
-	include 'includes/navbar.php';
 
 	if (!empty($pagepseu)){
 	include 'dashboard/includes/db.php';
@@ -33,7 +31,7 @@ if (isset($_GET['pagepseu'])) {
 	?>
     <div class="row">
         <div class="col-lg-12">
-            <h1><?= $title ?></h1><br>
+            <h1><?= $title ?></h1>
             <p class="text-muted"><?= $description ?></p>
         </div>
     </div>

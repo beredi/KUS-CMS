@@ -1,7 +1,7 @@
 /*CSS Document by Jaroslav Beredi*/
 body {
   /*font-family: 'Istok Web', sans-serif;*/
-  font-family: "Raleway", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #2c327f;
 }
 
@@ -99,7 +99,6 @@ ul.footer-menu li {
 }
 
 .media-body {
-  border: 1px solid rgba(44, 50, 127, 0.5);
   border-top: 0px;
   padding: 5px;
   color: #2c327f;
@@ -121,25 +120,11 @@ ul.footer-menu li {
 }
 
 .content {
-  position: static;
-  top: 130px;
+  padding-top: 100px;
 }
 
 .menu-padding {
   padding-top: 40px;
-}
-
-.sticky {
-  position: fixed;
-  margin-top: 0px;
-  top: 0;
-  z-index: 100;
-  background-color: transparent;
-  opacity: 0.8;
-}
-
-.sticky:hover {
-  opacity: 1;
 }
 
 h1 {
@@ -179,35 +164,26 @@ img.clanok {
 }
 
 .clanokMedia {
-  height: 500px !important;
   margin: 10px auto;
 }
 
 .contact {
-  background-color: rgb(41, 51, 105);
-  border: 1px solid #030433;
-  /*
-    -webkit-box-shadow: #020858 1px 1px 1px;
-    -moz-box-shadow: #020858 1px 1px 1px;
-    box-shadow: #020858 1px 1px 1px; 44 50 127
-    */
-  color: #fff;
+  color: #2c327f;
   padding: 15px;
   margin-bottom: 20px;
   margin-right: 10px;
+  font-size: 130%;
+  text-align: center;
 }
 
-.contact:hover {
-  background-color: rgb(48, 58, 140);
+.contact > * {
+  color: #2c327f;
 }
 
-/*
-.contactImg {
-    position: absolute;
-    left: -30px;
-    top: 10px;
+.contact-info {
+  padding-top: 10px;
 }
-*/
+
 .contactContainer {
   background-color: rgba(40, 50, 127, 1);
   min-height: 30vh;
@@ -253,7 +229,7 @@ img.about {
   opacity: 1;
 }
 
-a.btn {
+a.btn-primary {
   background: -webkit-linear-gradient(
     #3841d1,
     #2c327f
@@ -264,6 +240,34 @@ a.btn {
     #2c327f
   ); /* For Firefox 3.6 to 15 */
   background: linear-gradient(#3841d1, #2c327f); /* Standard syntax */
+}
+
+a.btn-secondary {
+  background: -webkit-linear-gradient(
+    #98989a,
+    #474749
+  ); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#98989a, #474749); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(
+    #98989a,
+    #474749
+  ); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#98989a, #474749); /* Standard syntax */
+  color: #eeeeee;
+}
+
+a.btn-secondary:hover {
+  background: -webkit-linear-gradient(
+    #6f6f71,
+    #2e2e30
+  ); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#6f6f71, #2e2e30); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(
+    #6f6f71,
+    #2e2e30
+  ); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#6f6f71, #2e2e30); /* Standard syntax */
+  color: #ffffff;
 }
 
 .form-control {
@@ -321,4 +325,126 @@ ul.pager li a.active-page {
 .padding-footer-text p,
 .padding-footer-text div p {
   margin: 0;
+}
+
+.header {
+  height: 80vh; /* Adjust height as needed */
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.5s ease-in-out;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-background {
+  position: fixed;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0;
+  margin: 0;
+  z-index: 100;
+  min-height: 100px;
+}
+
+.navbar-center {
+  padding-top: 9px;
+}
+
+.heading-text {
+  margin-top: auto;
+  text-align: center;
+  padding-bottom: 80px;
+  overflow: hidden; /* Hide overflowing content */
+}
+
+.heading-text h1 {
+  color: #ffffff;
+}
+
+.heading-text p {
+  font-size: 130%;
+  color: rgb(219, 219, 219);
+}
+
+.articles {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.last-articles {
+  padding-top: 30px;
+}
+
+/* Keyframes for the slideIn animation */
+@keyframes slideInH1 {
+  from {
+    transform: translateX(-100%); /* Start off-screen left */
+    opacity: 0; /* Start with 0 opacity */
+  }
+  to {
+    transform: translateX(0); /* Slide in to the default position */
+    opacity: 1; /* Show text with full opacity */
+  }
+}
+
+/* Keyframes for the fadeIn animation */
+@keyframes slideInP {
+  from {
+    transform: translateY(50%); /* Start off-screen left */
+    opacity: 0; /* Start with 0 opacity */
+  }
+  to {
+    transform: translateY(0); /* Slide in to the default position */
+    opacity: 1; /* Show text with full opacity */
+  }
+}
+
+.heading-text h1 {
+  margin: 0;
+  padding: 0;
+  animation: slideInH1 1s forwards; /* Apply the slideIn animation */
+  opacity: 0; /* Start with 0 opacity */
+}
+
+.heading-text p {
+  margin: 0;
+  padding: 0;
+  animation: slideInP 1.5s forwards; /* Apply the slideIn animation */
+  opacity: 0; /* Start with 0 opacity */
+}
+
+.radio-section {
+  background: url("../images/radio-background.jpg") rgba(255, 255, 255);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.radio-logo img {
+  margin: 5px 10px;
+}
+
+.radio-logo div a img {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out; /* Apply transition effect */
+}
+
+.radio-logo div a img:hover {
+  opacity: 0.8;
+}
+
+.action-button {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.paragraph-text {
+  font-size: 120%;
+}
+
+.article-infobar {
+  padding-bottom: 10px;
 }

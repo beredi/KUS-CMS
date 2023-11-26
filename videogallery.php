@@ -2,10 +2,8 @@
 include 'includes/header.php';
 ?>
 <body>
+<?php include 'includes/navbar.php'; ?>
 <div class="container content">
-	<?php
-	include 'includes/navbar.php';
-	?>
     <!--CONTENT-->
     <div class="container">
 
@@ -41,8 +39,8 @@ include 'includes/header.php';
 		?>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="float-left">Videogaléria<br>
-                    <small class="float-left">Pozrite si bohatstvo našich aktivít</small></h1>
+                <h1>Videogaléria z našich aktivít a vystúpení</h1>
+				<p class="text-muted">Pozrite si bohatstvo našich aktivít</p>
             </div>
         </div>
         <div class="row">

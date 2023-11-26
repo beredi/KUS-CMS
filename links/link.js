@@ -1,4 +1,37 @@
 $(document).ready(function () {
+  // Array of image URLs for the header background
+  var images = [
+    "kus-jana-kollara-bg-1.jpg",
+    "kus-jana-kollara-bg-2.jpg",
+    "kus-jana-kollara-bg-3.jpg",
+  ];
+
+  var currentIndex = 0;
+
+  // Define the gradient colors
+  var gradientStart = "rgba(0, 0, 0, 0)"; // Transparent on top
+  var gradientEnd = "rgba(0, 0, 0, 1)"; // Black on bottom
+
+  function changeBackground() {
+    // Concatenate the gradient with the image URL
+    var imageUrlWithGradient =
+      "linear-gradient(" +
+      gradientStart +
+      ", " +
+      gradientEnd +
+      "), url('images/" +
+      images[currentIndex] +
+      "')";
+    // Apply the background to the header
+    $(".header").css("background-image", imageUrlWithGradient);
+
+    currentIndex = (currentIndex + 1) % images.length;
+  }
+
+  changeBackground();
+  // Change background image every 5 seconds (5000 milliseconds)
+  setInterval(changeBackground, 5000);
+
   $("ul.nav li.dropdown").hover(
     function () {
       $(this).find(".dropdown-menu").stop(true, true).delay(200).fadeIn(500);
@@ -7,26 +40,6 @@ $(document).ready(function () {
       $(this).find(".dropdown-menu").stop(true, true).delay(200).fadeOut(500);
     }
   );
-  /*var menu = $('.navbar');
-    var origOffsetY = menu.offset().top;
-    if ($(window).width() > 768) {
-        function scroll() {
-            if ($(window).scrollTop() >= origOffsetY) {
-                $('.navbar > .col-lg-7').addClass('sticky');
-                $('.content').addClass('menu-padding');
-                $('.navbar-nav').addClass('navbar-inverse')
-            } else {
-                $('.navbar > .col-lg-7').removeClass('sticky');
-                $('.content').removeClass('menu-padding');
-                $('.navbar-nav').removeClass('navbar-inverse')
-            }
-
-
-        }
-
-        document.onscroll = scroll;
-    }
-    ;*/
 
   // page image
   $(".contentPageBody")
@@ -45,6 +58,8 @@ $(document).ready(function () {
       };
 
       $(this)
+        .attr("height", height)
+        .attr("width", width)
         .addClass("img-responsive")
         .css(additionalCSS)
         .parent()
