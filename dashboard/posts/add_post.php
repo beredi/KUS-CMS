@@ -6,7 +6,6 @@ if (isset($_SESSION['user_role'])) {
 
 
 		$post_title = $_POST['post_title'];
-		$post_tags = $_POST['post_tags'];
 
 
 		$post_content = $_POST['post_content'];
@@ -36,7 +35,7 @@ if (isset($_SESSION['user_role'])) {
 			include "includes/db.php";
 
 
-			$query = "INSERT INTO posts(post_title, post_author, post_date, post_image, post_content, post_tags, post_status, post_last_edited) VALUES (:post_title, :post_author, now(), :post_image, :post_content, :post_tags, :post_status, :post_last_edited)";
+			$query = "INSERT INTO posts(post_title, post_author, post_date, post_image, post_content, post_status, post_last_edited) VALUES (:post_title, :post_author, now(), :post_image, :post_content, :post_status, :post_last_edited)";
 
 			$send_info = $connection->prepare($query);
 
@@ -44,7 +43,6 @@ if (isset($_SESSION['user_role'])) {
 			$send_info->bindParam(':post_author', $post_author);
 			$send_info->bindParam(':post_image', $post_image);
 			$send_info->bindParam(':post_content', $post_content);
-			$send_info->bindParam(':post_tags', $post_tags);
 			$send_info->bindParam(':post_status', $post_status);
 			$send_info->bindParam(':post_last_edited', $post_last_edited);
 
@@ -91,7 +89,6 @@ if (isset($_SESSION['user_role'])) {
 
 
 			$post_title = $_POST['post_title'];
-			$post_tags = $_POST['post_tags'];
 
 
 			$post_content = $_POST['post_content'];
@@ -121,7 +118,7 @@ if (isset($_SESSION['user_role'])) {
 				include "includes/db.php";
 
 
-				$query = "INSERT INTO posts(post_title, post_author, post_date, post_image, post_content, post_tags, post_status, post_last_edited) VALUES (:post_title, :post_author, now(), :post_image, :post_content, :post_tags, :post_status, :post_last_edited)";
+				$query = "INSERT INTO posts(post_title, post_author, post_date, post_image, post_content, post_status, post_last_edited) VALUES (:post_title, :post_author, now(), :post_image, :post_content, :post_status, :post_last_edited)";
 
 				$send_info = $connection->prepare($query);
 
@@ -129,7 +126,6 @@ if (isset($_SESSION['user_role'])) {
 				$send_info->bindParam(':post_author', $post_author);
 				$send_info->bindParam(':post_image', $post_image);
 				$send_info->bindParam(':post_content', $post_content);
-				$send_info->bindParam(':post_tags', $post_tags);
 				$send_info->bindParam(':post_status', $post_status);
 				$send_info->bindParam(':post_last_edited', $post_last_edited);
 
@@ -165,16 +161,21 @@ if (isset($_SESSION['user_role'])) {
 
 <form action="" method="post" enctype="multipart/form-data" class="my-2">
     <div class="form-group">
-        <label for="post_title" class="required">Názov:</label>
-        <input type="text" class="form-control" id="post_title" placeholder="Zadajte názov článku" name="post_title"
-               required autocomplete="off">
-    </div>
-    <div class="form-group">
-        <label for="post_tags">Kľúčové slová:</label>
-        <input type="text" class="form-control" id="post_title" aria-describedby="postTags"
-               placeholder="Zadajte kľúčové slová" name="post_tags" autocomplete="off">
-        <small id="postTags" class="form-text text-muted">Zadajte kľúčové slová, ktoré blízko popisujú článok.
-            Jednotlivé slová oddeľujte čiarkou. Napríklad: <span class="text-info">Selenča, KUS, zájazd</span></small>
+        <label for="post_title" class="required">
+			Názov:
+			<span class="text-danger">Minimálne 20 - maximálne 70 znakov</span>
+		</label>
+        <input
+			type="text"
+			class="form-control"
+			id="post_title"
+			placeholder="Zadajte názov článku"
+			name="post_title"
+			required
+			autocomplete="off"
+			maxlength="70"
+			minlength="20"
+		>
     </div>
     <div class="form-group mt-3">
         <label for="post_image" class="required">Obrázok: <span class="text-danger">Formát: na ležato (do 10MB!)</span></label>

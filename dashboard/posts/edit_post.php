@@ -15,7 +15,6 @@ if (isset($_GET['edit'])) {
 
 		while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
 			$post_title = $row['post_title'];
-			$post_tags = $row['post_tags'];
 
 
 			$post_image = $row['post_image'];
@@ -42,7 +41,6 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
 
 	if (isset($_POST['edit_post'])) {
 		$post_title = $_POST['post_title'];
-		$post_tags = $_POST['post_tags'];
 
 
 		$post_image = $_FILES['post_image']['name'];
@@ -113,7 +111,6 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
 			$query .= "post_date = :post_date, ";
 			$query .= "post_image = :post_image, ";
 			$query .= "post_content = :post_content, ";
-			$query .= "post_tags = :post_tags, ";
 			$query .= "post_status = :post_status, ";
 			$query .= "post_last_edited = :post_last_edited ";
 			$query .= "WHERE post_id=$post_id ";
@@ -124,7 +121,6 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
 			$send_info->bindParam(':post_author', $post_author);
 			$send_info->bindParam(':post_image', $newfilename);
 			$send_info->bindParam(':post_content', $post_content);
-			$send_info->bindParam(':post_tags', $post_tags);
 			$send_info->bindParam(':post_status', $post_status);
 			$send_info->bindParam(':post_date', $post_date);
 			$send_info->bindParam(':post_last_edited', $post_last_edited);
@@ -145,7 +141,6 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
 
 	if (isset($_POST['publish_post'])) {
 		$post_title = $_POST['post_title'];
-		$post_tags = $_POST['post_tags'];
 
 
 		$post_image = $_FILES['post_image']['name'];
@@ -217,7 +212,6 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
 			$query .= "post_date = :post_date, ";
 			$query .= "post_image = :post_image, ";
 			$query .= "post_content = :post_content, ";
-			$query .= "post_tags = :post_tags, ";
 			$query .= "post_status = :post_status, ";
 			$query .= "post_last_edited = :post_last_edited ";
 			$query .= "WHERE post_id=$post_id ";
@@ -228,7 +222,6 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
 			$send_info->bindParam(':post_author', $post_author);
 			$send_info->bindParam(':post_image', $newfilename);
 			$send_info->bindParam(':post_content', $post_content);
-			$send_info->bindParam(':post_tags', $post_tags);
 			$send_info->bindParam(':post_status', $post_status);
 			$send_info->bindParam(':post_date', $post_date);
 			$send_info->bindParam(':post_last_edited', $post_last_edited);
@@ -256,17 +249,22 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
 
 <form action="" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="post_title" class="required">Názov:</label>
-        <input type="text" class="form-control" id="post_title" value='<?php echo $post_title; ?>' name="post_title"
-               required autocomplete="off">
+        <label for="post_title" class="required">
+			Názov:
+			<span class="text-danger">Minimálne 20 - maximálne 70 znakov</span>
+		</label>
+        <input
+			type="text"
+			class="form-control"
+			id="post_title"
+			value='<?php echo $post_title; ?>'
+			name="post_title"
+			required
+			autocomplete="off"
+			maxlength="70"
+			minlength="20"
+		>
         <input type="text" name="post_author" value="<?php echo $post_author; ?>" hidden>
-    </div>
-    <div class="form-group">
-        <label for="post_tags">Kľúčové slová:</label>
-        <input type="text" class="form-control" id="post_title" aria-describedby="postTags"
-               value='<?php echo $post_tags; ?>' name="post_tags" autocomplete="off">
-        <small id="postTags" class="form-text text-muted">Zadajte kľúčové slová, ktoré blízko popisujú článok.
-            Jednotlivé slová oddeľujte čiarkou. Napríklad: <span class="text-info">Selenča, KUS, zájazd</span></small>
     </div>
     <div class="form-group mt-3">
         <label for="post_image">Obrázok: <span class="text-danger">(do 10MB!)</span></label>
