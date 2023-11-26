@@ -17,8 +17,9 @@ function generateArticleCard($post_id, $post_image, $post_title, $post_content){
             </div>
             <div class=\"media-body\">
                 <h3 class=\"media-heading\"><a href=\"clanok.php?p_id=$post_id\">$post_title</a></h3>
-                <p class='text-justify'>$final_post_content<a href=\"clanok.php?p_id=$post_id\"> Čítaj viac!</a></p>
+                <p class='text-justify'>$final_post_content</p>
             </div>
+            <a href=\"clanok.php?p_id=$post_id\" class=\"btn btn-light\"> Čítaj viac!</a>
         </div>
     ";
 }

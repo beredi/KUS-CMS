@@ -11,23 +11,16 @@
 		$send_info = $connection->prepare($query);
 
 		$send_info->execute();
+        include 'includes/article.php';
 
 		while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
 			$post_id = $row['post_id'];
 			$post_title = $row['post_title'];
 			$post_image = $row['post_image'];
+			$post_content = $row['post_content'];
 
 
-			echo "        
-            <div class=\"media\">
-                <div class=\"media-top top\">
-                    <a href=\"clanok.php?p_id=$post_id\"><img src=\"images/articles/$post_image\" class=\"media-object\" width=\"100%\" height=\"auto\" alt=\"$post_title\"></a>
-                </div>
-                <div class=\"media-body\" style='border: 0; border-bottom: 1px solid rgba(44,50,127,0.1);'>
-                    <h4 class=\"media-heading\"><a href=\"clanok.php?p_id=$post_id\">$post_title</a></h4>
-                </div>
-            </div>
-        ";
+            generateArticleCard($post_id, $post_image, $post_title, $post_content);
 		}
 
 	} catch (Exception $e) {
