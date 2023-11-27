@@ -166,7 +166,6 @@ h2 > small {
 }
 
 .clanokBody {
-  /*  border: 1px solid #b0b4fc;*/
   color: #2c327f;
   -webkit-box-shadow: #d6d7ff 2px 2px 1px;
   -moz-box-shadow: #d6d7ff 2px 2px 1px;
@@ -306,6 +305,8 @@ a.btn-secondary:hover {
 .contentBody,
 .contentPageBody {
   margin-top: 10px;
+  padding-bottom: 40px;
+  font-size: 125%;
 }
 
 hr {
@@ -476,4 +477,8 @@ ul.pager li a.active-page {
 .btn-light:hover {
   background-color: rgb(196, 243, 253);
   color: #1a1e4f;
+}
+
+.sidebar {
+  padding: 30px 10px;
 }

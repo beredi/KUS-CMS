@@ -1,5 +1,5 @@
-<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-    <h5>Posledné články:</h5>
+<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 sidebar">
+    <h3>Posledné články:</h3>
 	<?php
 
 	try {
