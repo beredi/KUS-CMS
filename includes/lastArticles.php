@@ -36,6 +36,6 @@
         </div>
     </div>
     <div class="row text-center action-button">
-        <a href="predchadzajuce-podujatia"  class="btn btn-lg btn-secondary">Všetky články</a>
+        <a href="predchadzajuce-podujatia"  class="btn btn-lg btn-primary">Všetky články</a>
     </div>
 </div>

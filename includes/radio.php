@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="row text-center action-button">
-            <a href="https://youtube.com/playlist?list=PL5TOFzYQgXD803XLd-g8Pmsx1QXmPz6wN&si=vH6o6DeTUlBlDhUW" target="_blank" class="btn btn-lg btn-secondary"><i class="fab fa-youtube"></i> Vypočujte si piesne</a>
+            <a href="https://youtube.com/playlist?list=PL5TOFzYQgXD803XLd-g8Pmsx1QXmPz6wN&si=vH6o6DeTUlBlDhUW" target="_blank" class="btn btn-lg btn-primary"><i class="fab fa-youtube"></i> Vypočujte si piesne</a>
         </div>
     </div>
 </div>

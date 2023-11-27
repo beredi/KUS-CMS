@@ -375,7 +375,7 @@ ul.pager li a.active-page {
 .heading-text {
   margin-top: auto;
   text-align: center;
-  padding-bottom: 80px;
+  padding-bottom: 40px;
   overflow: hidden; /* Hide overflowing content */
 }
 
@@ -481,4 +481,13 @@ ul.pager li a.active-page {
 
 .sidebar {
   padding: 30px 10px;
+}
+
+.btn-warning {
+  background: linear-gradient(to bottom, #f0d83d 0, #a88d05 100%) !important;
+  border: 1px solid #ccd144 !important;
+}
+
+.btn-warning:hover {
+  background: linear-gradient(to bottom, #ccd144 0, #868204 100%) !important;
 }

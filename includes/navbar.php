@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row top navbar">
             <div class="col-lg-1 col-lg-offset-0 col-md-1 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
-                <img width="65px" height="65px" src="images/kus-jana-kollara-selenca.png" alt="Kultúrno-umelecký spolok Jána Kollára zo Selenče">
+                <a href="index"><img width="65px" height="65px" src="images/kus-jana-kollara-selenca.png" alt="Kultúrno-umelecký spolok Jána Kollára zo Selenče"></a>
             </div>
 
             <div class="navbar-header">
