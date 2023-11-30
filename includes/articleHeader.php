@@ -8,7 +8,7 @@ function articleHeader($title, $imagePath, $content, $keywords, $id)
 	?>
 
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="sk">
 <!--HTML5 Document by Jaroslav Beredi-->
 <head>
       <meta charset="UTF-8">
