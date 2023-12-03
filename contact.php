@@ -1,6 +1,35 @@
 <?php
-include 'includes/header.php';
+ob_start();
+session_start();
 ?>
+<!DOCTYPE html>
+<html lang="sk">
+<!--HTML5 Document by Jaroslav Beredi-->
+<head>
+      <meta charset="UTF-8">
+      <title>Kontakt - KUS Jána Kollára Selenča</title>
+      <meta name="description"
+            content="Kontaktné informácie vedúcich osôb kultúrno-umeleckého spolku Jána Kollára zo Selenče. Neváhajte nás kontaktovať v akomkoľvek prípade.">
+      <meta name="author" content="Jaroslav Beredi">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel='canonical' href="https://kusjanakollara.org/contact" />
+
+      <meta property="og:title" content="Kultúrno-umelecký spolok Jána Kollára zo Selenče">
+      <meta property="og:description" content="Kontaktné informácie vedúcich osôb kultúrno-umeleckého spolku Jána Kollára zo Selenče. Neváhajte nás kontaktovať v akomkoľvek prípade.">
+      <meta property="og:image" content="https://kusjanakollara.org/images/kus-jana-kollara.jpg">
+      <meta property="og:url" content="https://www.kusjanakollara.org/contact">
+      <meta property="og:type" content="website">
+
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="Kultúrno-umelecký spolok Jána Kollára zo Selenče">
+      <meta name="twitter:description" content="Kontaktné informácie vedúcich osôb kultúrno-umeleckého spolku Jána Kollára zo Selenče. Neváhajte nás kontaktovať v akomkoľvek prípade.">
+      <meta name="twitter:image" content="https://kusjanakollara.org/images/kus-jana-kollara.jpg">
+      <meta name="twitter:url" content="https://www.kusjanakollara.org/contact">
+
+      <?php include 'includes/headerInclude.php'; ?>
+    
+</head>
 
 
 <?php

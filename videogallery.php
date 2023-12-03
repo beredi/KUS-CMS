@@ -1,6 +1,35 @@
 <?php
-include 'includes/header.php';
+ob_start();
+session_start();
 ?>
+<!DOCTYPE html>
+<html lang="sk">
+<!--HTML5 Document by Jaroslav Beredi-->
+<head>
+      <meta charset="UTF-8">
+      <title>Videogaléria - KUS Jána Kollára Selenča</title>
+      <meta name="description"
+            content="Pozrite si videa z našich vystúpení, alebo naše video spoty, ktoré sme vytvorili na radosť a pobavenie pre všetkých našich fanúšikov a priaznivcov.">
+      <meta name="author" content="Jaroslav Beredi">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel='canonical' href="https://kusjanakollara.org/videogallery" />
+
+      <meta property="og:title" content="Články o našej činnosti - KUS Jána Kollára Selenča">
+      <meta property="og:description" content="Pozrite si videa z našich vystúpení, alebo naše video spoty, ktoré sme vytvorili na radosť a pobavenie pre všetkých našich fanúšikov a priaznivcov.">
+      <meta property="og:image" content="https://kusjanakollara.org/images/kus-jana-kollara.jpg">
+      <meta property="og:url" content="https://www.kusjanakollara.org/videogallery">
+      <meta property="og:type" content="website">
+
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="Články o našej činnosti - KUS Jána Kollára Selenča">
+      <meta name="twitter:description" content="Pozrite si videa z našich vystúpení, alebo naše video spoty, ktoré sme vytvorili na radosť a pobavenie pre všetkých našich fanúšikov a priaznivcov.">
+      <meta name="twitter:image" content="https://kusjanakollara.org/images/kus-jana-kollara.jpg">
+      <meta name="twitter:url" content="https://www.kusjanakollara.org/videogallery">
+
+      <?php include 'includes/headerInclude.php'; ?>
+    
+</head>
 <body>
 <?php include 'includes/navbar.php'; ?>
 <div class="container content">
