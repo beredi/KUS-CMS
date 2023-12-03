@@ -60,6 +60,7 @@ if (isset($_POST['login'])) {
 <!doctype html>
 <html lang="sk">
 <head>
+    <meta name="robots" content="noindex,nofollow" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Jaroslav Beredi">
