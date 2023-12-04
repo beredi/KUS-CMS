@@ -37,38 +37,40 @@ session_start();
 <html lang="sk">
 <!--HTML5 Document by Jaroslav Beredi-->
 <head>
-      <meta charset="UTF-8">
-      <title>Články o našej činnosti - KUS Jána Kollára Selenča</title>
-      <meta name="description"
-            content="Prečítajte si a pozrite si fotografie v článkach o činnosti kultúrno-umeleckého spolku Jána Kollára zo Selenče.Každoročne sa zúčastňujeme na rôznych podujatiach.">
-      <meta name="author" content="Jaroslav Beredi">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel='canonical' href="https://kusjanakollara.org/predchadzajuce-podujatia" />
+		<meta charset="UTF-8">
+		<title>Články o našej činnosti - KUS Jána Kollára Selenča</title>
+		<meta name="description"
+			content="Prečítajte si a pozrite si fotografie v článkach o činnosti kultúrno-umeleckého spolku Jána Kollára zo Selenče.Každoročne sa zúčastňujeme na rôznych podujatiach.">
+		<meta name="author" content="Jaroslav Beredi">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel='canonical' href="https://kusjanakollara.org/predchadzajuce-podujatia" />
 
-	  <!-- pagination -->
-	  <?php
-	  if ($currentPage && $currentPage > 1){
-		$pageAddition = $currentPage == 2 ? '' : '?page='.$currentPage-1; 
-	  	echo '<link rel="prev" href="https://kusjanakollara.org/predchadzajuce-podujatia'.$pageAddition.'" />';
+		<!-- pagination -->
+		<?php
+		if ($currentPage && $currentPage > 1){
+			echo '<meta name="robots" content="noindex,follow" />';
+
+			$pageAddition = $currentPage == 2 ? '' : '?page='.$currentPage-1; 
+			echo '<link rel="prev" href="https://kusjanakollara.org/predchadzajuce-podujatia'.$pageAddition.'" />';
 		}
-	  ?>
-	  <link rel="next" href="https://kusjanakollara.org/predchadzajuce-podujatia?page=<?=$currentPage ? $currentPage+1 : "2"?>" />
+		?>
+		<link rel="next" href="https://kusjanakollara.org/predchadzajuce-podujatia?page=<?=$currentPage ? $currentPage+1 : "2"?>" />
 
 
-      <meta property="og:title" content="Články o našej činnosti - KUS Jána Kollára Selenča">
-      <meta property="og:description" content="Prečítajte si a pozrite si fotografie v článkach o činnosti kultúrno-umeleckého spolku Jána Kollára zo Selenče.Každoročne sa zúčastňujeme na rôznych podujatiach.">
-      <meta property="og:image" content="https://kusjanakollara.org/images/kus-jana-kollara.jpg">
-      <meta property="og:url" content="https://www.kusjanakollara.org/predchadzajuce-podujatia">
-      <meta property="og:type" content="website">
+		<meta property="og:title" content="Články o našej činnosti - KUS Jána Kollára Selenča">
+		<meta property="og:description" content="Prečítajte si a pozrite si fotografie v článkach o činnosti kultúrno-umeleckého spolku Jána Kollára zo Selenče.Každoročne sa zúčastňujeme na rôznych podujatiach.">
+		<meta property="og:image" content="https://kusjanakollara.org/images/kus-jana-kollara.jpg">
+		<meta property="og:url" content="https://www.kusjanakollara.org/predchadzajuce-podujatia">
+		<meta property="og:type" content="website">
 
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:title" content="Články o našej činnosti - KUS Jána Kollára Selenča">
-      <meta name="twitter:description" content="Prečítajte si a pozrite si fotografie v článkach o činnosti kultúrno-umeleckého spolku Jána Kollára zo Selenče.Každoročne sa zúčastňujeme na rôznych podujatiach.">
-      <meta name="twitter:image" content="https://kusjanakollara.org/images/kus-jana-kollara.jpg">
-      <meta name="twitter:url" content="https://www.kusjanakollara.org/predchadzajuce-podujatia">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Články o našej činnosti - KUS Jána Kollára Selenča">
+		<meta name="twitter:description" content="Prečítajte si a pozrite si fotografie v článkach o činnosti kultúrno-umeleckého spolku Jána Kollára zo Selenče.Každoročne sa zúčastňujeme na rôznych podujatiach.">
+		<meta name="twitter:image" content="https://kusjanakollara.org/images/kus-jana-kollara.jpg">
+		<meta name="twitter:url" content="https://www.kusjanakollara.org/predchadzajuce-podujatia">
 
-      <?php include 'includes/headerInclude.php'; ?>
+		<?php include 'includes/headerInclude.php'; ?>
     
 </head>
 <body>

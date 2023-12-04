@@ -45,6 +45,8 @@ try {
 		<!-- pagination -->
 		<?php
 			if ($currentPage && $currentPage > 1){
+				echo '<meta name="robots" content="noindex,follow" />';
+
 				$pageAddition = $currentPage == 2 ? '' : '?page='.$currentPage-1; 
 				echo '<link rel="prev" href="https://kusjanakollara.org/download'.$pageAddition.'" />';
 			}
