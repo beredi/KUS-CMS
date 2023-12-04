@@ -1,39 +1,6 @@
 <?php
 ob_start();
 session_start();
-?>
-<!DOCTYPE html>
-<html lang="sk">
-<!--HTML5 Document by Jaroslav Beredi-->
-<head>
-      <meta charset="UTF-8">
-      <title>Publikácie na stiahnutie - KUS Jána Kollára Selenča</title>
-      <meta name="description"
-            content="KUS Jána Kollára zo Selenče Vám ponúka stiahnuť si zdarma niektoré publikácie našich členov. Snažíme sa publikovať , aby budúce generácie mali z čoho čerpať.">
-      <meta name="author" content="Jaroslav Beredi">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel='canonical' href="https://kusjanakollara.org/download" />
-
-      <meta property="og:title" content="Publikácie na stiahnutie - KUS Jána Kollára Selenča">
-      <meta property="og:description" content="KUS Jána Kollára zo Selenče Vám ponúka stiahnuť si zdarma niektoré publikácie našich členov. Snažíme sa publikovať , aby budúce generácie mali z čoho čerpať.">
-      <meta property="og:image" content="https://kusjanakollara.org/images/kus-jana-kollara.jpg">
-      <meta property="og:url" content="https://www.kusjanakollara.org/download">
-      <meta property="og:type" content="website">
-
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:title" content="Publikácie na stiahnutie - KUS Jána Kollára Selenča">
-      <meta name="twitter:description" content="KUS Jána Kollára zo Selenče Vám ponúka stiahnuť si zdarma niektoré publikácie našich členov. Snažíme sa publikovať , aby budúce generácie mali z čoho čerpať.">
-      <meta name="twitter:image" content="https://kusjanakollara.org/images/kus-jana-kollara.jpg">
-      <meta name="twitter:url" content="https://www.kusjanakollara.org/download">
-
-      <?php include 'includes/headerInclude.php'; ?>
-    
-</head>
-<body>
-
-<?php
-
 try {
 	include 'dashboard/includes/db.php';
 	$posts_by_page = 6;
@@ -62,7 +29,44 @@ try {
 	echo $e;
 }
 ?>
+<!DOCTYPE html>
+<html lang="sk">
+<!--HTML5 Document by Jaroslav Beredi-->
+<head>
+		<meta charset="UTF-8">
+		<title>Publikácie na stiahnutie - KUS Jána Kollára Selenča</title>
+		<meta name="description"
+			content="KUS Jána Kollára zo Selenče Vám ponúka stiahnuť si zdarma niektoré publikácie našich členov. Snažíme sa publikovať , aby budúce generácie mali z čoho čerpať.">
+		<meta name="author" content="Jaroslav Beredi">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel='canonical' href="https://kusjanakollara.org/download" />
 
+		<!-- pagination -->
+		<?php
+			if ($currentPage && $currentPage > 1){
+				$pageAddition = $currentPage == 2 ? '' : '?page='.$currentPage-1; 
+				echo '<link rel="prev" href="https://kusjanakollara.org/download'.$pageAddition.'" />';
+			}
+		?>
+		<link rel="next" href="https://kusjanakollara.org/download?page=<?=$currentPage ? $currentPage+1 : "2"?>" />
+
+		<meta property="og:title" content="Publikácie na stiahnutie - KUS Jána Kollára Selenča">
+		<meta property="og:description" content="KUS Jána Kollára zo Selenče Vám ponúka stiahnuť si zdarma niektoré publikácie našich členov. Snažíme sa publikovať , aby budúce generácie mali z čoho čerpať.">
+		<meta property="og:image" content="https://kusjanakollara.org/images/kus-jana-kollara.jpg">
+		<meta property="og:url" content="https://www.kusjanakollara.org/download">
+		<meta property="og:type" content="website">
+
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Publikácie na stiahnutie - KUS Jána Kollára Selenča">
+		<meta name="twitter:description" content="KUS Jána Kollára zo Selenče Vám ponúka stiahnuť si zdarma niektoré publikácie našich členov. Snažíme sa publikovať , aby budúce generácie mali z čoho čerpať.">
+		<meta name="twitter:image" content="https://kusjanakollara.org/images/kus-jana-kollara.jpg">
+		<meta name="twitter:url" content="https://www.kusjanakollara.org/download">
+
+		<?php include 'includes/headerInclude.php'; ?>
+    
+</head>
+<body>
 <?php
 include 'includes/navbar.php';
 ?>
