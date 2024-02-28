@@ -38,7 +38,8 @@ class browser extends uploader
 		}
 
 		$thumbsDir = $this->config['uploadDir'] . "/" . $this->config['thumbsDir'];
-		if (!$this->config['disabled'] &&
+		if (
+			!$this->config['disabled'] &&
 			(
 				(
 					!is_dir($thumbsDir) &&
@@ -73,7 +74,8 @@ class browser extends uploader
 			}
 		}
 
-		if (isset($_GET['theme']) &&
+		if (
+			isset($_GET['theme']) &&
 			$this->checkFilename($_GET['theme']) &&
 			is_dir("themes/{$_GET['theme']}")
 		)
@@ -90,7 +92,8 @@ class browser extends uploader
 
 		if ($this->config['disabled']) {
 			$message = $this->label("You don't have permissions to browse server.");
-			if (in_array($act, array("browser", "upload")) ||
+			if (
+				in_array($act, array("browser", "upload")) ||
 				(substr($act, 0, 8) == "download")
 			)
 				$this->backMsg($message);
@@ -156,14 +159,16 @@ class browser extends uploader
 
 	protected function act_thumb()
 	{
-		if (!isset($_GET['file']) ||
+		if (
+			!isset($_GET['file']) ||
 			!isset($_GET['dir']) ||
 			!$this->checkFilename($_GET['file'])
 		)
 			$this->sendDefaultThumb();
 
 		$dir = $this->getDir();
-		$file = "{$this->thumbsTypeDir}/{$_GET['dir']}/${_GET['file']}";
+		$file = "{$this->thumbsTypeDir}/{$_GET['dir']}/{$_GET['file']}";
+
 
 		// Create thumbnail
 		if (!is_file($file) || !is_readable($file)) {
@@ -178,7 +183,8 @@ class browser extends uploader
 			$type = $img->getType();
 			$img->close();
 
-			if (in_array($type, array("gif", "jpeg", "png")) &&
+			if (
+				in_array($type, array("gif", "jpeg", "png")) &&
 				($image->width <= $this->config['thumbWidth']) &&
 				($image->height <= $this->config['thumbHeight'])
 			) {
@@ -214,7 +220,8 @@ class browser extends uploader
 
 	protected function act_newDir()
 	{
-		if (!$this->config['access']['dirs']['create'] ||
+		if (
+			!$this->config['access']['dirs']['create'] ||
 			!isset($_POST['dir']) ||
 			!isset($_POST['newDir']) ||
 			!$this->checkFilename($_POST['newDir'])
@@ -238,7 +245,8 @@ class browser extends uploader
 
 	protected function act_renameDir()
 	{
-		if (!$this->config['access']['dirs']['rename'] ||
+		if (
+			!$this->config['access']['dirs']['rename'] ||
 			!isset($_POST['dir']) ||
 			!strlen(rtrim(rtrim(trim($_POST['dir']), "/"), "\\")) ||
 			!isset($_POST['newName']) ||
@@ -264,7 +272,8 @@ class browser extends uploader
 
 	protected function act_deleteDir()
 	{
-		if (!$this->config['access']['dirs']['delete'] ||
+		if (
+			!$this->config['access']['dirs']['delete'] ||
 			!isset($_POST['dir']) ||
 			!strlen(rtrim(rtrim(trim($_POST['dir']), "/"), "\\"))
 		)
@@ -276,8 +285,10 @@ class browser extends uploader
 			$this->errorMsg("Cannot delete the folder.");
 		$result = !dir::prune($dir, false);
 		if (is_array($result) && count($result))
-			$this->errorMsg("Failed to delete {count} files/folders.",
-				array('count' => count($result)));
+			$this->errorMsg(
+				"Failed to delete {count} files/folders.",
+				array('count' => count($result))
+			);
 		$thumbDir = "$this->thumbsTypeDir/{$_POST['dir']}";
 		if (is_dir($thumbDir)) dir::prune($thumbDir);
 		return true;
@@ -287,7 +298,8 @@ class browser extends uploader
 	{
 		header("Content-Type: text/plain; charset={$this->charset}");
 
-		if (!$this->config['access']['files']['upload'] ||
+		if (
+			!$this->config['access']['files']['upload'] ||
 			!isset($_POST['dir'])
 		)
 			$this->errorMsg("Unknown error.");
@@ -314,7 +326,8 @@ class browser extends uploader
 	protected function act_download()
 	{
 		$dir = $this->postDir();
-		if (!isset($_POST['dir']) ||
+		if (
+			!isset($_POST['dir']) ||
 			!isset($_POST['file']) ||
 			!$this->checkFilename($_POST['file']) ||
 			(false === ($file = "$dir/{$_POST['file']}")) ||
@@ -337,7 +350,8 @@ class browser extends uploader
 	protected function act_rename()
 	{
 		$dir = $this->postDir();
-		if (!$this->config['access']['files']['rename'] ||
+		if (
+			!$this->config['access']['files']['rename'] ||
 			!isset($_POST['dir']) ||
 			!isset($_POST['file']) ||
 			!isset($_POST['newName']) ||
@@ -348,7 +362,8 @@ class browser extends uploader
 		)
 			$this->errorMsg("Unknown error.");
 
-		if (isset($this->config['denyExtensionRename']) &&
+		if (
+			isset($this->config['denyExtensionRename']) &&
 			$this->config['denyExtensionRename'] &&
 			(file::getExtension($_POST['file'], true) !==
 				file::getExtension($_POST['newName'], true)
@@ -383,7 +398,8 @@ class browser extends uploader
 	protected function act_delete()
 	{
 		$dir = $this->postDir();
-		if (!$this->config['access']['files']['delete'] ||
+		if (
+			!$this->config['access']['files']['delete'] ||
 			!isset($_POST['dir']) ||
 			!isset($_POST['file']) ||
 			!$this->checkFilename($_POST['file']) ||
@@ -401,7 +417,8 @@ class browser extends uploader
 	protected function act_cp_cbd()
 	{
 		$dir = $this->postDir();
-		if (!$this->config['access']['files']['copy'] ||
+		if (
+			!$this->config['access']['files']['copy'] ||
 			!isset($_POST['dir']) ||
 			!is_dir($dir) || !is_readable($dir) || !dir::isWritable($dir) ||
 			!isset($_POST['files']) || !is_array($_POST['files']) ||
@@ -454,7 +471,8 @@ class browser extends uploader
 	protected function act_mv_cbd()
 	{
 		$dir = $this->postDir();
-		if (!$this->config['access']['files']['move'] ||
+		if (
+			!$this->config['access']['files']['move'] ||
 			!isset($_POST['dir']) ||
 			!is_dir($dir) || !is_readable($dir) || !dir::isWritable($dir) ||
 			!isset($_POST['files']) || !is_array($_POST['files']) ||
@@ -506,7 +524,8 @@ class browser extends uploader
 
 	protected function act_rm_cbd()
 	{
-		if (!$this->config['access']['files']['delete'] ||
+		if (
+			!$this->config['access']['files']['delete'] ||
 			!isset($_POST['files']) ||
 			!is_array($_POST['files']) ||
 			!count($_POST['files'])
@@ -560,7 +579,8 @@ class browser extends uploader
 	protected function act_downloadSelected()
 	{
 		$dir = $this->postDir();
-		if (!isset($_POST['dir']) ||
+		if (
+			!isset($_POST['dir']) ||
 			!isset($_POST['files']) ||
 			!is_array($_POST['files']) ||
 			$this->config['denyZipDownload']
@@ -600,7 +620,8 @@ class browser extends uploader
 
 	protected function act_downloadClipboard()
 	{
-		if (!isset($_POST['files']) ||
+		if (
+			!isset($_POST['files']) ||
 			!is_array($_POST['files']) ||
 			$this->config['denyZipDownload']
 		)
@@ -647,7 +668,8 @@ class browser extends uploader
 			return json_encode(array('version' => false));
 
 		// Caching HTTP request for 6 hours
-		if (isset($this->session['checkVersion']) &&
+		if (
+			isset($this->session['checkVersion']) &&
 			isset($this->session['checkVersionTime']) &&
 			((time() - $this->session['checkVersionTime']) < 21600)
 		)
@@ -663,7 +685,8 @@ class browser extends uploader
 		$responsePattern = '/^[A-Z]+\/\d+\.\d+\s+\d+\s+OK\s*([a-zA-Z0-9\-]+\:\s*[^\n]*\n)*\s*(.*)\s*$/';
 
 		// file_get_contents()
-		if (ini_get("allow_url_fopen") &&
+		if (
+			ini_get("allow_url_fopen") &&
 			(false !== ($ver = file_get_contents($url))) &&
 			preg_match($pattern, $ver)
 
@@ -732,7 +755,8 @@ class browser extends uploader
 		$filename = $this->normalizeFilename($file['name']);
 		$target = "$dir/" . file::getInexistantFilename($filename, $dir);
 
-		if (!@move_uploaded_file($file['tmp_name'], $target) &&
+		if (
+			!@move_uploaded_file($file['tmp_name'], $target) &&
 			!@rename($file['tmp_name'], $target) &&
 			!@copy($file['tmp_name'], $target)
 		) {
@@ -829,7 +853,8 @@ class browser extends uploader
 		if (is_array($dirs) && count($dirs) && ($index <= count($path) - 1)) {
 
 			foreach ($dirs as $i => $cdir) {
-				if ($cdir['hasDirs'] &&
+				if (
+					$cdir['hasDirs'] &&
 					(
 						($index == count($path) - 1) ||
 						($cdir['name'] == $path[$index + 1])
@@ -954,5 +979,3 @@ class browser extends uploader
 		return htmlentities($str, null, strtoupper($this->charset));
 	}
 }
-
-?>
