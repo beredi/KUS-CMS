@@ -5,11 +5,11 @@ session_start();
 <!DOCTYPE html>
 <html lang="sk">
 <!--HTML5 Document by Jaroslav Beredi-->
+
 <head>
       <meta charset="UTF-8">
       <title>Kultúrno-umelecký spolok Jána Kollára zo Selenče</title>
-      <meta name="description"
-            content="Prezentujeme kultúru a umenie Slovákov z Vojvodiny zo Srbska. Zachovávame ľudovú tradíciu, folkór a ochotnícke divadlo našej osady Selenče.">
+      <meta name="description" content="Prezentujeme kultúru a umenie Slovákov z Vojvodiny zo Srbska. Zachovávame ľudovú tradíciu, folkór a ochotnícke divadlo našej osady Selenče.">
       <meta name="author" content="Jaroslav Beredi">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,30 +28,32 @@ session_start();
       <meta name="twitter:url" content="https://www.kusjanakollara.org/">
 
       <?php include 'includes/headerInclude.php'; ?>
-    
+
 </head>
+
 <body>
 
-<!-- HEADER -->
-<?php include 'includes/pageHeader.php'; ?>
+      <!-- HEADER -->
+      <?php include 'includes/pageHeader.php'; ?>
 
-<?php include 'includes/lastArticles.php'; ?>
+      <?php include 'includes/lastArticles.php'; ?>
 
-<?php include 'includes/radio.php'; ?>
+      <?php include 'includes/radio.php'; ?>
 
-<?php include 'includes/footer.php'; ?>
-
-
-<?php
-footer("other");
-?>
+      <?php include 'includes/footer.php'; ?>
 
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/bootstrap.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <?php
+      footer("other");
+      ?>
 
-<script src="links/link.js"></script>
+
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="js/bootstrap.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+      <script src="links/link.js"></script>
 </body>
 <!--   font-family: 'Istok Web', sans-serif;   -->
+
 </html>

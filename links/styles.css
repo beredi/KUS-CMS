@@ -331,12 +331,6 @@ ul.pager li a.active-page {
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
-  .navbar-nav {
-    float: right !important;
-  }
-}
-
 .padding-footer-text div {
   padding: 10px 0px;
 }
@@ -347,7 +341,7 @@ ul.pager li a.active-page {
 }
 
 .header {
-  height: 80vh; /* Adjust height as needed */
+  height: 100vh; /* Adjust height as needed */
   background-size: cover;
   background-position: center;
   transition: background-image 0.5s ease-in-out;
@@ -366,6 +360,18 @@ ul.pager li a.active-page {
   margin: 0;
   z-index: 100;
   min-height: 100px;
+  @media (min-width: 575.98px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  @media (max-width: 575.98px) {
+    padding: 10px;
+  }
+}
+
+.custom-nav-link {
+  color: blue;
 }
 
 .navbar-center {
@@ -375,7 +381,7 @@ ul.pager li a.active-page {
 .heading-text {
   margin-top: auto;
   text-align: center;
-  padding-bottom: 40px;
+  padding-bottom: 55px;
   overflow: hidden; /* Hide overflowing content */
 }
 
