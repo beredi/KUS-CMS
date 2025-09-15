@@ -273,8 +273,7 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
     </div>
     <div class="form-group">
         <label for="post_content" class="required">Obsah:</label>
-        <textarea class="form-control" rows="10" id="post_content" name="post_content"
-                  required><?php echo $post_content; ?></textarea>
+        <textarea class="form-control" rows="10" id="post_content" name="post_content"><?php echo $post_content; ?></textarea>
     </div>
     <input type="submit" class="btn btn-primary" name="edit_post" value="Upraviť">
 	<?php
@@ -288,14 +287,50 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
 
 
 </form>
-
+<script src="https://cdn.tiny.cloud/1/y9vbcdqhduv79dkxujqyn61xkjuig7qe6y4wj879ayddd98a/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
 <script>
-    CKEDITOR.replace('post_content');
+    tinymce.init({
+        selector: '#post_content',
+        plugins: 'image link media code lists table',
+        toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright | bullist numlist | link image media | code',
+        images_upload_url: window.location.origin + '/dashboard/upload.php',
+        automatic_uploads: true,
+        images_file_types: 'jpg,jpeg,png,gif,webp',
+
+        // Dôležité nastavenia pre obrázky
+        relative_urls: false,      // vypne ../../
+        remove_script_host: false, // ponechá celý host (http://...)
+        convert_urls: true         // pre istotu nech konvertuje na absolútne
+    });
+/*    tinymce.init({
+        selector: '#post_content',
+        plugins: 'image link media code lists table',
+        toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright | bullist numlist | link image media | code',
+
+        images_upload_url: '/dashboard/upload.php',
+        automatic_uploads: true,
+        images_file_types: 'jpg,jpeg,png,gif,webp',
+
+        images_upload_handler: function (blobInfo, success, failure) {
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', '../dashboard/upload.php'); // corrected path
+            xhr.onload = function() {
+                if (xhr.status !== 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+                let json = {};
+                try { json = JSON.parse(xhr.responseText); } catch (e) { failure('Invalid JSON'); return; }
+                if (!json || typeof json.location !== 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+                success(json.location);
+            };
+            let formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+            xhr.send(formData);
+        }
+    });*/
 </script>
-<!--
-<div class="form-group">
-    <label for="post_title">Názov:</label>
-    <input type="email" class="form-control" id="post_title" aria-describedby="emailHelp" placeholder="Zadajte názov článku" name="post_title">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-</div>-->

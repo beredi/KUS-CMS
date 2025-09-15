@@ -183,8 +183,7 @@ if (isset($_SESSION['user_role'])) {
     </div>
     <div class="form-group">
         <label for="post_content" class="required">Obsah:</label>
-        <textarea class="form-control" rows="10" id="post_content" name="post_content" placeholder="Napíšte článok..."
-                  required></textarea>
+        <textarea class="form-control" rows="10" id="post_content" name="post_content" placeholder="Napíšte článok..."></textarea>
     </div>
     <input type="submit" class="btn btn-primary" name="add_post" value="Odoslať">
 	<?php
@@ -198,6 +197,20 @@ if (isset($_SESSION['user_role'])) {
 
 
 </form>
+
+<script src="https://cdn.tiny.cloud/1/y9vbcdqhduv79dkxujqyn61xkjuig7qe6y4wj879ayddd98a/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
-    CKEDITOR.replace('post_content');
+    tinymce.init({
+        selector: '#post_content',
+        plugins: 'image link media code lists table',
+        toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright | bullist numlist | link image media | code',
+        images_upload_url: window.location.origin + '/dashboard/upload.php',
+        automatic_uploads: true,
+        images_file_types: 'jpg,jpeg,png,gif,webp',
+
+        // Dôležité nastavenia pre obrázky
+        relative_urls: false,      // vypne ../../
+        remove_script_host: false, // ponechá celý host (http://...)
+        convert_urls: true         // pre istotu nech konvertuje na absolútne
+    });
 </script>

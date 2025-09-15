@@ -52,13 +52,10 @@ CKEDITOR.editorConfig = function (config) {
     "ckeditor/kcfinder-3.12/upload.php?opener=ckeditor&type=images";
   config.filebrowserFlashUploadUrl =
     "ckeditor/kcfinder-3.12/upload.php?opener=ckeditor&type=flash";*/
-  config.filebrowserBrowseUrl = "ckeditor/elFinder-2.1.64/elfinder.html";
-  config.filebrowserImageBrowseUrl =
-    "ckeditor/elFinder-2.1.64/elfinder.html?type=image";
-  config.filebrowserUploadUrl =
-    "ckeditor/elFinder-2.1.64/php/connector.minimal.php";
-  config.filebrowserImageUploadUrl =
-    "ckeditor/elFinder-2.1.64/php/connector.minimal.php?type=image";
+	config.filebrowserBrowseUrl = "ckeditor/filemanager/dialog.php?type=2&editor=ckeditor&fldr=";
+	config.filebrowserImageBrowseUrl = "ckeditor/filemanager/dialog.php?type=1&editor=ckeditor&fldr=";
+	config.filebrowserUploadUrl = "ckeditor/filemanager/dialog.php?type=2&editor=ckeditor&fldr=";
+	config.filebrowserImageUploadUrl = "ckeditor/filemanager/dialog.php?type=1&editor=ckeditor&fldr=";
 
   // ...
 };
