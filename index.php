@@ -38,6 +38,18 @@ session_start();
 
       <?php include 'includes/lastArticles.php'; ?>
 
+      <!-- VIANOČNÉ TRHY CTA SECTION START -->
+      <section class="vianocne-trhy-section">
+        <div class="vianocne-trhy-overlay">
+          <div class="vianocne-trhy-content">
+            <h2>Vianočné trhy v Selenči</h2>
+            <p>Zažite čaro Vianoc na našich tradičných vianočných trhoch! Príďte si vychutnať atmosféru, remeslá, dobroty a program pre celú rodinu.</p>
+            <a href="https://vianocne-trhy.kusjanakollara.org/" class="vianocne-trhy-btn" target="_blank" rel="noopener">Navštíviť stránku trhov</a>
+          </div>
+        </div>
+      </section>
+      <!-- VIANOČNÉ TRHY CTA SECTION END -->
+
       <?php include 'includes/radio.php'; ?>
 
       <?php include 'includes/footer.php'; ?>

@@ -497,3 +497,64 @@ ul.pager li a.active-page {
 .btn-warning:hover {
   background: linear-gradient(to bottom, #ccd144 0, #868204 100%) !important;
 }
+
+/* --- VIANOČNÉ TRHY CTA SECTION --- */
+.vianocne-trhy-section {
+  position: relative;
+  background: url('../images/vianocne-trhy.png') center center/cover no-repeat;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.vianocne-trhy-overlay {
+  background: rgba(30, 30, 30, 0.55);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vianocne-trhy-content {
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+  max-width: 600px;
+}
+.vianocne-trhy-content h2 {
+  color: #fff;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-shadow: 0 4px 16px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.3);
+}
+.vianocne-trhy-content p {
+  font-size: 1.15rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.2);
+}
+.vianocne-trhy-btn {
+  background: #e63946;
+  color: #fff;
+  padding: 0.85rem 2.2rem;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: background 0.2s, box-shadow 0.2s;
+  display: inline-block;
+}
+.vianocne-trhy-btn:hover {
+  background: #a4161a;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+}
+@media (max-width: 600px) {
+  .vianocne-trhy-section { min-height: 200px; }
+  .vianocne-trhy-content h2 { font-size: 1.3rem; }
+  .vianocne-trhy-content p { font-size: 0.95rem; }
+}
+/* --- END VIANOČNÉ TRHY CTA SECTION --- */
