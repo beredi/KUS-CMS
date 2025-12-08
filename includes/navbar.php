@@ -45,7 +45,7 @@
                     </ul>
                 </li>
                 <li><a href="contact">KONTAKT</a></li>
-                <li><a href="https://youtube.com/playlist?list=PL5TOFzYQgXD803XLd-g8Pmsx1QXmPz6wN&si=vH6o6DeTUlBlDhUW" target="_blank"><i class="fab fa-youtube"></i> RÁDIO BAČKA</a></li>
+                <li><a href="radiobacka.php">RÁDIO BAČKA</a></li>
                 <li><a href="https://vianocne-trhy.kusjanakollara.org/" target="_blank"><i class="fa fa-tree"></i> VIANOČNÉ TRHY</a></li>
             </ul>
         </div>
