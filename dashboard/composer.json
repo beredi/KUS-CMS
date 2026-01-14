@@ -1,0 +1,12 @@
+{
+  "name": "kus-cms/dashboard",
+  "description": "KUS CMS Dashboard Dependencies",
+  "require": {
+    "mpdf/mpdf": "^8.0"
+  },
+  "config": {
+    "platform": {
+      "php": "7.4"
+    }
+  }
+}

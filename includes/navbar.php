@@ -1,8 +1,8 @@
-<nav class="navbar navbar-background">
+<nav class="navbar navbar-default navbar-background" style="margin-bottom: 0; border-radius: 0;">
     <div class="container">
         <div class="navbar-header">
-            <a href="/"><img width="65px" height="65px" src="images/kus-jana-kollara-selenca.png" alt="Kultúrno-umelecký spolok Jána Kollára zo Selenče"></a>
-            <button type="button" class="navbar-toggle collapsed btn btn-lg " data-toggle="collapse" data-target="#navbar-collapse">
+            <a href="/" class="navbar-brand" style="padding: 10px 15px;"><img width="65px" height="65px" src="images/kus-jana-kollara-selenca.png" alt="Kultúrno-umelecký spolok Jána Kollára zo Selenče"></a>
+            <button type="button" class="navbar-toggle collapsed btn btn-lg" data-toggle="collapse" data-target="#navbar-collapse">
                 <img src="images/bars-solid.svg" alt="Menu" width="24" height="24">
             </button>
         </div>

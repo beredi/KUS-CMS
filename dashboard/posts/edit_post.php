@@ -92,6 +92,10 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
 			echo $e;
 		}
 
+		// Override with POST data if provided
+		if (isset($_POST['post_date']) && !empty($_POST['post_date'])) {
+			$post_date = $_POST['post_date'];
+		}
 
 		$post_content = $_POST['post_content'];
 		$post_author = $_POST['post_author'];
@@ -192,6 +196,10 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
 			echo $e;
 		}
 
+		// Override with POST data if provided
+		if (isset($_POST['post_date']) && !empty($_POST['post_date'])) {
+			$post_date = $_POST['post_date'];
+		}
 
 		$post_content = $_POST['post_content'];
 		$post_author = $_POST['post_author'];
@@ -270,6 +278,10 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
         <label for="post_image">Obrázok: <span class="text-danger">(do 10MB!)</span></label>
         <input type="file" class="form-control-file" id="post_image" name="post_image" value='$post_image'>
         <img src='../images/articles/<?php echo $post_image; ?>' alt='image' width="100px">
+    </div>
+    <div class="form-group mt-3">
+        <label for="post_date" class="required">Dátum publikovania:</label>
+        <input type="date" class="form-control" id="post_date" name="post_date" value="<?php echo date('Y-m-d', strtotime($post_date)); ?>" required>
     </div>
     <div class="form-group">
         <label for="post_content" class="required">Obsah:</label>

@@ -33,6 +33,82 @@ session_start();
 <body>
 	
 <?php include 'includes/navbar.php'; ?>
+
+<style>
+.event-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+.event-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 3px solid #007bff;
+}
+.event-body {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.event-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+.event-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.event-info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #555;
+    font-size: 1rem;
+}
+.event-info-item i {
+    color: #007bff;
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+.event-description {
+    color: #666;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+}
+.no-events {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    margin: 30px 0;
+}
+.no-events h3 {
+    color: #6c757d;
+    font-size: 1.5rem;
+}
+</style>
+
 <div class="container content">
     <div class="row">
         <div class="col-lg-12">
@@ -40,6 +116,7 @@ session_start();
 			<p class="text-muted">Pozrite si, čo všetko plánujeme v blízkej budúcnosti.</p>
         </div>
     </div>
+    <div class="row">
 	<?php
 	try {
 		include 'dashboard/includes/db.php';
@@ -51,7 +128,7 @@ session_start();
 
 		$count = $send_info->rowCount();
 		if ($count == 0) {
-			echo "<h3>Žiadne informácie o nadchádzajúcich podujatiach.</h3>";
+			echo '<div class="col-lg-12"><div class="no-events"><h3>Žiadne informácie o nadchádzajúcich podujatiach.</h3></div></div>';
 		}
 		while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
 			$event_name = $row['event_name'];
@@ -63,32 +140,39 @@ session_start();
 			$event_photo = $row['event_photo'];
 			$event_content = $row['event_content'];
 
-			echo "
-      
-        <div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12 nextEvent\">
-            <div class=\"media\">
-                <div class=\"media-left media-top\">
-                    <img src=\"images/events/$event_photo\" style=\"width: 150px;\" alt=\"$event_name\">
-                </div>
-                <div class=\"media-body\">
-                    <h3 class=\"media-heading\">$event_name</h3>
-                    <p><span class=\"glyphicon glyphicon glyphicon-calendar\"></span> $event_date<br>
-                        <span class=\"glyphicon glyphicon glyphicon-time\"></span> $event_time<br>
-                        <span class=\"glyphicon glyphicon glyphicon-map-marker\"></span> $event_place</p>
-                    <p class=\"text-primary\"><span class=\"glyphicon glyphicon glyphicon-comment\"></span> $event_content</p>
+			echo '
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="event-card">
+                <img src="images/events/'.$event_photo.'" alt="'.htmlspecialchars($event_name).'" class="event-image">
+                <div class="event-body">
+                    <h3 class="event-title">'.$event_name.'</h3>
+                    <div class="event-info">
+                        <div class="event-info-item">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>'.$event_date.'</span>
+                        </div>
+                        <div class="event-info-item">
+                            <i class="far fa-clock"></i>
+                            <span>'.$event_time.'</span>
+                        </div>
+                        <div class="event-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>'.$event_place.'</span>
+                        </div>
+                    </div>
+                    <div class="event-description">
+                        '.$event_content.'
+                    </div>
                 </div>
             </div>
-        </div>
-              
-            ";
-
-
+        </div>';
 		}
 
 	} catch (Exception $e) {
 		echo $e;
 	}
 	?>
+    </div>
 </div>
 
 <!--FOOTER-->

@@ -1,5 +1,5 @@
 <?php
-$VERSION = "2.0.3";
+$VERSION = "2.0.4";
 ?>
 <div class="ml-3">
     <a href="changelog.php">CMS KUS <?= $VERSION ?></a><br>

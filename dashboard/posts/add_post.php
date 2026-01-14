@@ -9,7 +9,10 @@ if (isset($_SESSION['user_role'])) {
 
 
 		$post_content = $_POST['post_content'];
-		$post_date = date('d-m-Y');
+		
+		// Get post date from input or use today
+		$post_date = isset($_POST['post_date']) && !empty($_POST['post_date']) ? $_POST['post_date'] : date('Y-m-d');
+		
 		if (isset($_SESSION['user_name']) && isset($_SESSION['user_lastname'])) {
 			$post_author = $_SESSION['user_id'];
 		}
@@ -35,12 +38,13 @@ if (isset($_SESSION['user_role'])) {
 			include "includes/db.php";
 
 
-			$query = "INSERT INTO posts(post_title, post_author, post_date, post_image, post_content, post_status, post_last_edited) VALUES (:post_title, :post_author, now(), :post_image, :post_content, :post_status, :post_last_edited)";
+			$query = "INSERT INTO posts(post_title, post_author, post_date, post_image, post_content, post_status, post_last_edited) VALUES (:post_title, :post_author, :post_date, :post_image, :post_content, :post_status, :post_last_edited)";
 
 			$send_info = $connection->prepare($query);
 
 			$send_info->bindParam(':post_title', $post_title);
 			$send_info->bindParam(':post_author', $post_author);
+			$send_info->bindParam(':post_date', $post_date);
 			$send_info->bindParam(':post_image', $post_image);
 			$send_info->bindParam(':post_content', $post_content);
 			$send_info->bindParam(':post_status', $post_status);
@@ -92,7 +96,10 @@ if (isset($_SESSION['user_role'])) {
 
 
 			$post_content = $_POST['post_content'];
-			$post_date = date('d-m-Y');
+			
+			// Get post date from input or use today
+			$post_date = isset($_POST['post_date']) && !empty($_POST['post_date']) ? $_POST['post_date'] : date('Y-m-d');
+			
 			if (isset($_SESSION['user_name']) && isset($_SESSION['user_lastname'])) {
 				$post_author = $_SESSION['user_id'];
 			}
@@ -118,12 +125,13 @@ if (isset($_SESSION['user_role'])) {
 				include "includes/db.php";
 
 
-				$query = "INSERT INTO posts(post_title, post_author, post_date, post_image, post_content, post_status, post_last_edited) VALUES (:post_title, :post_author, now(), :post_image, :post_content, :post_status, :post_last_edited)";
+				$query = "INSERT INTO posts(post_title, post_author, post_date, post_image, post_content, post_status, post_last_edited) VALUES (:post_title, :post_author, :post_date, :post_image, :post_content, :post_status, :post_last_edited)";
 
 				$send_info = $connection->prepare($query);
 
 				$send_info->bindParam(':post_title', $post_title);
 				$send_info->bindParam(':post_author', $post_author);
+				$send_info->bindParam(':post_date', $post_date);
 				$send_info->bindParam(':post_image', $post_image);
 				$send_info->bindParam(':post_content', $post_content);
 				$send_info->bindParam(':post_status', $post_status);
@@ -180,6 +188,10 @@ if (isset($_SESSION['user_role'])) {
     <div class="form-group mt-3">
         <label for="post_image" class="required">Obrázok: <span class="text-danger">Formát: na ležato (do 10MB!)</span></label>
         <input type="file" class="form-control-file" id="post_image" name="post_image" required>
+    </div>
+    <div class="form-group mt-3">
+        <label for="post_date" class="required">Dátum publikovania:</label>
+        <input type="date" class="form-control" id="post_date" name="post_date" value="<?php echo date('Y-m-d'); ?>" required>
     </div>
     <div class="form-group">
         <label for="post_content" class="required">Obsah:</label>

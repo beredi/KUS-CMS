@@ -6,7 +6,7 @@ session_start();
 
 		$posts_by_page = 6;
 		// POSTS COUNTER
-		$queryCounter = "SELECT * FROM posts WHERE post_status = 'published'";
+		$queryCounter = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_date DESC";
 		$send_info = $connection->prepare($queryCounter);
 		$send_info->execute();
 		$countPosts = $send_info->rowCount();
@@ -116,22 +116,20 @@ session_start();
 				$page_1 = ($page * $posts_by_page) - $posts_by_page;
 			}
 
-			$query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_id DESC LIMIT " . $page_1 . ", " . $posts_by_page;
+		$query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_date DESC LIMIT " . $page_1 . ", " . $posts_by_page;
 
+		$send_info = $connection->prepare($query);
+		$send_info->execute();
 
-			$send_info = $connection->prepare($query);
+		$count = $send_info->rowCount();
 
-			$send_info->execute();
+		if ($count == 0) {
+			echo "<h3>Žiadne články na zobrazenie.</h3>";
+		}
+		
+		include 'includes/article.php';
 
-			$count = $send_info->rowCount();
-
-			if ($count == 0) {
-				echo "<h3>Žiadne články na zobrazenie.</h3>";
-			}
-			
-			include 'includes/article.php';
-
-			while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
+		while ($row = $send_info->fetch(PDO::FETCH_ASSOC)) {
 				$post_id = $row['post_id'];
 				$post_title = $row['post_title'];
 				$post_image = $row['post_image'];
@@ -139,7 +137,7 @@ session_start();
 
 				$post_content = (substr($temp_post_content, 0, 190) . "...");
 				
-				echo "<div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12 \" style='margin: 2px auto; height: 450px;'>";
+				echo "<div class=\"col-lg-4 col-md-6 col-sm-12 col-xs-12 article-card-wrapper\">";
 				generateArticleCard($post_id, $post_image, $post_title, $post_content);
 				echo "</div>";
 				/*echo "
@@ -166,27 +164,81 @@ session_start();
 
 
     </div>
-    <div class="row" style="margin-top: 20px">
-        <ul class="pager">
-			<?php
-			$page = 1;
-			if (isset($_GET['page'])) {
-				$page = $_GET['page'];
-			}
-			for ($i = 1; $i <= $countPages; $i++) {
-				if ($i == $page) {
-					?>
-                    <li><a href="predchadzajuce-podujatia?page=<?= $i ?>" class="active-page"><?= $i ?></a></li>
-					<?php
-				} else {
-					?>
-                    <li><a href="predchadzajuce-podujatia?page=<?= $i ?>"><?= $i ?></a></li>
-					<?php
-				}
-			}
-			?>
-        </ul>
-
+    <div class="row" style="margin-top: 30px; margin-bottom: 30px;">
+        <div class="col-lg-12">
+            <nav aria-label="Pagination">
+                <ul class="pagination justify-content-center">
+                    <?php
+                    $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                    $totalPages = $countPages;
+                    $range = 2; // Number of pages to show on each side of current page
+                    
+                    // Previous button
+                    if ($currentPage > 1) {
+                        echo '<li class="page-item">';
+                        echo '<a class="page-link" href="predchadzajuce-podujatia?page=' . ($currentPage - 1) . '" aria-label="Previous">';
+                        echo '<span aria-hidden="true">&laquo;</span>';
+                        echo '</a></li>';
+                    } else {
+                        echo '<li class="page-item disabled">';
+                        echo '<span class="page-link">&laquo;</span>';
+                        echo '</li>';
+                    }
+                    
+                    // First page
+                    if ($currentPage > $range + 2) {
+                        echo '<li class="page-item">';
+                        echo '<a class="page-link" href="predchadzajuce-podujatia?page=1">1</a>';
+                        echo '</li>';
+                        echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                    }
+                    
+                    // Page numbers around current page
+                    for ($i = 1; $i <= $totalPages; $i++) {
+                        if ($i == 1 && $currentPage > $range + 2) {
+                            continue; // Already shown above
+                        }
+                        
+                        if ($i == $totalPages && $currentPage < $totalPages - $range - 1) {
+                            continue; // Will be shown below
+                        }
+                        
+                        if ($i >= $currentPage - $range && $i <= $currentPage + $range) {
+                            if ($i == $currentPage) {
+                                echo '<li class="page-item active">';
+                                echo '<span class="page-link">' . $i . '</span>';
+                                echo '</li>';
+                            } else {
+                                echo '<li class="page-item">';
+                                echo '<a class="page-link" href="predchadzajuce-podujatia?page=' . $i . '">' . $i . '</a>';
+                                echo '</li>';
+                            }
+                        }
+                    }
+                    
+                    // Last page
+                    if ($currentPage < $totalPages - $range - 1) {
+                        echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                        echo '<li class="page-item">';
+                        echo '<a class="page-link" href="predchadzajuce-podujatia?page=' . $totalPages . '">' . $totalPages . '</a>';
+                        echo '</li>';
+                    }
+                    
+                    // Next button
+                    if ($currentPage < $totalPages) {
+                        echo '<li class="page-item">';
+                        echo '<a class="page-link" href="predchadzajuce-podujatia?page=' . ($currentPage + 1) . '" aria-label="Next">';
+                        echo '<span aria-hidden="true">&raquo;</span>';
+                        echo '</a></li>';
+                    } else {
+                        echo '<li class="page-item disabled">';
+                        echo '<span class="page-link">&raquo;</span>';
+                        echo '</li>';
+                    }
+                    ?>
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>
 

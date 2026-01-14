@@ -8,7 +8,7 @@
                 include 'dashboard/includes/db.php';
 
 
-                $query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_id DESC LIMIT 3";
+                $query = "SELECT * FROM posts WHERE post_status = 'published' ORDER BY post_date DESC LIMIT 3";
 
                 $send_info = $connection->prepare($query);
 

@@ -1,5 +1,77 @@
 <h2>Všetky články</h2>
 
+<!-- Export Button -->
+<div style="margin-bottom: 20px;">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exportModal">
+        <i class="fas fa-file-pdf"></i> Export do PDF
+    </button>
+</div>
+
+<!-- Export Modal -->
+<div class="modal fade" id="exportModal" tabindex="-1" role="dialog" aria-labelledby="exportModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="exportModalLabel">
+                    <i class="fas fa-file-export"></i> Export článkov do PDF
+                </h4>
+            </div>
+            <form action="posts/export_posts_pdf.php" method="POST" target="_blank">
+                <div class="modal-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i> 
+                        Vyberte časové obdobie pre export článkov. Články budú zoradené od najnovších.
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date_from">
+                            <i class="fas fa-calendar-alt"></i> Dátum od:
+                        </label>
+                        <input 
+                            type="date" 
+                            class="form-control" 
+                            id="date_from" 
+                            name="date_from"
+                            placeholder="Začiatok obdobia">
+                        <small class="text-muted">Nechajte prázdne pre všetky články od začiatku</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date_to">
+                            <i class="fas fa-calendar-alt"></i> Dátum do:
+                        </label>
+                        <input 
+                            type="date" 
+                            class="form-control" 
+                            id="date_to" 
+                            name="date_to"
+                            placeholder="Koniec obdobia">
+                        <small class="text-muted">Nechajte prázdne pre všetky články do dnes</small>
+                    </div>
+                    
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="all_posts" checked>
+                            Exportovať všetky články (ignorovať dátumový filter)
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <i class="fas fa-times"></i> Zrušiť
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-file-pdf"></i> Exportovať PDF
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <table class="table table-hover table-striped" id="clanky">
     <thead>
     <tr>
@@ -162,6 +234,32 @@ if (isset($_GET['delete'])) {
         $('#clanky').DataTable({
             "order": [],
             "pageLength": 10
+        });
+        
+        // Handle "all posts" checkbox
+        $('#all_posts').change(function() {
+            if ($(this).is(':checked')) {
+                $('#date_from').prop('disabled', true).val('');
+                $('#date_to').prop('disabled', true).val('');
+            } else {
+                $('#date_from').prop('disabled', false);
+                $('#date_to').prop('disabled', false);
+            }
+        });
+        
+        // Set today's date as default for date_to
+        var today = new Date().toISOString().split('T')[0];
+        $('#date_to').attr('max', today);
+        
+        // Validate date range
+        $('#date_from, #date_to').change(function() {
+            var dateFrom = $('#date_from').val();
+            var dateTo = $('#date_to').val();
+            
+            if (dateFrom && dateTo && dateFrom > dateTo) {
+                alert('Dátum "od" nemôže byť väčší ako dátum "do"!');
+                $(this).val('');
+            }
         });
     });
 </script>
