@@ -75,6 +75,8 @@
                                         class="fas fa-pencil-alt"></i> Pridať článok</a></li>
                         <li class="dropdown-item"><a href="posts.php" class="nav-link"><i class="fas fa-list-ul"></i>
                                 Zobraziť všetky články</a></li>
+                        <li class="dropdown-item"><a href="categories.php" class="nav-link"><i class="fas fa-tags"></i>
+                                Kategórie</a></li>
                     </ul>
                 </div>
             </li>

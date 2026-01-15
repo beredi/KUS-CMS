@@ -43,6 +43,14 @@ include "includes/mobile-navigation.php"; //INCLUDE NAVIGATION FOR MOBILE
                 </thead>
                 <tbody>
                 <tr>
+                    <td style="width: 10%;">15. 01. 2026</td>
+                    <td style="width: 90%;">
+                        <ul>
+                            <li>Pridanie kategórií do článkov a filtrovanie podľa kategórií, názvu a dátumu </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
                     <td style="width: 10%;">14. 01. 2026</td>
                     <td style="width: 90%;">
                         <ul>

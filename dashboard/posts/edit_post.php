@@ -28,9 +28,20 @@ if (isset($_GET['edit'])) {
 
 
 		}
+		
+		// Load existing categories for this post
+		$catQuery = "SELECT c.id, c.name FROM categories c INNER JOIN post_categories pc ON c.id = pc.category_id WHERE pc.post_id = :post_id";
+		$catStmt = $connection->prepare($catQuery);
+		$catStmt->bindParam(':post_id', $post_id);
+		$catStmt->execute();
+		$existingCategoriesData = $catStmt->fetchAll(PDO::FETCH_ASSOC);
+		$existingCategories = array_column($existingCategoriesData, 'id');
 	} catch (Exception $e) {
 		echo $e;
 	}
+} else {
+	$existingCategoriesData = [];
+	$existingCategories = [];
 }
 
 
@@ -130,6 +141,26 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
 			$send_info->bindParam(':post_last_edited', $post_last_edited);
 
 			$send_info->execute();
+			
+			// Update categories
+			// First, delete existing categories
+			$delCatQuery = "DELETE FROM post_categories WHERE post_id = :post_id";
+			$delCatStmt = $connection->prepare($delCatQuery);
+			$delCatStmt->bindParam(':post_id', $post_id);
+			$delCatStmt->execute();
+			
+			// Then insert new categories
+			if (isset($_POST['post_categories']) && !empty($_POST['post_categories'])) {
+				$categories = array_unique(array_filter($_POST['post_categories'], function($val) { return !empty($val) && is_numeric($val); }));
+				foreach ($categories as $category_id) {
+					$catQuery = "INSERT INTO post_categories (post_id, category_id) VALUES (:post_id, :category_id)";
+					$catStmt = $connection->prepare($catQuery);
+					$catStmt->bindParam(':post_id', $post_id);
+					$catStmt->bindParam(':category_id', $category_id);
+					$catStmt->execute();
+				}
+			}
+			
 			echo "<h3 class='text-success'>Článok $post_title bol upravený a čaká na schválenie! <small><a href=\"../clanok.php?p_id=$post_id\" class='text-muted' target='_blank'>Zobraziť</a></small></h3>";
 			// LOG
 			include "includes/add_log.php";
@@ -235,6 +266,26 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
 			$send_info->bindParam(':post_last_edited', $post_last_edited);
 
 			$send_info->execute();
+			
+			// Update categories
+			// First, delete existing categories
+			$delCatQuery = "DELETE FROM post_categories WHERE post_id = :post_id";
+			$delCatStmt = $connection->prepare($delCatQuery);
+			$delCatStmt->bindParam(':post_id', $post_id);
+			$delCatStmt->execute();
+			
+			// Then insert new categories
+			if (isset($_POST['post_categories']) && !empty($_POST['post_categories'])) {
+				$categories = array_unique(array_filter($_POST['post_categories'], function($val) { return !empty($val) && is_numeric($val); }));
+				foreach ($categories as $category_id) {
+					$catQuery = "INSERT INTO post_categories (post_id, category_id) VALUES (:post_id, :category_id)";
+					$catStmt = $connection->prepare($catQuery);
+					$catStmt->bindParam(':post_id', $post_id);
+					$catStmt->bindParam(':category_id', $category_id);
+					$catStmt->execute();
+				}
+			}
+			
 			echo "<h3 class='text-success'>Článok $post_title bol publikovaný! <small><a href=\"../clanok.php?p_id=$post_id\" class='text-muted' target='_blank'>Zobraziť</a></small></h3>";
 			// LOG
 			include "includes/add_log.php";
@@ -282,6 +333,25 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
     <div class="form-group mt-3">
         <label for="post_date" class="required">Dátum publikovania:</label>
         <input type="date" class="form-control" id="post_date" name="post_date" value="<?php echo date('Y-m-d', strtotime($post_date)); ?>" required>
+    </div>
+    <div class="form-group mt-3">
+        <label for="category_search">
+            <i class="fas fa-tags"></i> Kategórie:
+        </label>
+        <input type="text" class="form-control" id="category_search" placeholder="Vyhľadajte a vyberte kategóriu..." autocomplete="off">
+        <div id="category_dropdown" style="display:none; position:absolute; z-index:1000; background:white; border:1px solid #ccc; max-height:200px; overflow-y:auto; width:100%; max-width:500px;"></div>
+        <div id="selected_categories" style="margin-top:10px;">
+            <?php
+            // Display existing categories as pills
+            foreach ($existingCategoriesData as $cat) {
+                echo '<span class="badge badge-primary" style="margin:5px; padding:8px 12px; font-size:14px;" data-id="' . $cat['id'] . '">';
+                echo htmlspecialchars($cat['name']);
+                echo ' <i class="fas fa-times" style="cursor:pointer; margin-left:5px;" onclick="removeCategory(' . $cat['id'] . ')"></i>';
+                echo '</span>';
+            }
+            ?>
+        </div>
+        <input type="hidden" id="post_categories_hidden" name="post_categories[]" value="">
     </div>
     <div class="form-group">
         <label for="post_content" class="required">Obsah:</label>
@@ -345,4 +415,103 @@ if (isUser('lektor') || isUser('moderator') || isUser('admin') || $userId == $po
             xhr.send(formData);
         }
     });*/
+</script>
+
+<script>
+// Category selection with pills
+const allCategories = <?php
+try {
+    include "includes/db.php";
+    $catQuery = "SELECT id, name FROM categories ORDER BY name ASC";
+    $catStmt = $connection->prepare($catQuery);
+    $catStmt->execute();
+    echo json_encode($catStmt->fetchAll(PDO::FETCH_ASSOC));
+} catch (Exception $e) {
+    echo '[]';
+}
+?>;
+
+let selectedCategories = <?php echo json_encode($existingCategoriesData); ?>;
+
+const categorySearch = document.getElementById('category_search');
+const categoryDropdown = document.getElementById('category_dropdown');
+const selectedCategoriesDiv = document.getElementById('selected_categories');
+const categoriesHidden = document.getElementById('post_categories_hidden');
+
+// Initialize
+updateCategoriesDisplay();
+
+categorySearch.addEventListener('focus', function() {
+    showCategoryDropdown(this.value);
+});
+
+categorySearch.addEventListener('input', function() {
+    showCategoryDropdown(this.value);
+});
+
+function showCategoryDropdown(searchTerm) {
+    searchTerm = searchTerm.toLowerCase();
+    
+    const filtered = allCategories.filter(cat => 
+        cat.name.toLowerCase().includes(searchTerm) && 
+        !selectedCategories.some(sc => sc.id === cat.id)
+    );
+    
+    if (filtered.length === 0) {
+        categoryDropdown.style.display = 'none';
+        return;
+    }
+    
+    categoryDropdown.innerHTML = filtered.map(cat => 
+        `<div style="padding:10px; cursor:pointer; border-bottom:1px solid #eee;" 
+              onmouseover="this.style.backgroundColor='#f0f0f0'" 
+              onmouseout="this.style.backgroundColor='white'" 
+              onclick="addCategory(${cat.id}, '${cat.name.replace(/'/g, "\\'")}')">${cat.name}</div>`
+    ).join('');
+    
+    categoryDropdown.style.display = 'block';
+}
+
+function addCategory(id, name) {
+    if (selectedCategories.some(sc => sc.id === id)) return;
+    
+    selectedCategories.push({id, name});
+    updateCategoriesDisplay();
+    categorySearch.value = '';
+    categoryDropdown.style.display = 'none';
+}
+
+function removeCategory(id) {
+    selectedCategories = selectedCategories.filter(sc => sc.id !== id);
+    updateCategoriesDisplay();
+}
+
+function updateCategoriesDisplay() {
+    selectedCategoriesDiv.innerHTML = selectedCategories.map(cat => 
+        `<span class="badge badge-primary" style="margin:5px; padding:8px 12px; font-size:14px;" data-id="${cat.id}">
+            ${cat.name} <i class="fas fa-times" style="cursor:pointer; margin-left:5px;" onclick="removeCategory(${cat.id})"></i>
+        </span>`
+    ).join('');
+    
+    // Update hidden input
+    categoriesHidden.value = selectedCategories.map(c => c.id).join(',');
+    
+    // Create multiple hidden inputs for array submission
+    const form = categoriesHidden.closest('form');
+    form.querySelectorAll('input[name="post_categories[]"]:not(#post_categories_hidden)').forEach(el => el.remove());
+    selectedCategories.forEach(cat => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'post_categories[]';
+        input.value = cat.id;
+        form.appendChild(input);
+    });
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+    if (!categorySearch.contains(e.target) && !categoryDropdown.contains(e.target)) {
+        categoryDropdown.style.display = 'none';
+    }
+});
 </script>

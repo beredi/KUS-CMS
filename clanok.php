@@ -45,6 +45,7 @@ articleHeader($post_title, $post_image, $temp_post_content, $post_tags, $id);
     background: #fff;
     padding: 0;
     margin-top: 20px;
+    padding-top: 20px !important; /* Override global .content padding */
 }
 .article-header {
     position: relative;
@@ -79,11 +80,12 @@ articleHeader($post_title, $post_image, $temp_post_content, $post_tags, $id);
     align-items: center;
     gap: 8px;
     color: #666;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 .meta-item i {
     color: #007bff;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
 }
 .draft-badge {
     display: inline-block;
@@ -197,6 +199,15 @@ articleHeader($post_title, $post_image, $temp_post_content, $post_tags, $id);
 			$post_status = $row['post_status'];
 			$post_tags = $row['post_tags'];
 		}
+		
+		// Get categories for this post
+		$catQuery = "SELECT c.id, c.name, c.slug FROM categories c 
+		             INNER JOIN post_categories pc ON c.id = pc.category_id 
+		             WHERE pc.post_id = :post_id ORDER BY c.name ASC";
+		$catStmt = $connection->prepare($catQuery);
+		$catStmt->bindParam(':post_id', $post_id);
+		$catStmt->execute();
+		$articleCategories = $catStmt->fetchAll(PDO::FETCH_ASSOC);
 
 	} catch (Exception $e) {
 		echo $e;
@@ -233,6 +244,19 @@ articleHeader($post_title, $post_image, $temp_post_content, $post_tags, $id);
                             <i class="far fa-user"></i>
                             <span><?php echo $post_author; ?></span>
                         </div>
+                        <?php if (!empty($articleCategories)): ?>
+                        <div class="meta-item">
+                            <i class="fas fa-tags"></i>
+                            <span>
+                                <?php 
+                                $categoryLinks = array_map(function($cat) {
+                                    return '<span style="background: #e3f2fd; color: #007bff; padding: 4px 12px; border-radius: 15px; font-weight: 500; display: inline-block; margin: 2px;">' . htmlspecialchars($cat['name']) . '</span>';
+                                }, $articleCategories);
+                                echo implode(' ', $categoryLinks);
+                                ?>
+                            </span>
+                        </div>
+                        <?php endif; ?>
                         
                         <!-- Share Buttons -->
 						<?php if ($post_status !== 'draft'): ?>

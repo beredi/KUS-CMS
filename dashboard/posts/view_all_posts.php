@@ -1,5 +1,28 @@
 <h2>Všetky články</h2>
 
+<!-- Category Filter -->
+<div style="margin-bottom: 20px;">
+    <label for="category_filter">
+        <i class="fas fa-filter"></i> Filter podľa kategórie:
+    </label>
+    <select id="category_filter" class="form-control" style="width: 300px; display: inline-block;">
+        <option value="">Všetky kategórie</option>
+        <?php
+        try {
+            include 'includes/db.php';
+            $catQuery = "SELECT * FROM categories ORDER BY name ASC";
+            $catStmt = $connection->prepare($catQuery);
+            $catStmt->execute();
+            while ($cat = $catStmt->fetch(PDO::FETCH_ASSOC)) {
+                echo '<option value="' . $cat['id'] . '">' . htmlspecialchars($cat['name']) . '</option>';
+            }
+        } catch (Exception $e) {
+            // Error handling
+        }
+        ?>
+    </select>
+</div>
+
 <!-- Export Button -->
 <div style="margin-bottom: 20px;">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exportModal">
@@ -23,7 +46,7 @@
                 <div class="modal-body">
                     <div class="alert alert-info">
                         <i class="fas fa-info-circle"></i> 
-                        Vyberte časové obdobie pre export článkov. Články budú zoradené od najnovších.
+                        Vyberte možnosti pre export článkov do PDF.
                     </div>
                     
                     <div class="form-group">
@@ -52,9 +75,41 @@
                         <small class="text-muted">Nechajte prázdne pre všetky články do dnes</small>
                     </div>
                     
+                    <div class="form-group">
+                        <label for="sort_order">
+                            <i class="fas fa-sort"></i> Zoradiť:
+                        </label>
+                        <select class="form-control" id="sort_order" name="sort_order">
+                            <option value="DESC">Od najnovších po najstaršie</option>
+                            <option value="ASC">Od najstarších po najnovšie</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="export_categories">
+                            <i class="fas fa-tags"></i> Kategórie:
+                        </label>
+                        <select class="form-control" id="export_categories" name="categories[]" multiple size="5">
+                            <option value="" selected>Všetky kategórie</option>
+                            <?php
+                            try {
+                                $catQuery = "SELECT * FROM categories ORDER BY name ASC";
+                                $catStmt = $connection->prepare($catQuery);
+                                $catStmt->execute();
+                                while ($cat = $catStmt->fetch(PDO::FETCH_ASSOC)) {
+                                    echo '<option value="' . $cat['id'] . '">' . htmlspecialchars($cat['name']) . '</option>';
+                                }
+                            } catch (Exception $e) {
+                                // Error handling
+                            }
+                            ?>
+                        </select>
+                        <small class="text-muted">Držte Ctrl/Cmd pre výber viacerých kategórií. Nechajte "Všetky kategórie" pre export všetkých.</small>
+                    </div>
+                    
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" id="all_posts" checked>
+                            <input type="checkbox" id="all_posts" name="all_posts" checked>
                             Exportovať všetky články (ignorovať dátumový filter)
                         </label>
                     </div>
@@ -78,6 +133,7 @@
         <th>Názov</th>
         <th>Autor</th>
         <th>Dátum</th>
+        <th>Kategórie</th>
         <th>Posledný upravil</th>
         <th>Stav</th>
         <th>Obrázok</th>
@@ -113,6 +169,21 @@
 			$post_image = $row['post_image'];
 			$post_status = $row['post_status'];
 			$post_last_edited_id = $row['post_last_edited'];
+			
+			// Get categories for this post
+			$catQuery = "SELECT c.id, c.name FROM categories c 
+			             INNER JOIN post_categories pc ON c.id = pc.category_id 
+			             WHERE pc.post_id = :post_id ORDER BY c.name ASC";
+			$catStmt = $connection->prepare($catQuery);
+			$catStmt->bindParam(':post_id', $post_id);
+			$catStmt->execute();
+			$categories = $catStmt->fetchAll(PDO::FETCH_ASSOC);
+			$categoryIds = array_column($categories, 'id');
+			$categoryNames = array_map(function($cat) {
+				return htmlspecialchars($cat['name']);
+			}, $categories);
+			$categoriesDisplay = !empty($categoryNames) ? implode(', ', $categoryNames) : '<span class="text-muted">Bez kategórie</span>';
+			
 			foreach ($users as $user) {
 				if ($user['user_id'] == $post_last_edited_id) {
 					$post_last_edited = $user['user_name'] . ' ' . $user['user_lastname'];
@@ -121,10 +192,11 @@
 
 			echo "
             
-            <tr>
+            <tr data-categories='" . json_encode($categoryIds) . "'>
                 <td>$post_title</td>
                 <td>$post_author</td>
                 <td>$post_date</td>
+                <td>$categoriesDisplay</td>
                 <td>$post_last_edited</td>
                 <td bgcolor=\"";
 			if ($post_status == 'draft') {
@@ -231,9 +303,35 @@ if (isset($_GET['delete'])) {
 
 <script>
     $(document).ready(function () {
-        $('#clanky').DataTable({
+        var table = $('#clanky').DataTable({
             "order": [],
             "pageLength": 10
+        });
+        
+        // Category filter
+        $('#category_filter').on('change', function() {
+            var selectedCategory = $(this).val();
+            
+            if (selectedCategory === '') {
+                // Show all rows
+                table.rows().every(function() {
+                    $(this.node()).show();
+                });
+            } else {
+                // Filter rows
+                table.rows().every(function() {
+                    var rowNode = this.node();
+                    var categories = JSON.parse($(rowNode).attr('data-categories') || '[]');
+                    
+                    if (categories.includes(parseInt(selectedCategory))) {
+                        $(rowNode).show();
+                    } else {
+                        $(rowNode).hide();
+                    }
+                });
+            }
+            
+            table.draw(false);
         });
         
         // Handle "all posts" checkbox

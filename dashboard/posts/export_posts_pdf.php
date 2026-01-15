@@ -17,29 +17,54 @@ require_once('../includes/db.php');
 $connection->exec("SET NAMES utf8");
 $connection->exec("SET CHARACTER SET utf8");
 
-// Get date range from request
+// Get date range and filters from request
 $dateFrom = isset($_POST['date_from']) ? $_POST['date_from'] : '';
 $dateTo = isset($_POST['date_to']) ? $_POST['date_to'] : '';
+$sortOrder = isset($_POST['sort_order']) ? $_POST['sort_order'] : 'DESC';
+$categories = isset($_POST['categories']) ? $_POST['categories'] : [];
+$allPosts = isset($_POST['all_posts']);
 
-// Build query with date filter
-$query = "SELECT posts.*, users.user_name, users.user_lastname 
+// Validate sort order
+if (!in_array($sortOrder, ['ASC', 'DESC'])) {
+    $sortOrder = 'DESC';
+}
+
+// Build query with date and category filters
+$query = "SELECT DISTINCT posts.*, users.user_name, users.user_lastname 
           FROM posts 
-          INNER JOIN users ON posts.post_author = users.user_id 
-          WHERE 1=1";
+          INNER JOIN users ON posts.post_author = users.user_id ";
+
+// Add category join if categories are selected
+if (!empty($categories) && !in_array('', $categories)) {
+    $query .= " INNER JOIN post_categories pc ON posts.post_id = pc.post_id ";
+}
+
+$query .= " WHERE 1=1";
 
 $params = [];
 
-if (!empty($dateFrom)) {
+if (!$allPosts && !empty($dateFrom)) {
     $query .= " AND DATE(post_date) >= :date_from";
     $params[':date_from'] = $dateFrom;
 }
 
-if (!empty($dateTo)) {
+if (!$allPosts && !empty($dateTo)) {
     $query .= " AND DATE(post_date) <= :date_to";
     $params[':date_to'] = $dateTo;
 }
 
-$query .= " ORDER BY post_date DESC";
+// Add category filter
+if (!empty($categories) && !in_array('', $categories)) {
+    $placeholders = [];
+    foreach ($categories as $index => $cat_id) {
+        $param_name = ":cat_" . $index;
+        $placeholders[] = $param_name;
+        $params[$param_name] = $cat_id;
+    }
+    $query .= " AND pc.category_id IN (" . implode(',', $placeholders) . ")";
+}
+
+$query .= " ORDER BY post_date " . $sortOrder;
 
 try {
     $send_info = $connection->prepare($query);
@@ -420,7 +445,7 @@ if (empty($posts)) {
     foreach ($posts as $index => $post) {
         $post_title = htmlspecialchars($post['post_title'], ENT_QUOTES, 'UTF-8');
         $post_author = htmlspecialchars($post['user_name'] . ' ' . $post['user_lastname'], ENT_QUOTES, 'UTF-8');
-        $post_date = date('d.m.Y H:i', strtotime($post['post_date']));
+        $post_date = date('d.m.Y', strtotime($post['post_date']));
         $post_status = $post['post_status'];
         $post_image = $post['post_image'];
         
